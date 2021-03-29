@@ -6,12 +6,17 @@ The [Fluence Dashboard](https://dash.fluence.dev/) facilitates the discovery of 
 
 In order to execute the cUrl service and collect the result, i.e., response, we call upon our composition and coordination medium Aquamarine via an Aquamarine Intermediate Representation \(AIR\) script.
 
-```text
+```scheme
+;; handle possible errors via xor
 (xor
     (seq
+        ;; call function 'service_id.request' on node 'relay'
         (call relay (service_id "request") [url] result)
+
+        ;; return result back to the client
         (call %init_peer_id% (returnService "run") [result])
     )
+    ;; if error, return it to the client
     (call %init_peer_id% (returnService "run") [%last_error%])
 )
 ```
