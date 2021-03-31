@@ -44,7 +44,8 @@ We are basically linking the [external](https://doc.rust-lang.org/std/keyword.ex
 
 ### Code References
 
-[Mounted binaries](https://github.com/fluencelabs/fce/blob/c559f3f2266b924398c203a45863ebf2fb9252ec/fluence-faas/src/host_imports/mounted_binaries.rs)
+* [Mounted binaries](https://github.com/fluencelabs/fce/blob/c559f3f2266b924398c203a45863ebf2fb9252ec/fluence-faas/src/host_imports/mounted_binaries.rs)
+* [cUrl](https://github.com/curl/curl)
 
 ### Service Construction
 
