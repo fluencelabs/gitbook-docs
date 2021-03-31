@@ -183,9 +183,7 @@ Particle id: 5fb0af87-310f-4b12-8c73-e044cfd8ef6e. Waiting for results... Press 
 
 And we are golden. Give it some time and start checking Ethqlite for latest block and reward info!!
 
-{% hint style="info" %}
-Unfortunately, our daemonized service won't work just yet as the current implementation cannot take the \(client\) seed we need in order to get our SQLite write working. It's on the to-do list but if you need it, please contact us and we'll see about juggling priorities. 
-{% endhint %}
+TODO: this isn't working since we can't upload a key with the script.
 
 For completeness sake, let's remove the stored service with the following AIR script:
 
@@ -193,6 +191,8 @@ For completeness sake, let's remove the stored service with the following AIR sc
 ; remove a script to 
 (call node ("script" "remove") [script_id] result)
 ```
+
+TODO: finalize or delete for now.
 
 ## Advanced Service Output Access
 

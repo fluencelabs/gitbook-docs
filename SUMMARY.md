@@ -44,7 +44,7 @@
   * [Building a Collaborative Editor](tutorials_tutorials/building-a-collaborative-editor.md)
 * [Recipes](recipes_recipes/README.md)
   * [Setting Up Your Environment](recipes_recipes/recipes_setting_up.md)
-  * [Curl](recipes_recipes/recipes_curl.md)
+  * [cUrl as a Service](recipes_recipes/recipes_curl.md)
   * [Error Management and Testing Of Services](recipes_recipes/error-management-and-testing-of-services.md)
   * [Sqlite](recipes_recipes/sqlite.md)
   * [Redis](recipes_recipes/redis.md)

@@ -23,7 +23,7 @@ AIR instructions are intended to launch the execution of a service method as fol
 4. The arguments specified by the argument list are passed to the method
 5. The result of the method returned under the name output name
 
-**Figure 2: Sequential Instruction** ![Execution](../../.gitbook/assets/air_sequential_2%20%281%29%20%281%29%20%281%29.png)
+**Figure 2: Sequential Instruction** ![Execution](../../.gitbook/assets/air_sequential_2%20%281%29%20%281%29.png)
 
 The seq instruction takes two instructions at most as its arguments and executes them sequentially, one after the other.
 
@@ -33,7 +33,7 @@ The par&lt;/i.&gt; instruction takes two instructions at most as its arguments a
 
 TODO: add better graphic showing the disticntion of branching vs seq.
 
-**Figure 4: Fold Instruction** ![Execution](../../.gitbook/assets/air_fold_4%20%281%29%20%281%29.png)
+**Figure 4: Fold Instruction** ![Execution](../../.gitbook/assets/air_fold_4%20%281%29.png)
 
 The fold instruction iterates over the elements of an array and workds as follows:
 
