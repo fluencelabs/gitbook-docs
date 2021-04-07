@@ -6,7 +6,7 @@ At the core of Aquamarine is the design ideal and idea to pair concurrent system
 
 ## Background
 
-When we build systems, we need to be able to model, specify, analyze and verify them and this is especially important to concurrent systems such as parallel and multi-threaded systems. [Formal specification](https://en.wikipedia.org/wiki/Formal_specification) are a family of formal approaches to design, model, and verify system. In the context of concurrent systems, there are two distinct formal specification techniques available. The state oriented approach is concerned with modeling verifying a systems state and state transitions and is often accomplished with [TLA+](https://en.wikipedia.org/wiki/TLA%2B). Modern blockchain design, modeling, and verification tend to rely on a state-based specification.
+When we build systems, we need to be able to model, specify, analyze and verify them and this is especially important to concurrent systems such as parallel and multi-threaded systems. [Formal specifications](https://en.wikipedia.org/wiki/Formal_specification) are a family of formal approaches to design, model, and verify system. In the context of concurrent systems, there are two distinct formal specification techniques available. The state oriented approach is concerned with modeling verifying a systems state and state transitions and is often accomplished with [TLA+](https://en.wikipedia.org/wiki/TLA%2B). Modern blockchain design, modeling, and verification tend to rely on a state-based specification.
 
 An alternative, complementary approach is based on [Process calculus](https://en.wikipedia.org/wiki/Process_calculus) to model and verify the sequence of communications operations of a system at any given time. [π-Calculs](https://en.wikipedia.org/wiki/%CE%A0-calculus) is a modern process calculus employed in a wide range of applications ranging from biology to games and business processes.
 
@@ -14,13 +14,7 @@ Aquamarine, Fluence's distributed composition language and runtime, is based on 
 
 ## Language
 
-[Aquamarine Intermediate Representation](https://github.com/boneyard93501/docs/tree/a512080f81137fb575a5b96d3f3e83fa3044fd1c/src/knowledge-base/knowledge_aquamarine__air.md) \(AIR\) is a low-level language modelled after the [WebAssembly text format](https://developer.mozilla.org/en-US/docs/WebAssembly/Understanding_the_text_format) and allows developers to manage network peers as well as services and backends. AIR, while intended as a compile target, is currently the only Aquamarine language implementation although a high level language \(HLL\) is currently under active development.
-
-TODO: verify below and that we don't have parallel composition proper The Aquamarine language implementation includes
-
-* sequential composition
-* reduction semantics
-* communication
+[Aquamarine Intermediate Representation](https://github.com/boneyard93501/docs/tree/a512080f81137fb575a5b96d3f3e83fa3044fd1c/src/knowledge-base/knowledge_aquamarine__air.md) \(AIR\) is a low-level language modeled after the [WebAssembly text format](https://developer.mozilla.org/en-US/docs/WebAssembly/Understanding_the_text_format) and allows developers to manage network peers as well as services and backends. AIR, while intended as a compile target, is currently the only Aquamarine language implementation although a high level language \(HLL\) is currently under active development.
 
 ## Runtime
 
