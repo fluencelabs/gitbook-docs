@@ -26,7 +26,7 @@ Checks if there is a direct connection to the peer identified by a given PeerId
 
 Example of a service call:
 
-```clojure
+```scheme
 (call node ("peer" "is_connected") ["123D..."] ok)
 ```
 
@@ -41,7 +41,7 @@ Initiates a connection to the specified peer
 
 Example of a service call:
 
-```clojure
+```scheme
 (seq 
     (call node ("op" "identity") ["/ip4/1.2.3.4/tcp/7777" "/ip4/1.2.3.4/tcp/9999"] addrs)
     (call node ("peer" "connect") ["123D..." addrs] ok) 
@@ -66,7 +66,7 @@ Contact {
 
  Example of a service call:
 
-```clojure
+```scheme
 (call node ("peer" "get_contact") ["123D..."] contact)
 ```
 
@@ -83,7 +83,7 @@ Get information about the peer
 
  Example of service call:
 
-```clojure
+```scheme
 (call node ("peer" "identify") [] info) peer timestamp_ms 
 ```
 
@@ -96,7 +96,7 @@ Get Unix timestamp in milliseconds
 
 Example of service call:
 
-```clojure
+```scheme
 (call node ("peer" "timestamp_ms") [] ts_ms)
 ```
 
@@ -109,7 +109,7 @@ Get Unix timestamp in seconds
 
 Example of service call:
 
-```clojure
+```scheme
 (call node ("peer" "timestamp_sec") [] ts_sec)
 ```
 
@@ -122,7 +122,7 @@ Instructs node to return the locally-known nodes in the Kademlia neighborhood fo
 
 Example of service call:
 
-```clojure
+```scheme
 (call node ("dht" "neighborhood") [key] peers)
 ```
 
@@ -138,7 +138,7 @@ Used to create a service on a certain node.
 
 Example of service call:
 
-```clojure
+```scheme
 (call node ("srv" "create") [blueprint_id] service_id)
 ```
 
@@ -151,7 +151,7 @@ Used to enumerate services deployed to a peer.
 
 Example of service call:
 
-```clojure
+```scheme
 (call node ("srv" "list") [] services) 
 ```
 
@@ -164,7 +164,7 @@ Adds an alias on service, so service could be called not only by service\_id but
 
 Example of service call:
 
-```clojure
+```scheme
 (call node ("srv" "add_alias") [alias service_id])
 ```
 
@@ -187,7 +187,7 @@ Retrieves the functional interface of a service running on the node specified in
 
 Example of service call: 
 
-```clojure
+```scheme
 (call node ("srv" "get_interface") [service_id] interface) 
 ```
 
@@ -208,7 +208,7 @@ Used to add modules to the node specified in the service call.
 
 Example of service call:
 
-```clojure
+```scheme
 (call node ("dist" "add_module") [bytes config] hash)
 ```
 
@@ -231,7 +231,7 @@ Get a list of modules available on the node
 
 Example of service call:
 
-```clojure
+```scheme
 (call node ("dist" "list_modules") [] modules) 
 ```
 
@@ -242,7 +242,7 @@ Get the interface of a module
 * Arguments: hash of a module
 * Returns: an interface of the module \( see _srv get\_interface \)_ mple of service call:
 
-```clojure
+```scheme
 (call node ("dist" "get_interface") [hash] interface) 
 ```
 
@@ -265,7 +265,7 @@ Used to add a blueprint to the node specified in the service call.
 
 Example of service call:
 
-```clojure
+```scheme
 (call node ("dist" "add_blueprint") [blueprint] blueprint_id) 
 ```
 
@@ -288,7 +288,7 @@ A blueprint is an object of the following structure:
 
 Example of service call:
 
-```clojure
+```scheme
 (call node ("dist" "list_blueprints") [] blueprints)
 ```
 
@@ -313,7 +313,7 @@ Example of service call:
 
 * With an interval parameter value _k_ passed as a string, the script executes every _k_ seconds \(21 in this case\)
 
-  ```clojure
+  ```scheme
   (call node ("script" "add") [script "21"] id) 
   ```
 
@@ -326,7 +326,7 @@ Removes recurring script from a node. Only a creator of the script can delete it
 
 Example of service call:
 
-```clojure
+```scheme
 (call node ("script" "remove") [script_id] result) 
 ```
 
@@ -347,7 +347,7 @@ Example of service call:
 
  Example of a service call:
 
-```clojure
+```scheme
 (call node ("script" "list") [] list)
 ```
 
@@ -357,7 +357,7 @@ Acts as an identity function. This service returns exactly what was passed to it
 
 Example of service call:
 
-```clojure
+```scheme
 (call node ("op" "identity") [args] result) 
 ```
 
@@ -379,7 +379,7 @@ Used in service aliasing. ****Stores the specified service provider \(provider\)
 
 Example of service call:
 
-```clojure
+```scheme
 (call node ("deprecated" "add_provider") [key provider]) 
 ```
 
@@ -401,6 +401,6 @@ Used in service aliasing to retrieve providers for a given key.
 
 Example of service call:
 
-```clojure
+```scheme
 (call node ("deprecated" "get_providers") [key] providers)
 ```
