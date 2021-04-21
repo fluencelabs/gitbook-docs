@@ -18,7 +18,7 @@ Please note that the [`fldist`](../knowledge_tools.md#fluence-proto-distributor-
 
 ### API
 
-_**peer is\_connected**_ _\*\*_
+#### peer is_connected
 
 Checks if there is a direct connection to the peer identified by a given PeerId
 
@@ -32,7 +32,7 @@ Example of a service call:
 (call node ("peer" "is_connected") ["123D..."] ok)
 ```
 
-_**peer connect**_
+#### peer connect
 
 Initiates a connection to the specified peer
 
@@ -50,7 +50,7 @@ Example of a service call:
 )
 ```
 
-**peer get\_contact**
+#### peer get_contact
 
 Resolves the contact of a peer via [Kademlia](https://en.wikipedia.org/wiki/Kademlia)
 
@@ -72,7 +72,7 @@ Example of a service call:
 (call node ("peer" "get_contact") ["123D..."] contact)
 ```
 
-**peer identify**
+#### peer identify
 
 Get information about the peer
 
@@ -89,7 +89,7 @@ Example of service call:
 (call node ("peer" "identify") [] info) peer timestamp_ms
 ```
 
-**peer timestamp\_ms**
+#### peer timestamp_ms
 
 Get Unix timestamp in milliseconds
 
@@ -102,7 +102,7 @@ Example of service call:
 (call node ("peer" "timestamp_ms") [] ts_ms)
 ```
 
-**peer timestamp\_sec**
+#### peer timestamp_sec
 
 Get Unix timestamp in seconds
 
@@ -115,7 +115,7 @@ Example of service call:
 (call node ("peer" "timestamp_sec") [] ts_sec)
 ```
 
-**kad neighborhood**
+#### kad neighborhood
 
 Instructs node to return the locally-known nodes in the Kademlia neighborhood for a given key
 
@@ -130,7 +130,7 @@ Example of service call:
 
 Please note that this service does _not_ traverse the network and may yield incomplete neighborhood.
 
-**srv create**
+#### srv create
 
 Used to create a service on a certain node.
 
@@ -144,7 +144,7 @@ Example of service call:
 (call node ("srv" "create") [blueprint_id] service_id)
 ```
 
-**srv list**
+#### srv list
 
 Used to enumerate services deployed to a peer.
 
@@ -157,7 +157,7 @@ Example of service call:
 (call node ("srv" "list") [] services)
 ```
 
-**srv add\_alias**
+#### srv add_alias
 
 Adds an alias on service, so service could be called not only by service\_id but by alias.
 
@@ -170,7 +170,7 @@ Example of service call:
 (call node ("srv" "add_alias") [alias service_id])
 ```
 
-**srv get\_interface**
+#### srv get_interface
 
 Retrieves the functional interface of a service running on the node specified in the service call.
 
@@ -191,7 +191,7 @@ Example of service call:
 (call node ("srv" "get_interface") [service_id] interface)
 ```
 
-**dist add\_module**
+#### dist add_module
 
 Used to add modules to the node specified in the service call.
 
@@ -212,7 +212,7 @@ Example of service call:
 (call node ("dist" "add_module") [bytes config] hash)
 ```
 
-**dist list\_modules**
+#### dist list_modules
 
 Get a list of modules available on the node
 
@@ -235,7 +235,7 @@ Example of service call:
 (call node ("dist" "list_modules") [] modules)
 ```
 
-**dist get\_module\_interface**
+#### dist get_module_interface
 
 Get the interface of a module
 
@@ -246,7 +246,7 @@ Get the interface of a module
 (call node ("dist" "get_interface") [hash] interface)
 ```
 
-**dist add\_blueprint**
+#### dist add\_blueprint
 
 Used to add a blueprint to the node specified in the service call.
 
@@ -271,7 +271,7 @@ Example of service call:
 (call node ("dist" "add_blueprint") [blueprint] blueprint_id)
 ```
 
-**dist list\_blueprints**
+#### dist list\_blueprints
 
 Used to get the blueprints available on the node specified in the service call.
 
@@ -294,7 +294,7 @@ Example of service call:
 (call node ("dist" "list_blueprints") [] blueprints)
 ```
 
-**script add**
+#### script add
 
 Adds a given script to a node. That script will be called with a fixed interval with the default setting at approx. three \(3\) seconds.
 
@@ -319,7 +319,7 @@ Example of service call:
   (call node ("script" "add") [script "21"] id)
   ```
 
-**script remove**
+#### script remove
 
 Removes recurring script from a node. Only a creator of the script can delete it
 
@@ -332,7 +332,7 @@ Example of service call:
 (call node ("script" "remove") [script_id] result)
 ```
 
-**script list**
+#### script list
 
 * Arguments: None
 * Returns: A list of existing scripts on the node. Each object in the list is of the following structure:
@@ -353,7 +353,7 @@ Example of service call:
 (call node ("script" "list") [] list)
 ```
 
-**op identity**
+#### op identity
 
 Acts as an identity function. This service returns exactly what was passed to it. Useful for moving the execution of some service topologically or for extracting some data and putting it into an output variable.
 
@@ -363,7 +363,7 @@ Example of service call:
 (call node ("op" "identity") [args] result)
 ```
 
-**deprecated add\_provider**
+#### deprecated add_provider
 
 Used in service aliasing. _\*\*_Stores the specified service provider \(provider\) in the internal storage of the node indicated in the service call and associates it with the given key \(key\). After executing add\_provider, the provider can be accessed via the get\_providers service using this key.
 
@@ -385,7 +385,7 @@ Example of service call:
 (call node ("deprecated" "add_provider") [key provider])
 ```
 
-**deprecated get\_providers**
+#### deprecated get_providers
 
 Used in service aliasing to retrieve providers for a given key.
 
