@@ -111,6 +111,8 @@ modules_dir = "artifacts/"
     name = "greeting"
 ```
 
+The source code for the module can be found in the [examples repo](https://github.com/fluencelabs/examples/tree/main/greeting).
+
 ## Taking The Greeting Module For A Spin
 
 Now that we have a Wasm module and service configuration, we can explore and test our achievements locally with the Fluence REPL tool `fce-repl`. Load the service for inspection and testing:
