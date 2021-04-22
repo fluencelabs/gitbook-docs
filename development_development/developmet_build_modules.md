@@ -51,7 +51,7 @@ pub fn greeting(name: String) -> String {
 
 Let's go line by line: 
 
-1. Import the [fce](https://github.com/fluencelabs/fce/tree/5effdcba7215cd378f138ab77f27016024720c0e)  module from the [Fluence crate](https://crates.io/crates/fluence), which allows us to compile our code to the [wamser32-wasi](https://docs.rs/crate/wasi/0.6.0) target 
+1. Import the [fce](https://github.com/fluencelabs/fce/tree/5effdcba7215cd378f138ab77f27016024720c0e)  module from the [Fluence crate](https://crates.io/crates/fluence), which allows us to compile our code to the [wasm32-wasi](https://docs.rs/crate/wasi/0.6.0) target 
 
 2. Import the [module\_manifest](https://github.com/fluencelabs/rust-sdk/blob/master/crates/main/src/module_manifest.rs), which allows us to embed the SDK version in our module 
 

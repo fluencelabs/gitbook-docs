@@ -16,7 +16,7 @@ Please note that the [`fldist`](../knowledge_tools.md#fluence-proto-distributor-
 
 ## API
 
-### peer is_connected
+### peer is\_connected
 
 Checks if there is a direct connection to the peer identified by a given PeerId
 
@@ -45,10 +45,10 @@ Example of a service call:
 (seq 
     (call node ("op" "identity") ["/ip4/1.2.3.4/tcp/7777" "/ip4/1.2.3.4/tcp/9999"] addrs)
     (call node ("peer" "connect") ["123D..." addrs] ok) 
-) 
+)
 ```
 
-### peer get_contact
+### peer get\_contact
 
 Resolves the contact of a peer via [Kademlia](https://en.wikipedia.org/wiki/Kademlia)
 
@@ -64,30 +64,30 @@ Contact {
 }
 ```
 
- Example of a service call:
+Example of a service call:
 
 ```scheme
 (call node ("peer" "get_contact") ["123D..."] contact)
 ```
 
- #### peer identify
+#### peer identify
 
 Get information about the peer
 
 * **Arguments**: None
 * **Returns:**  _external address_
 
-```json
+```javascript
 { "external_addresses": [ "/ip4/1.2.3.4/tcp/7777", "/dns4/stage.fluence.dev/tcp/19002" ] }
 ```
 
- Example of service call:
+Example of service call:
 
 ```scheme
-(call node ("peer" "identify") [] info) peer timestamp_ms 
+(call node ("peer" "identify") [] info) peer timestamp_ms
 ```
 
-### peer timestamp_ms
+### peer timestamp\_ms
 
 Get Unix timestamp in milliseconds
 
@@ -100,7 +100,7 @@ Example of service call:
 (call node ("peer" "timestamp_ms") [] ts_ms)
 ```
 
-### peer timestamp_sec
+### peer timestamp\_sec
 
 Get Unix timestamp in seconds
 
@@ -152,10 +152,10 @@ Used to enumerate services deployed to a peer.
 Example of service call:
 
 ```scheme
-(call node ("srv" "list") [] services) 
+(call node ("srv" "list") [] services)
 ```
 
-### srv add_alias
+### srv add\_alias
 
 Adds an alias on service, so service could be called not only by service\_id but by alias.
 
@@ -168,9 +168,7 @@ Example of service call:
 (call node ("srv" "add_alias") [alias service_id])
 ```
 
-
-
-### srv get_interface
+### srv get\_interface
 
 Retrieves the functional interface of a service running on the node specified in the service call.
 
@@ -185,22 +183,22 @@ Retrieves the functional interface of a service running on the node specified in
 }
 ```
 
-Example of service call: 
+Example of service call:
 
 ```scheme
-(call node ("srv" "get_interface") [service_id] interface) 
+(call node ("srv" "get_interface") [service_id] interface)
 ```
 
-### dist add_module
+### dist add\_module
 
 Used to add modules to the node specified in the service call.
 
-* Arguments: 
+* Arguments:
 
   * bytes – a base64 string containing the .wasm module to add. 
   * config – an object of the following structure
 
-  ```json
+  ```javascript
   {
     "name": "my_module_name"
   }
@@ -212,14 +210,14 @@ Example of service call:
 (call node ("dist" "add_module") [bytes config] hash)
 ```
 
-### dist list_modules
+### dist list\_modules
 
 Get a list of modules available on the node
 
 * Arguments: None
 * Returns: an array of objects containing module descriptions
 
-  ```json
+  ```javascript
   [ 
       { 
           "name": "moduleA",
@@ -232,10 +230,10 @@ Get a list of modules available on the node
 Example of service call:
 
 ```scheme
-(call node ("dist" "list_modules") [] modules) 
+(call node ("dist" "list_modules") [] modules)
 ```
 
-### dist get_module_interface
+### dist get\_module\_interface
 
 Get the interface of a module
 
@@ -243,7 +241,7 @@ Get the interface of a module
 * Returns: an interface of the module \( see _srv get\_interface \)_ mple of service call:
 
 ```scheme
-(call node ("dist" "get_interface") [hash] interface) 
+(call node ("dist" "get_interface") [hash] interface)
 ```
 
 ### dist add\_blueprint
@@ -252,38 +250,40 @@ Used to add a blueprint to the node specified in the service call.
 
 * Arguments: blueprint – an object of the following structure
 
-  ```json
+  ```javascript
   {
       "name": "good_service",
       "dependencies": [ "hash:6ebff28c...", "hash:1e59875a...", "hash:d164a07..." ] 
   }
   ```
 
-        Where module dependencies are specified as [_blake3_](https://crates.io/crates/blake3) hashes of modules
+  ```text
+    Where module dependencies are specified as [_blake3_](https://crates.io/crates/blake3) hashes of modules
+  ```
 
 * Returns: Generated blueprint id
 
 Example of service call:
 
 ```scheme
-(call node ("dist" "add_blueprint") [blueprint] blueprint_id) 
+(call node ("dist" "add_blueprint") [blueprint] blueprint_id)
 ```
 
 ### dist list\_blueprints
 
-Used to get the blueprints available on the node specified in the service call. 
+Used to get the blueprints available on the node specified in the service call.
 
 * Arguments: None
 * Returns: an array of blueprint structures.
 
 A blueprint is an object of the following structure:
 
-```json
+```javascript
 { 
     "id": "uuid-1234-...", 
     "name": "good_service", 
     "dependencies": [ "hash:6ebff28c...", "hash:1e59875a...", "hash:d164a07..." ] 
-} 
+}
 ```
 
 Example of service call:
@@ -292,7 +292,7 @@ Example of service call:
 (call node ("dist" "list_blueprints") [] blueprints)
 ```
 
- #### script add
+#### script add
 
 Adds a given script to a node. That script will be called with a fixed interval with the default setting at approx. three \(3\) seconds.
 
@@ -303,18 +303,18 @@ Recurring scripts can't read variables from data, they must be literal. That mea
   * _interval_ – an optional string containing interval in seconds. If set, the script will be executed periodically at that interval. If omitted, the script will be executed only once. All intervals are rounded to 3 seconds. The minimum interval is 3 seconds.
 * Returns: uuid – script id that can be used to remove that script
 
-Example of service call: 
+Example of service call:
 
 * Without an interval parameter value, the script executes once:
 
-  ```
-  (call node ("script" "add") [script] id) 
+  ```text
+  (call node ("script" "add") [script] id)
   ```
 
 * With an interval parameter value _k_ passed as a string, the script executes every _k_ seconds \(21 in this case\)
 
   ```scheme
-  (call node ("script" "add") [script "21"] id) 
+  (call node ("script" "add") [script "21"] id)
   ```
 
 ### script remove
@@ -327,7 +327,7 @@ Removes recurring script from a node. Only a creator of the script can delete it
 Example of service call:
 
 ```scheme
-(call node ("script" "remove") [script_id] result) 
+(call node ("script" "remove") [script_id] result)
 ```
 
 ### script list
@@ -335,7 +335,7 @@ Example of service call:
 * Arguments: None
 * Returns: A list of existing scripts on the node. Each object in the list is of the following structure:
 
-  ```json
+  ```javascript
   { 
       "id": "uuid-1234-...",
       "src": "(seq (call ...",  // 
@@ -345,7 +345,7 @@ Example of service call:
   }
   ```
 
- Example of a service call:
+  Example of a service call:
 
 ```scheme
 (call node ("script" "list") [] list)
@@ -358,41 +358,39 @@ Acts as an identity function. This service returns exactly what was passed to it
 Example of service call:
 
 ```scheme
-(call node ("op" "identity") [args] result) 
+(call node ("op" "identity") [args] result)
 ```
 
-### deprecated add_provider
+### deprecated add\_provider
 
-Used in service aliasing. ****Stores the specified service provider \(provider\) in the internal storage of the node indicated in the service call and associates it with the given key \(key\). After executing add\_provider, the provider can be accessed via the get\_providers service using this key.
+Used in service aliasing. _\*\*_Stores the specified service provider \(provider\) in the internal storage of the node indicated in the service call and associates it with the given key \(key\). After executing add\_provider, the provider can be accessed via the get\_providers service using this key.
 
 * Arguments:
 
   * key – a string; usually, it is a human-readable service alias. 
   * provider – the location of the service. It is an object of the following structure:
 
-  ```json
+  ```javascript
   { 
       "peer": "123D...", // PeerId of some peer in the network
       "service_id": "uuid-1234-..." // Optional service_id of the service running on the peer specified by peer 
-  } 
+  }
   ```
 
 Example of service call:
 
 ```scheme
-(call node ("deprecated" "add_provider") [key provider]) 
+(call node ("deprecated" "add_provider") [key provider])
 ```
 
-
-
-### deprecated get_providers
+### deprecated get\_providers
 
 Used in service aliasing to retrieve providers for a given key.
 
 * Arguments: _key_ – a string; usually, it is a human-readable service alias. 
 * Returns: an array of objects of the following structure:
 
-  ```json
+  ```javascript
   { 
       "peer": "123D...", // required field
       "service_id": "uuid-1234-..." // optional field
@@ -404,3 +402,4 @@ Example of service call:
 ```scheme
 (call node ("deprecated" "get_providers") [key] providers)
 ```
+
