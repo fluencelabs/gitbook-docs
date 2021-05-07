@@ -23,7 +23,7 @@ AIR instructions are intended to launch the execution of a service method as fol
 4. The arguments specified by the argument list are passed to the method
 5. The result of the method returned under the name output name
 
-**Figure 2: Sequential Instruction** ![Execution](../../.gitbook/assets/air_sequential_2%20%281%29%20%281%29%20%281%29%20%281%29.png)
+**Figure 2: Sequential Instruction** ![Execution](../../.gitbook/assets/air_sequential_2%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29.png)
 
 The _**seq**_ instruction takes two instructions at most as its arguments and executes them sequentially, one after the other.
 
@@ -33,7 +33,7 @@ The _**par**_ instruction takes two instructions at most as its arguments and pa
 
 TODO: add better graphic showing the disticntion of branching vs seq.
 
-**Figure 4: Fold Instruction** ![Execution](../../.gitbook/assets/air_fold_4%20%281%29%20%282%29%20%281%29.png)
+**Figure 4: Fold Instruction** ![Execution](../../.gitbook/assets/air_fold_4%20%281%29%20%282%29%20%282%29%20%282%29.png)
 
 The _**fold**_ instruction iterates over the elements of an array and workds as follows:
 
@@ -49,7 +49,7 @@ This instruction is intended for organizing branches in the flow of execution as
 * The first instruction is executed and if the execution is successful, then the second instruction is ignored
 * If the first instruction fails, then the second one is executed.
 
-**Figure 6: Null Instruction** ![Execution](../../.gitbook/assets/air_null_6%20%281%29%20%282%29.png)
+**Figure 6: Null Instruction** ![Execution](../../.gitbook/assets/air_null_6%20%281%29%20%282%29%20%282%29%20%281%29.png)
 
 This is an empty instruction: it takes no arguments and does nothing. The _**null**_ instruction is useful for generating code.
 
