@@ -18,7 +18,7 @@ Please note that the [`fldist`](../knowledge_tools.md#fluence-proto-distributor-
 
 ### API
 
-#### peer is_connected
+#### peer is\_connected
 
 Checks if there is a direct connection to the peer identified by a given PeerId
 
@@ -50,7 +50,7 @@ Example of a service call:
 )
 ```
 
-#### peer get_contact
+#### peer get\_contact
 
 Resolves the contact of a peer via [Kademlia](https://en.wikipedia.org/wiki/Kademlia)
 
@@ -89,7 +89,7 @@ Example of service call:
 (call node ("peer" "identify") [] info) peer timestamp_ms
 ```
 
-#### peer timestamp_ms
+#### peer timestamp\_ms
 
 Get Unix timestamp in milliseconds
 
@@ -102,7 +102,7 @@ Example of service call:
 (call node ("peer" "timestamp_ms") [] ts_ms)
 ```
 
-#### peer timestamp_sec
+#### peer timestamp\_sec
 
 Get Unix timestamp in seconds
 
@@ -157,7 +157,7 @@ Example of service call:
 (call node ("srv" "list") [] services)
 ```
 
-#### srv add_alias
+#### srv add\_alias
 
 Adds an alias on service, so service could be called not only by service\_id but by alias.
 
@@ -170,7 +170,7 @@ Example of service call:
 (call node ("srv" "add_alias") [alias service_id])
 ```
 
-#### srv get_interface
+#### srv get\_interface
 
 Retrieves the functional interface of a service running on the node specified in the service call.
 
@@ -191,7 +191,7 @@ Example of service call:
 (call node ("srv" "get_interface") [service_id] interface)
 ```
 
-#### dist add_module
+#### dist add\_module
 
 Used to add modules to the node specified in the service call.
 
@@ -212,7 +212,7 @@ Example of service call:
 (call node ("dist" "add_module") [bytes config] hash)
 ```
 
-#### dist list_modules
+#### dist list\_modules
 
 Get a list of modules available on the node
 
@@ -235,7 +235,7 @@ Example of service call:
 (call node ("dist" "list_modules") [] modules)
 ```
 
-#### dist get_module_interface
+#### dist get\_module\_interface
 
 Get the interface of a module
 
@@ -363,9 +363,9 @@ Example of service call:
 (call node ("op" "identity") [args] result)
 ```
 
-#### deprecated add_provider
+#### deprecated add\_provider
 
-Used in service aliasing. _\*\*_Stores the specified service provider \(provider\) in the internal storage of the node indicated in the service call and associates it with the given key \(key\). After executing add\_provider, the provider can be accessed via the get\_providers service using this key.
+Used in service aliasing. \_\*\*\_Stores the specified service provider \(provider\) in the internal storage of the node indicated in the service call and associates it with the given key \(key\). After executing add\_provider, the provider can be accessed via the get\_providers service using this key.
 
 * Arguments:
 
@@ -385,7 +385,7 @@ Example of service call:
 (call node ("deprecated" "add_provider") [key provider])
 ```
 
-#### deprecated get_providers
+#### deprecated get\_providers
 
 Used in service aliasing to retrieve providers for a given key.
 
