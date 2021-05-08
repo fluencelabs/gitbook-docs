@@ -1,6 +1,6 @@
 # Building The Reward Block Application
 
-Our project aims to 
+Our project aims to
 
 * retrieve the latest block height from the Ethereum mainnet,
 * use that result to retrieve the associated reward block data and 

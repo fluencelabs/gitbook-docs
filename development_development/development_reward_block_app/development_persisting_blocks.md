@@ -103,10 +103,10 @@ The script extends our previous incarnation by adding only one more method: `upd
      "node_2": "12D3KooWQQYXh78acqBNuL5p1J5tmH4XCKLCHM21tMb8pcxqGL17", \
      "sqlite_service":"470fcaba-6834-4ccf-ac0c-4f6494e9e77b", \
      "sqlite_node":"12D3KooWQQYXh78acqBNuL5p1J5tmH4XCKLCHM21tMb8pcxqGL17", \
-     "api_key": "MC5H2NK6ZIPMR32U7D4W35AWNNVCQX1ENH"}' 
+     "api_key": "MC5H2NK6ZIPMR32U7D4W35AWNNVCQX1ENH"}'
 ```
 
-  
+
 and run the AIR script with the revised `fldist` command:
 
 ```bash
@@ -240,7 +240,7 @@ Particle id: 5ce2dcf0-2d4d-40ec-8cef-d5a0cea4f0e7. Waiting for results... Press 
 ===================
 ```
 
-And that's a wrap! 
+And that's a wrap!
 
 In summary, we have developed and deployed multiple Fluence services to store Ethereum reward block data in a SQLite as a service database and used Aquamarine to coordinate those services into applications. See Figure 2 below.
 

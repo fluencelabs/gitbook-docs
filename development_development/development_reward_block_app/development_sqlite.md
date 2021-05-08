@@ -17,7 +17,7 @@ which [happens about every 13 seconds or so on mainnet](https://etherscan.io/cha
 
 To get SQLite as a service, we build our service from two modules: the [ethqlite repo](https://github.com/fluencelabs/examples/tree/main/multi-service/ethqlite) and the [Fluence sqlite](https://github.com/fluencelabs/sqlite) Wasm module, which we can build or pickup as a wasm files from the [releases](https://github.com/fluencelabs/sqlite/releases). This largely, but not entirely, mirrors what we did with the cUrl service: build the service by providing an adapter to the binary. Unlike the cUrl binary, we are bringing our own sqlite binary, i.e., _sqlite3.wasm_, with us.
 
-This leaves us to code our _ethqlite_ module with respect to desired CRUD interfaces and security. As [previously](../../quick_start/quick_start_add_persistence/quick_start_persistence_setup.md) discussed, we want writes to the sqlite services to be privileged, which implies that we need to own the service and have the client seed to manage authentication and ambient authorization. Specifically, we can implement a rudimentary authorization system where authentication implies authorization \(to write\). The `is_owner` function in the _ethqlite_ repo does exactly that: if the caller can prove ownership by providing a valid client seed, than we have a true condition equating write-privileged ownership with the caller identity: 
+This leaves us to code our _ethqlite_ module with respect to desired CRUD interfaces and security. As [previously](../../quick_start/quick_start_add_persistence/quick_start_persistence_setup.md) discussed, we want writes to the sqlite services to be privileged, which implies that we need to own the service and have the client seed to manage authentication and ambient authorization. Specifically, we can implement a rudimentary authorization system where authentication implies authorization \(to write\). The `is_owner` function in the _ethqlite_ repo does exactly that: if the caller can prove ownership by providing a valid client seed, than we have a true condition equating write-privileged ownership with the caller identity:
 
 ```rust
 // auth.rs
@@ -83,7 +83,8 @@ wget https://github.com/fluencelabs/sqlite/releases/download/v0.10.0_w/sqlite3.w
 mv sqlite3.wasm artifacts/
 ```
 
-Run `./build.sh` and check the artifacts for the expected wasm files 
+
+Run `./build.sh` and check the artifacts for the expected wasm files
 
 Like all Fluence services, Ethqlite needs a [service configuration](https://github.com/fluencelabs/examples/blob/main/multi-service/ethqlite/Config.toml) file, which looks a little more involved than what we have seen so far.
 
@@ -111,7 +112,8 @@ name = "ethqlite"
     mapped_dirs = { "tmp" = "/tmp" }
 ```
 
-Let's break it down: 
+Let's break it down:
+
 
 * the first \[\[module\]\] section 
   * specifies the _sqlite3.wasm_ module we pulled from the repo, 
@@ -369,7 +371,8 @@ Particle id: 2fb4a366-6f40-46c1-9329-d77c6d03dfad. Waiting for results... Press 
 ===================
 ```
 
-If you run the init script again, you will receive an error _"Service already initiated"_, so we can be reasonably confident our code is working and it  looks like our Ethqlite service is up and running on the local node.
+
+If you run the init script again, you will receive an error _"Service already initiated"_, so we can be reasonably confident our code is working and it looks like our Ethqlite service is up and running on the local node.
 
 Due to the security concerns for our database, it is not advisable, or even possible, to use an already deployed Sqlite service from the Fluence Dashboard. Instead, we deploy our own instance with our own \(secret\) client seed. To determine which network nodes are available, run:
 

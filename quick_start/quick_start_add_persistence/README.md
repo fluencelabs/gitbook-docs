@@ -6,5 +6,6 @@ Without diving too deep into the Fluence security framework, you should be aware
 
 For the purposes of this tutorial, there is a caveat you need to keep in mind: Every reader of this document inevitably ends up using the same sample service with the same ownership control. In the highly, highly unlikely event you're getting funky results, it's most likely due to someone else doing the very same tutorial at the very same time. \[Jinx\]\([https://en.wikipedia.org/wiki/Jinx\_\(game](https://en.wikipedia.org/wiki/Jinx_%28game)\)\) !  Buy me a Coke, drink the Coke, slowly, try again and you should be fine.
 
+
 The next sections explore both the setup and the use of our database: Sqlite as a Service.
 

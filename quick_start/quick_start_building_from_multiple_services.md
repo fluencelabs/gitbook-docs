@@ -1,6 +1,6 @@
 # Building An Application From Multiple Services
 
-In this section, we compose multiple services into an application to catalog block miner addresses and block rewards for the latest block created on the [Ethereum](https://ethereum.org/en/) mainnet. This block reward data is useful to track miner and pool dominance as well ETH supply and related indexes. For convenience purposes, we use the [Etherscan API](https://etherscan.io/apis) for this portion of the tutorial and in order to proceed, you should have an Etherscan API Key or get one from [Etherscan](https://etherscan.io/apis).
+In this section, we compose multiple services into an application to catalog block miner addresses and block rewards for the latest block created on the \[Ethereum\[\([https://ethereum.org/en/](https://ethereum.org/en/)\) mainnet. This block reward data is useful to track miner and pool dominance as well ETH supply and related indexes. For convenience purposes, we use the \[Etherscan API\]\([https://etherscan.io/apis](https://etherscan.io/apis)\) for this portion of the tutorial and in order to proceed, you should have an Etherscan API Key or get one from [Etherscan](https://etherscan.io/apis).
 
 Since we are composing our application from first principles, we use the following services to compose our app:
 
@@ -53,7 +53,7 @@ _call_ is the _execution_ instruction to launch distributed service methods and 
             **\(**_call_  **node-id \(service-id  service-method\) \[input parameters\] result\)**
 {% endhint %}
 
-As with the previous AIR script, the _xor_ takes care of capturing errors in case things don't pan out the way we've planned. Other than that, we are calling the `hex_to_int` method and we need to supply the service and node ids as well as the hex value. Save the above script to a local file called _hex2int.clj_ and use `fldist` to deploy the script:
+As with the previous AIR script, the _xor_ takes care of capturing errors in case things don't pan out the way we've planned. Other than that, we are calling the `hex_to_int` method and we need to supply the service and node ids as well the the hex value. Save the above script to a local file called _hex2int.clj_ and use `fldist` to deploy the script:
 
 ```bash
 fldist run_air -p hex2int.clj -d '{"hex_service":"285e2a5e-e505-475f-a99d-15c16c7253f9", "hex_node": "12D3KooWKnRcsTpYx9axkJ6d69LPfpPXrkVLe96skuPTAo76LLVH", "hex_string":"0xF"}'
@@ -85,7 +85,7 @@ Particle id: c0f44da7-3bfb-445b-896a-537c10143392. Waiting for results... Press 
 
 We input the hex string 0xF and, as expected, got 15 radius 10 back. Whoever implemented the hex conversion service seemingly got it right. So let's keep using it as we coordinate an application from multiple services.
 
-Beware but do not fear the nesting and parenthesis!! As we're building a more complex application, our script of course grows a bit. Next, we use the get\__latest\_block_ function and feed the result, a hex string, into the _hex\_to\_int c_onversion function and feed its output, an integer, to the _get\_block_ function to arrive at the reward block data. Of course, we wrap it all into the trusty XOR just in case something goes wrong. 
+Beware but do not fear the nesting and parenthesis!! As we're building a more complex application, our script of course grows a bit. Next, we use the get\__latest\_block_ function and feed the result, a hex string, into the _hex\_to\_int c\_onversion function and feed its output, an integer, to the \_get\_block_ function to arrive at the reward block data. Of course, we wrap it all into the trusty XOR just in case something goes wrong.
 
 ```text
 (xor
@@ -132,7 +132,7 @@ Beware but do not fear the nesting and parenthesis!! As we're building a more co
 
 Before we deploy the script, notice that we made explicit provisions for service and node id associated with each method and we used the output, i.e., result, as input parameters for subsequent method calls. This further illustrates how Aquamarine allows developers to efficiently write applications from distributed network services.
 
-Save the script locally to a file named _block\_geter_.clj  and deploy it with `fldist`:
+Save the script locally to a file named _block\_geter_.clj and deploy it with `fldist`:
 
 ```bash
 fldist run_air -p block_getter.clj -d '{"service_1":"74d5c5da-4c83-4af9-9371-2ab5d31f8019", "service_2":"285e2a5e-e505-475f-a99d-15c16c7253f9", "node_1": "12D3KooWGzNvhSDsgFoHwpWHAyPf1kcTYCGeRBPfznL8J6qdyu2H","node_2": "12D3KooWKnRcsTpYx9axkJ6d69LPfpPXrkVLe96skuPTAo76LLVH", "api_key":<your api key}'
@@ -194,7 +194,7 @@ Particle id: 50f54bad-03f3-41ba-9950-9f18b47fbdee. Waiting for results... Press 
 
 Very cool. Our coordinated service flow generates the expected latest block hex string, which serves as an input to the hex conversion and the resulting integer value is used as an input in the get\_block method, which returns the associated reward block information. Just as planned. Beautiful.
 
-Of course, that leaves us wanting as our goal was to get the reward miner address. Not to worry, we incorporate the missing _extract\_miner\_address_  service call into our AIR script:
+Of course, that leaves us wanting as our goal was to get the reward miner address. Not to worry, we incorporate the missing _extract\_miner\_address_ service call into our AIR script:
 
 ```text
 (xor

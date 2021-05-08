@@ -104,7 +104,8 @@ modules_dir = "artifacts/"
     name = "block_getter"
 ```
 
-If you haven't done so already, run `./scripts/build.sh` to compile the projects.  Once we have _wasm_ files and the service configuration, we can check out our accomplishments with the REPL:
+
+If you haven't done so already, run `./scripts/build.sh` to compile the projects. Once we have _wasm_ files and the service configuration, we can check out our accomplishments with the REPL:
 
 ```bash
 fce-repl Block-Getter-Config.toml
@@ -341,5 +342,7 @@ Particle id: 930ea13f-1474-4501-862a-ca5fad22ee42. Waiting for results... Press 
 ===================
 ```
 
-Right on! Our two services coordinate into the intended application returning the reward data for the latest block. Before we move on,  locate the corresponding services on the Fluence testnet via the [ dashboard](https://dash.fluence.dev/), update your command-line with the appropriate service and node ids and run the same AIR script. Congratulations, you just run an app coordinated by distributed services!
+
+Right on! Our two services coordinate into the intended application returning the reward data for the latest block. Before we move on, locate the corresponding services on the Fluence testnet via the [ dashboard](https://dash.fluence.dev/), update your command-line with the appropriate service and node ids and run the same AIR script. Congratulations, you just run an app coordinated by distributed services!
+
 

@@ -24,11 +24,10 @@ h/help                                    print this message
 q/quit/Ctrl-C                             exit
 ```
 
-
-
 ## Fluence Proto Distributor: FLDIST
 
 \`\`[`fldist`](https://github.com/fluencelabs/proto-distributor) is a command line interface \(CLI\) to Fluence peers allowing for the lifecycle  management of services and offers the fastest and most effective way to service deployment.
+
 
 ```text
 mbp16~(:|✔) % fldist --help

@@ -6,11 +6,12 @@ At the core of Aquamarine is the design ideal and idea to pair concurrent system
 
 ## Background
 
-When we build systems, we need to be able to model, specify, analyze and verify them and this is especially important to concurrent systems such as parallel and multi-threaded systems. [Formal specifications](https://en.wikipedia.org/wiki/Formal_specification) are a family of formal approaches to design, model, and verify system. In the context of concurrent systems, there are two distinct formal specification techniques available. The state oriented approach is concerned with modeling verifying a systems state and state transitions and is often accomplished with [TLA+](https://en.wikipedia.org/wiki/TLA%2B). Modern blockchain design, modeling, and verification tend to rely on a state-based specification.
+When we build systems, we need to be able to model, specify, analyze and verify them and this is especially important to concurrent systems such as parallel and multi-threaded systems. [Formal specification](https://en.wikipedia.org/wiki/Formal_specification) are a family of formal approaches to design, model, and verify system. In the context of concurrent systems, there are two distinct formal specification techniques available. The state oriented approach is concerned with modeling verifying a systems state and state transitions and is often accomplished with [TLA+](https://en.wikipedia.org/wiki/TLA%2B). Modern blockchain design, modeling, and verification tend to rely on a state-based specification.
 
 An alternative, complementary approach is based on [Process calculus](https://en.wikipedia.org/wiki/Process_calculus) to model and verify the sequence of communications operations of a system at any given time. [π-Calculs](https://en.wikipedia.org/wiki/%CE%A0-calculus) is a modern process calculus employed in a wide range of applications ranging from biology to games and business processes.
 
 Aquamarine, Fluence's distributed composition language and runtime, is based on π-calculus and provides a solid theoretical basis toward the design, modeling, implementation, and verification of a wide class of distributed, peer-to-peer networks, applications and backends.
+
 
 ## Language
 

@@ -106,6 +106,7 @@ The new service components called are:
 * _get\_reward\_block_, which takes a miner address and in this cae the one produced by `get_block`, and finally
 * _get\_miner\_rewards_, which returns a list of miner rewards for a particular miner address; in this case, the one provided by the `get_reward_block` result. Note the `$` operator to access the `block_miner` field in the return struct and the `!` operator to flatten the response
 
+
 From the previous section we know that
 
 * service\_1: 74d5c5da-4c83-4af9-9371-2ab5d31f8019 , node\_1: 12D3KooWGzNvhSDsgFoHwpWHAyPf1kcTYCGeRBPfznL8J6qdyu2H

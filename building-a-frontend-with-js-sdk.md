@@ -245,3 +245,5 @@ Fluence JS SDK gives options to register own handlers for aqua vm service calls
 
 - For the list of compiler options see: https://github.com/fluencelabs/aqua
 - Repository with additional examples: https://github.com/fluencelabs/aqua-playground
+=======
+# Building A Frontend with JS SDK

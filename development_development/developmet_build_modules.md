@@ -1,6 +1,7 @@
 # From Module To Service
 
-In Fluence, a service is based on one or more [Wasm](https://webassembly.org/) modules suitable to be deployed to the Fluence Compute Engine \(FCE\). In order to develop our  modules, we use Rust and the [Fluence Rust SDK](https://github.com/fluencelabs/rust-sdk).
+In Fluence, a service is based on one or more [Wasm](https://webassembly.org/) modules suitable to be deployed to the Fluence Compute Engine \(FCE\). In order to develop our modules, we use Rust and the [Fluence Rust SDK](https://github.com/fluencelabs/rust-sdk).
+
 
 ## Preliminaries
 
@@ -10,7 +11,8 @@ The general process to create a Fluence \(module\) project is to:
 cargo +nightly create your_module_name --release
 ```
 
-and add the [binary target](https://doc.rust-lang.org/cargo/reference/cargo-targets.html#binaries) and [Fluence Rust SDK](https://crates.io/crates/fce) to the Cargo.toml:
+and add the [binary target](https://doc.rust-lang.org/cargo/reference/cargo-targets.html#binaries) and [Flunece Rust SDK](https://crates.io/crates/fce) to the Cargo.toml:
+
 
 ```text
 <snip>
@@ -49,16 +51,12 @@ pub fn greeting(name: String) -> String {
 }
 ```
 
-Let's go line by line: 
+Let's go line by line:
 
-1. Import the [fce](https://github.com/fluencelabs/fce/tree/5effdcba7215cd378f138ab77f27016024720c0e) module from the [Fluence crate](https://crates.io/crates/fluence), which allows us to compile our code to the [wasm32-wasi](https://docs.rs/crate/wasi/0.6.0) target 
-
-2. Import the [module\_manifest](https://github.com/fluencelabs/rust-sdk/blob/master/crates/main/src/module_manifest.rs), which allows us to embed the SDK version in our module 
-
-3. Initiate the module\_manifest macro 
-
-4. Initiate the main function which generally stays empty or is used to instantiate a logger 
-
+1. Import the [fce](https://github.com/fluencelabs/fce/tree/5effdcba7215cd378f138ab77f27016024720c0e) module from the [Fluence crate](https://crates.io/crates/fluence), which allows us to compile our code to the [wamser32-wasi](https://docs.rs/crate/wasi/0.6.0) target
+2. Import the [module\_manifest](https://github.com/fluencelabs/rust-sdk/blob/master/crates/main/src/module_manifest.rs), which allows us to embed the SDK version in our module
+3. Initiate the module\_manifest macro
+4. Initiate the main function which generally stays empty or is used to instantiate a logger
 5. Markup the public function we want to expose with the FCE macro which, among other things, checks that only Wasm IT types are used
 
 Once we compile our code, we generate the wasm32-wasi file, which can be found in the `target/wasm32-wasi` path of your directory. The `greeting.wasm` file is what we need for testing and eventual upload to the peer-to-peer network.
@@ -112,6 +110,7 @@ modules_dir = "artifacts/"
 ```
 
 The source code for the module can be found in the [examples repo](https://github.com/fluencelabs/examples/tree/main/greeting).
+
 
 ## Taking The Greeting Module For A Spin
 
@@ -264,9 +263,9 @@ relay peerId: 12D3KooWQQYXh78acqBNuL5p1J5tmH4XCKLCHM21tMb8pcxqGL17
 
 ```
 
- Which confirms our recent upload!!
+Which confirms our recent upload!!
 
-Now that we have a service on our local node, we need to construct our AIR script to build our frontend. 
+Now that we have a service on our local node, we need to construct our AIR script to build our frontend.
 
 ```text
 (xor
@@ -278,7 +277,8 @@ Now that we have a service on our local node, we need to construct our AIR scrip
 )
 ```
 
-As we've seen in the Quick Start section, we call the service _"greeting"_ with service id _service_  and the method parameter _name_.  As usual, we use the `fldist` tool to execute the AIR script:
+As we've seen in the Quick Start section, we call the service _"greeting"_ with service id _service_ and the method parameter _name_. As usual, we use the `fldist` tool to execute the AIR script:
+
 
 ```bash
 fldist --node-id 12D3KooWQQYXh78acqBNuL5p1J5tmH4XCKLCHM21tMb8pcxqGL17  --node-addr /ip4/127.0.0.1/tcp/9999/ws/p2p/12D3KooWQQYXh78acqBNuL5p1J5tmH4XCKLCHM21tMb8pcxqGL17 run_air -p greeting.clj -d '{"service":"9712f9ca-7dfd-4ff5-817d-aef9e1e92e03", "name": "Fluence"}'
