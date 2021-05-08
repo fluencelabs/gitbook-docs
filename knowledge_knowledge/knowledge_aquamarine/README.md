@@ -12,17 +12,10 @@ An alternative, complementary approach is based on [Process calculus](https://en
 
 Aquamarine, Fluence's distributed composition language and runtime, is based on π-calculus and provides a solid theoretical basis toward the design, modeling, implementation, and verification of a wide class of distributed, peer-to-peer networks, applications and backends.
 
-TODO: maybe add some non-fluence examples; definitely get to the verification bit.
 
 ## Language
 
-[Aquamarine Intermediate Representation](https://github.com/boneyard93501/docs/tree/a512080f81137fb575a5b96d3f3e83fa3044fd1c/src/knowledge-base/knowledge_aquamarine__air.md) \(AIR\) is a low-level language modelled after the [WebAssembly text format](https://developer.mozilla.org/en-US/docs/WebAssembly/Understanding_the_text_format) and allows developers to manage network peers as well as services and backends. AIR, while intended as a compile target, is currently the only Aquamarine language implementation although a high level language \(HLL\) is currently under active development.
-
-TODO: verify below and that we don't have parallel composition proper The Aquamarine language implementation includes
-
-* sequential composition
-* reduction semantics
-* communication
+[Aquamarine Intermediate Representation](https://github.com/boneyard93501/docs/tree/a512080f81137fb575a5b96d3f3e83fa3044fd1c/src/knowledge-base/knowledge_aquamarine__air.md) \(AIR\) is a low-level language modeled after the [WebAssembly text format](https://developer.mozilla.org/en-US/docs/WebAssembly/Understanding_the_text_format) and allows developers to manage network peers as well as services and backends. AIR, while intended as a compile target, is currently the only Aquamarine language implementation although a high level language \(HLL\) is currently under active development.
 
 ## Runtime
 

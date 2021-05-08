@@ -6,17 +6,24 @@ The [Fluence Dashboard](https://dash.fluence.dev/) facilitates the discovery of 
 
 In order to execute the cUrl service and collect the result, i.e., response, we call upon our composition and coordination medium Aquamarine via an Aquamarine Intermediate Representation \(AIR\) script.
 
-```text
+```scheme
+;; handle possible errors via xor
 (xor
     (seq
+        ;; call function 'service_id.request' on node 'relay'
         (call relay (service_id "request") [url] result)
+
+        ;; return result back to the client
         (call %init_peer_id% (returnService "run") [result])
     )
+    ;; if error, return it to the client
     (call %init_peer_id% (returnService "run") [%last_error%])
 )
 ```
 
-Without going too deep into Aquamarine and AIR, this script specifies that we call a public peer-to-peer relay \(node\) on the network, ask to run the \(curl\) _request_ function with data parameter _url_ and _service\_id_ parameter, and collect the _result_ **xor** the _error message_ in case of execution failure. We also promise to pass the _service\_id_ and _url_ parameters to the scripts. The "magic" happens by handing the script to the `fldist` CLI tool, which then sends the script for execution to the specified p2p network and locally shadows the execution. Please note that Instead of developing full-fledged frontend applications, we use the `fldist` CLI tool. However, a \[JS SDK\]\([https://github.com/fluencelabs/fluence-js](https://github.com/fluencelabs/fluence-js)\) is available to accelerate the development of more complex frontend applications.
+Without going too deep into Aquamarine and AIR, this script specifies that we call a public peer-to-peer relay \(node\) on the network, ask to run the \(curl\) _request_ function with data parameter _url_  and _service\_id_ parameter, and collect the _result_ **xor** the _error message_ in case of execution failure. We also promise to pass the _service\_id_ and _url_ parameters to the scripts. 
+
+The "magic" happens by handing the script to the `fldist` CLI tool, which then sends the script for execution to the specified p2p network and locally shadows the execution. Please note that Instead of developing full-fledged frontend applications, we use the `fldist` CLI tool. However, a [JS SDK](https://github.com/fluencelabs/fluence-js) is available to accelerate the development of more complex frontend applications.
 
 {% hint style="info" %}
 Throughout the document, we utilize service and node ids, which in most cases may be different for you.
@@ -28,7 +35,7 @@ With the service id parameter obtained from the dashboard lookup above, e.g., "f
 2. execute the service and
 3. collect the response
 
-   In your directory of choice, save the above script as _curl\_request.clj_ and run:
+In your directory of choice, save the above script as _curl\_request.clj_ and run:
 
 ```bash
 $ fldist run_air -p curl_request.clj -d '{"service_id": "f92ce98b-1ed6-4ce3-9864-11f4e93a478f", "url":"https://api.duckduckgo.com/?q=homotopy&format=json"}'

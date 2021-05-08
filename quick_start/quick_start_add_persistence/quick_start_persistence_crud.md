@@ -101,10 +101,11 @@ The top part of the script is identical what we used before:
 
 The new service components called are:
 
-* update\_reward\_blocks, which takes the `get_block` output and writes it to the db. Please note that this service requires authentication,
-* get\_latest\_reward\_block, which is a read operation querying the most recent row in the reward block table,
-* get\_reward\_block, which takes a miner address and in this cae the one produced by `get_block`, and finally
-* get\_miner\_rewards, which returns a list of miner rewards for a particular miner address; in this case, the one provided by the `get_reward_block` result. Note the `$` operator to access the `block_miner` field in the return struct and the `!` operator to flatten the response
+* _update\_reward\_blocks_, which takes the `get_block` output and writes it to the db. Please note that this service requires authentication,
+* _get\_latest\_reward\_block_, which is a read operation querying the most recent row in the reward block table,
+* _get\_reward\_block_, which takes a miner address and in this cae the one produced by `get_block`, and finally
+* _get\_miner\_rewards_, which returns a list of miner rewards for a particular miner address; in this case, the one provided by the `get_reward_block` result. Note the `$` operator to access the `block_miner` field in the return struct and the `!` operator to flatten the response
+
 
 From the previous section we know that
 

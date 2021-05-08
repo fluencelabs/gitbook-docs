@@ -83,6 +83,7 @@ wget https://github.com/fluencelabs/sqlite/releases/download/v0.10.0_w/sqlite3.w
 mv sqlite3.wasm artifacts/
 ```
 
+
 Run `./build.sh` and check the artifacts for the expected wasm files
 
 Like all Fluence services, Ethqlite needs a [service configuration](https://github.com/fluencelabs/examples/blob/main/multi-service/ethqlite/Config.toml) file, which looks a little more involved than what we have seen so far.
@@ -112,6 +113,7 @@ name = "ethqlite"
 ```
 
 Let's break it down:
+
 
 * the first \[\[module\]\] section 
   * specifies the _sqlite3.wasm_ module we pulled from the repo, 
@@ -368,6 +370,7 @@ Particle id: 2fb4a366-6f40-46c1-9329-d77c6d03dfad. Waiting for results... Press 
 ]
 ===================
 ```
+
 
 If you run the init script again, you will receive an error _"Service already initiated"_, so we can be reasonably confident our code is working and it looks like our Ethqlite service is up and running on the local node.
 

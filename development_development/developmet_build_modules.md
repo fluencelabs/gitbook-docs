@@ -2,6 +2,7 @@
 
 In Fluence, a service is based on one or more [Wasm](https://webassembly.org/) modules suitable to be deployed to the Fluence Compute Engine \(FCE\). In order to develop our modules, we use Rust and the [Fluence Rust SDK](https://github.com/fluencelabs/rust-sdk).
 
+
 ## Preliminaries
 
 The general process to create a Fluence \(module\) project is to:
@@ -11,6 +12,7 @@ cargo +nightly create your_module_name --release
 ```
 
 and add the [binary target](https://doc.rust-lang.org/cargo/reference/cargo-targets.html#binaries) and [Flunece Rust SDK](https://crates.io/crates/fce) to the Cargo.toml:
+
 
 ```text
 <snip>
@@ -106,6 +108,9 @@ modules_dir = "artifacts/"
 [[module]]
     name = "greeting"
 ```
+
+The source code for the module can be found in the [examples repo](https://github.com/fluencelabs/examples/tree/main/greeting).
+
 
 ## Taking The Greeting Module For A Spin
 
@@ -255,6 +260,7 @@ client seed: AgZjbuMvZmCWbqZBABXXtv3cjGTqYFfiVj7aqg8dm2fA
 client peerId: 12D3KooWFhUMisVC2VtXAertXt5oQQ7Xj1qppFZRM4mvEQ1iUaBP
 relay peerId: 12D3KooWQQYXh78acqBNuL5p1J5tmH4XCKLCHM21tMb8pcxqGL17
 [{"config":{"logger_enabled":true,"logging_mask":null,"mem_pages_count":100,"mounted_binaries":null,"wasi":{"envs":null,"mapped_dirs":null,"preopened_files":[]}},"hash":"c8aec6cbbc0a9632bf532b9553092ae6f66d2e3a5f71e11d1fe65e423c2204e2","name":"greeting"},{"config":{"logger_enabled":true,"logging_mask":null,"mem_pages_count":100,"mounted_binaries":null,"wasi":{"envs":null,"mapped_dirs":null,"preopened_files":[]}},"hash":"915d7487d4ae99f6136a7fe053c4ebd52cde1650c47492a315287117cedd0d3a","name":"greeting"}]
+
 ```
 
 Which confirms our recent upload!!
@@ -272,6 +278,7 @@ Now that we have a service on our local node, we need to construct our AIR scrip
 ```
 
 As we've seen in the Quick Start section, we call the service _"greeting"_ with service id _service_ and the method parameter _name_. As usual, we use the `fldist` tool to execute the AIR script:
+
 
 ```bash
 fldist --node-id 12D3KooWQQYXh78acqBNuL5p1J5tmH4XCKLCHM21tMb8pcxqGL17  --node-addr /ip4/127.0.0.1/tcp/9999/ws/p2p/12D3KooWQQYXh78acqBNuL5p1J5tmH4XCKLCHM21tMb8pcxqGL17 run_air -p greeting.clj -d '{"service":"9712f9ca-7dfd-4ff5-817d-aef9e1e92e03", "name": "Fluence"}'

@@ -4,6 +4,7 @@ In the previous sections we obtained block reward data by discovering the latest
 
 As we have seen in our AIR workflows, particles travel the path, trigger execution, and update their data. So far, we have only seen services consume previous outputs as \(complete\) inputs, which means that service at workflow sequence s needs to be fairly tightly coupled to service at sequence s-1, which is less than ideal. Luckily, Fluence provides a solution to access certain types of results as j_son paths_.
 
+
 ## Peer-Based Script Storage And Execution
 
 As discussed previously, a peer-based ability to "poll" is a valuable feature to some applications. Fluence nodes come with a set of built-in services including the ability to store scripts on a peer with the intent of periodic execution.
@@ -119,6 +120,7 @@ In order to upload the periodic "block to db poll", we can use parts of the _eth
 )
 ```
 
+
 ```bash
 # script file to string variable
 AIR=`cat air-scripts/ethqlite_block_committer.clj`
@@ -181,7 +183,10 @@ Particle id: 5fb0af87-310f-4b12-8c73-e044cfd8ef6e. Waiting for results... Press 
 
 And we are golden. Give it some time and start checking Ethqlite for latest block and reward info!!
 
-TODO: this isn't working since we can't upload a key with the script.
+{% hint style="info" %}
+Unfortunately, our daemonized service won't work just yet as the current implementation cannot take the \(client\) seed we need in order to get our SQLite write working. It's on the to-do list but if you need it, please contact us and we'll see about juggling priorities. 
+{% endhint %}
+
 
 For completeness sake, let's remove the stored service with the following AIR script:
 
@@ -190,11 +195,10 @@ For completeness sake, let's remove the stored service with the following AIR sc
 (call node ("script" "remove") [script_id] result)
 ```
 
-TODO: finalize or delete for now.
-
 ## Advanced Service Output Access
 
 As Aquamarine advances a particle's journey through the network, output from a service at workflow sequence s-1 method tends to be the input for a service at sequence s method. For example, the _hex\_to\_int_ method, as used earlier, takes the output from the _get\_latest\_block_ method. With single parameter outputs, this is a pretty straight forward and inherently decoupled dependency relation. However, when result parameters become more complex, such as structs, we still would like to keep services as decoupled as possible.
+
 
 Fluence provides this capability by facilitating the conversion of \(Rust\) struct returns into [json values](https://github.com/fluencelabs/aquamarine/blob/master/interpreter-lib/src/execution/boxed_value/jvaluable.rs#L30). This allows json type key-value access to a desired subset of return values. If you got back to the _ethqlite.clj_ script, you may notice some fancy `$`, `!` operators tucked away in the deep recesses of parenthesis stacking. Below the pertinent snippet:
 
@@ -242,6 +246,7 @@ pub struct RewardBlock {
 ```
 
 and the input expectations of _get\_miner\_rewards_, also an ethqlite service method, with the following [function](https://github.com/fluencelabs/examples/blob/c508d096e712b7b22aa94641cd6bb7c2fdb67200/multi-service/ethqlite/src/crud.rs#L177) signature: `pub fn get_miner_rewards(miner_address: String) -> MinerRewards`.
+
 
 Basically, _get\_miner\_rewards_ wants an Ethereum address as a `String` and in the context of our AIR script we want to get the value from the _get\_reward\_block_ result. Rather than tightly coupling _get\_miner\_rewards_ to _get\_reward\_block_ in terms of, say, the _RewardBlock_ input parameter, we take advantage of the Fluence capability to turn structs into json strings and then supply the relevant key to extract the desired value. Specifically, we use the `$` operator to access the json representation at the desired index and the `!` operator to flatten the value, if desired.
 

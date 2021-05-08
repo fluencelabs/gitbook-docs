@@ -4,9 +4,9 @@ Building and operating distributed networks, backends and applications are non-t
 
 Consider a workflow tasked with calling multiple REST endpoints, in sequence, where the response of the previous call is the input to the current call. As illustrated in Figure 1, the application is the focal point and data relay.
 
-![Fihure 1: Stylized Data Flow For Application With Multiple Endpoint Calls](.gitbook/assets/image%20%283%29.png)
+![Figure 1: Stylized  Data Flow For Application With Multiple Endpoint Calls](.gitbook/assets/image%20%283%29.png)
 
-Programming a frontend application in the Fluence peer-to-peer solution, an application is not a workflow intermediary but merely the initiator of a workflow as workflow logic and data traverses the network from service to service. See Figure 2 for an illustration and please note that services may be deployed to different nodes as well as to more than one node.
+Programming a frontend application in the Fluence peer-to-peer solution, an application is not a workflow intermediary but merely the initiator of a workflow as workflow logic and data traverses the network from service to service.  See Figure 2 for an illustration and please note that services may be deployed to different nodes as well as to more than one node.
 
 ![Figure 2: Stylized Data Flow For Application With Fluence Distributed Services ](.gitbook/assets/image%20%284%29.png)
 

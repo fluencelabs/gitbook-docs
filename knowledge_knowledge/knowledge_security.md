@@ -6,8 +6,6 @@ In the Fluence network, an application consists of one or more services composed
 
 Aquamarine, as a composability medium, needs to take care of many aspects of security to enable composing services of different vendors in a safe way. Let's consider the example of authorization service – a service that verifies permission:
 
-\`\`\`{scala, tidy=FALSE, eval=FALSE, highlight=FALSE } // Pseudocode of a service interface service Auth: // Works only for the service creator def grant\_permission\(to\_peer: PeerId\) def check\_permission\(\): bool
-
 ```text
 // Pseudocode of a service interface
 service Auth:

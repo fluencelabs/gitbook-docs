@@ -1,8 +1,6 @@
 # Services
 
-## Services
-
-### Overview
+## Overview
 
 Each Fluence peer is equipped with a set of "built-in" services that can be called from Aquamarine and fall into the following namespaces:
 
@@ -16,9 +14,11 @@ Each Fluence peer is equipped with a set of "built-in" services that can be call
 
 Please note that the [`fldist`](../knowledge_tools.md#fluence-proto-distributor-fldist) CLI tool, as well as the [JS SDK](../knowledge_tools.md#fluence-js-sdk), provide access to node-based services.
 
-### API
 
-#### peer is\_connected
+## API
+
+### peer is\_connected
+
 
 Checks if there is a direct connection to the peer identified by a given PeerId
 
@@ -28,29 +28,27 @@ Checks if there is a direct connection to the peer identified by a given PeerId
 
 Example of a service call:
 
-```text
+```scheme
 (call node ("peer" "is_connected") ["123D..."] ok)
 ```
-
-#### peer connect
 
 Initiates a connection to the specified peer
 
 * **Arguments**
   * _PeerId_ – id of the target peer
-  * \_\_[_Multiaddr_](https://crates.io/crates/multiaddr) – an array of target peer's addresses
+  * [_Multiaddr_](https://crates.io/crates/multiaddr) – an array of target peer's addresses
 * **Returns**: bool - true if connection was successful
 
 Example of a service call:
 
-```text
+```scheme
 (seq 
     (call node ("op" "identity") ["/ip4/1.2.3.4/tcp/7777" "/ip4/1.2.3.4/tcp/9999"] addrs)
     (call node ("peer" "connect") ["123D..." addrs] ok) 
 )
 ```
 
-#### peer get\_contact
+### peer get\_contact
 
 Resolves the contact of a peer via [Kademlia](https://en.wikipedia.org/wiki/Kademlia)
 
@@ -58,7 +56,7 @@ Resolves the contact of a peer via [Kademlia](https://en.wikipedia.org/wiki/Kade
   * _PeerId_ – id of the target peer
 * **Returns**: Contact - true if connection was successful
 
-```text
+```rust
 // get_contact return struct
 Contact { 
     peer_id: PeerId,
@@ -68,7 +66,7 @@ Contact {
 
 Example of a service call:
 
-```text
+```scheme
 (call node ("peer" "get_contact") ["123D..."] contact)
 ```
 
@@ -79,17 +77,18 @@ Get information about the peer
 * **Arguments**: None
 * **Returns:**  _external address_
 
-```text
+```javascript
 { "external_addresses": [ "/ip4/1.2.3.4/tcp/7777", "/dns4/stage.fluence.dev/tcp/19002" ] }
 ```
 
 Example of service call:
 
-```text
+```scheme
 (call node ("peer" "identify") [] info) peer timestamp_ms
 ```
 
-#### peer timestamp\_ms
+### peer timestamp\_ms
+
 
 Get Unix timestamp in milliseconds
 
@@ -98,11 +97,12 @@ Get Unix timestamp in milliseconds
 
 Example of service call:
 
-```text
+```scheme
 (call node ("peer" "timestamp_ms") [] ts_ms)
 ```
 
-#### peer timestamp\_sec
+### peer timestamp\_sec
+
 
 Get Unix timestamp in seconds
 
@@ -111,11 +111,11 @@ Get Unix timestamp in seconds
 
 Example of service call:
 
-```text
+```scheme
 (call node ("peer" "timestamp_sec") [] ts_sec)
 ```
 
-#### kad neighborhood
+### kad neighborhood
 
 Instructs node to return the locally-known nodes in the Kademlia neighborhood for a given key
 
@@ -124,13 +124,13 @@ Instructs node to return the locally-known nodes in the Kademlia neighborhood fo
 
 Example of service call:
 
-```text
+```scheme
 (call node ("dht" "neighborhood") [key] peers)
 ```
 
 Please note that this service does _not_ traverse the network and may yield incomplete neighborhood.
 
-#### srv create
+### srv create
 
 Used to create a service on a certain node.
 
@@ -140,11 +140,11 @@ Used to create a service on a certain node.
 
 Example of service call:
 
-```text
+```scheme
 (call node ("srv" "create") [blueprint_id] service_id)
 ```
 
-#### srv list
+### srv list
 
 Used to enumerate services deployed to a peer.
 
@@ -153,11 +153,11 @@ Used to enumerate services deployed to a peer.
 
 Example of service call:
 
-```text
+```scheme
 (call node ("srv" "list") [] services)
 ```
 
-#### srv add\_alias
+### srv add\_alias
 
 Adds an alias on service, so service could be called not only by service\_id but by alias.
 
@@ -166,18 +166,18 @@ Adds an alias on service, so service could be called not only by service\_id but
 
 Example of service call:
 
-```text
+```scheme
 (call node ("srv" "add_alias") [alias service_id])
 ```
 
-#### srv get\_interface
+### srv get\_interface
 
 Retrieves the functional interface of a service running on the node specified in the service call.
 
 * Argument: service\_id – ID of the service whose interface you want to retrieve. 
 * Returns : an interface object of the following structure:
 
-```text
+```typescript
 { 
     interface: { function_signatures, record_types },
     blueprint_id: "uuid-1234...",
@@ -187,11 +187,11 @@ Retrieves the functional interface of a service running on the node specified in
 
 Example of service call:
 
-```text
+```scheme
 (call node ("srv" "get_interface") [service_id] interface)
 ```
 
-#### dist add\_module
+### dist add\_module
 
 Used to add modules to the node specified in the service call.
 
@@ -200,7 +200,7 @@ Used to add modules to the node specified in the service call.
   * bytes – a base64 string containing the .wasm module to add. 
   * config – an object of the following structure
 
-  ```text
+  ```javascript
   {
     "name": "my_module_name"
   }
@@ -208,18 +208,18 @@ Used to add modules to the node specified in the service call.
 
 Example of service call:
 
-```text
+```scheme
 (call node ("dist" "add_module") [bytes config] hash)
 ```
 
-#### dist list\_modules
+### dist list\_modules
 
 Get a list of modules available on the node
 
 * Arguments: None
 * Returns: an array of objects containing module descriptions
 
-  ```text
+  ```javascript
   [ 
       { 
           "name": "moduleA",
@@ -231,28 +231,28 @@ Get a list of modules available on the node
 
 Example of service call:
 
-```text
+```scheme
 (call node ("dist" "list_modules") [] modules)
 ```
 
-#### dist get\_module\_interface
+### dist get\_module\_interface
 
 Get the interface of a module
 
 * Arguments: hash of a module
 * Returns: an interface of the module \( see _srv get\_interface \)_ mple of service call:
 
-```text
+```scheme
 (call node ("dist" "get_interface") [hash] interface)
 ```
 
-#### dist add\_blueprint
+### dist add\_blueprint
 
 Used to add a blueprint to the node specified in the service call.
 
 * Arguments: blueprint – an object of the following structure
 
-  ```text
+  ```javascript
   {
       "name": "good_service",
       "dependencies": [ "hash:6ebff28c...", "hash:1e59875a...", "hash:d164a07..." ] 
@@ -267,11 +267,11 @@ Used to add a blueprint to the node specified in the service call.
 
 Example of service call:
 
-```text
+```scheme
 (call node ("dist" "add_blueprint") [blueprint] blueprint_id)
 ```
 
-#### dist list\_blueprints
+### dist list\_blueprints
 
 Used to get the blueprints available on the node specified in the service call.
 
@@ -280,7 +280,7 @@ Used to get the blueprints available on the node specified in the service call.
 
 A blueprint is an object of the following structure:
 
-```text
+```javascript
 { 
     "id": "uuid-1234-...", 
     "name": "good_service", 
@@ -290,7 +290,7 @@ A blueprint is an object of the following structure:
 
 Example of service call:
 
-```text
+```scheme
 (call node ("dist" "list_blueprints") [] blueprints)
 ```
 
@@ -315,11 +315,11 @@ Example of service call:
 
 * With an interval parameter value _k_ passed as a string, the script executes every _k_ seconds \(21 in this case\)
 
-  ```text
+  ```scheme
   (call node ("script" "add") [script "21"] id)
   ```
 
-#### script remove
+### script remove
 
 Removes recurring script from a node. Only a creator of the script can delete it
 
@@ -328,16 +328,16 @@ Removes recurring script from a node. Only a creator of the script can delete it
 
 Example of service call:
 
-```text
+```scheme
 (call node ("script" "remove") [script_id] result)
 ```
 
-#### script list
+### script list
 
 * Arguments: None
 * Returns: A list of existing scripts on the node. Each object in the list is of the following structure:
 
-  ```text
+  ```javascript
   { 
       "id": "uuid-1234-...",
       "src": "(seq (call ...",  // 
@@ -349,30 +349,31 @@ Example of service call:
 
   Example of a service call:
 
-```text
+```scheme
 (call node ("script" "list") [] list)
 ```
 
-#### op identity
+### op identity
 
 Acts as an identity function. This service returns exactly what was passed to it. Useful for moving the execution of some service topologically or for extracting some data and putting it into an output variable.
 
 Example of service call:
 
-```text
+```scheme
 (call node ("op" "identity") [args] result)
 ```
 
-#### deprecated add\_provider
+### deprecated add\_provider
 
-Used in service aliasing. \_\*\*\_Stores the specified service provider \(provider\) in the internal storage of the node indicated in the service call and associates it with the given key \(key\). After executing add\_provider, the provider can be accessed via the get\_providers service using this key.
+Used in service aliasing. _\*\*_Stores the specified service provider \(provider\) in the internal storage of the node indicated in the service call and associates it with the given key \(key\). After executing add\_provider, the provider can be accessed via the get\_providers service using this key.
+
 
 * Arguments:
 
   * key – a string; usually, it is a human-readable service alias. 
   * provider – the location of the service. It is an object of the following structure:
 
-  ```text
+  ```javascript
   { 
       "peer": "123D...", // PeerId of some peer in the network
       "service_id": "uuid-1234-..." // Optional service_id of the service running on the peer specified by peer 
@@ -381,18 +382,19 @@ Used in service aliasing. \_\*\*\_Stores the specified service provider \(provid
 
 Example of service call:
 
-```text
+```scheme
 (call node ("deprecated" "add_provider") [key provider])
 ```
 
-#### deprecated get\_providers
+### deprecated get\_providers
 
 Used in service aliasing to retrieve providers for a given key.
 
 * Arguments: _key_ – a string; usually, it is a human-readable service alias. 
 * Returns: an array of objects of the following structure:
 
-  ```text
+  ```javascript
+
   { 
       "peer": "123D...", // required field
       "service_id": "uuid-1234-..." // optional field
@@ -401,7 +403,8 @@ Used in service aliasing to retrieve providers for a given key.
 
 Example of service call:
 
-```text
+```scheme
+
 (call node ("deprecated" "get_providers") [key] providers)
 ```
 

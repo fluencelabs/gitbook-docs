@@ -9,17 +9,17 @@ Since we are composing our application from first principles, we use the followi
 * _get\_block_: takes an api key and block number as int and returns the reward block info
 * _extract\_miner\_address_: takes a json string and return the miner address
 
-Let's find these services on the [Fluence Dashboard](https://dash.fluence.dev/) and make a note of the corresponding associated the service and network ids:
+Let's find these services on the [Fluence Dashboard](https://dash.fluence.dev/) and make a note of the corresponding associated service and network ids:
 
 * [Ethereum Block Getter](https://dash.fluence.dev/blueprint/801037186238469ce354d2eb6d884091aaf9622ba7b1a83816cc45d39ab2000d) provides methods to retrieve the latest, most recent Ethereum block number as a hex string and a reward block getter method, which gets the block information for a given integer block number. And yes, this service exposes two methods
-  * service id: 74d5c5da-4c83-4af9-9371-2ab5d31f8019
-  * node id: 12D3KooWGzNvhSDsgFoHwpWHAyPf1kcTYCGeRBPfznL8J6qdyu2H
+  * service id: `74d5c5da-4c83-4af9-9371-2ab5d31f8019`
+  * node id: `12D3KooWGzNvhSDsgFoHwpWHAyPf1kcTYCGeRBPfznL8J6qdyu2H`
 * [Hex Converter](https://dash.fluence.dev/blueprint/63ff63360ef64651f712a2ecf08868d1a71f9dff0af04e234e4d543a66872806), which exposes the hex\_to\_int method to convert a hex string \(starting with 0x\) to an integer value
-  * service id: 285e2a5e-e505-475f-a99d-15c16c7253f9
-  * node id: 12D3KooWKnRcsTpYx9axkJ6d69LPfpPXrkVLe96skuPTAo76LLVH
+  * service id: `285e2a5e-e505-475f-a99d-15c16c7253f9`
+  * node id: `12D3KooWKnRcsTpYx9axkJ6d69LPfpPXrkVLe96skuPTAo76LLVH`
 * [Extract Miner Address](https://dash.fluence.dev/blueprint/16a22a4033b6e98c45ac603fb520db77f4dcf42bf143f0d935262cb43136647e) extracts the miner address from a reward block json string
-  * service id: d13da294-004a-4c71-8631-a351c5f3489b
-  * node id: 12D3KooWCKCeqLPSgMnDjyFsJuWqREDtKNHx1JEBiwaMXhCLNTRb
+  * service id: `d13da294-004a-4c71-8631-a351c5f3489b`
+  * node id: `12D3KooWCKCeqLPSgMnDjyFsJuWqREDtKNHx1JEBiwaMXhCLNTRb`
 
 Let's test the hex conversion test in isolation with the following AIR script:
 
@@ -50,7 +50,7 @@ _seq_ is the _sequential_ instruction that wraps arguments and executes them, yo
 _xor_ is the _branching_ instruction that takes two **instructions,** e.g., two _seq_ instructions as arguments and evaluates the first argument only to proceed to the second instruction if the first one failed.
 
 _call_ is the _execution_ instruction to launch distributed service methods and takes the following data:  
-**\(**_call_ **node-id \(service-id service-method\) \[input parameters\] result\)**
+            **\(**_call_  **node-id \(service-id  service-method\) \[input parameters\] result\)**
 {% endhint %}
 
 As with the previous AIR script, the _xor_ takes care of capturing errors in case things don't pan out the way we've planned. Other than that, we are calling the `hex_to_int` method and we need to supply the service and node ids as well the the hex value. Save the above script to a local file called _hex2int.clj_ and use `fldist` to deploy the script:

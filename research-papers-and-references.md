@@ -1,4 +1,6 @@
 # Research, Papers And References
 
-Coming soon. If you really need this section, contact us through any of the social media channels or Github.
+* [Fluence Manifesto](https://fluence.network/manifesto.html)
+* [Fluence Protocol](https://github.com/fluencelabs/rfcs/blob/main/0-overview.md)
+
 
