@@ -21,7 +21,7 @@ In order to execute the cUrl service and collect the result, i.e., response, we 
 )
 ```
 
-Without going too deep into Aquamarine and AIR, this script specifies that we call a public peer-to-peer relay \(node\) on the network, ask to run the \(curl\) _request_ function with data parameter _url_  and _service\_id_ parameter, and collect the _result_ **xor** the _error message_ in case of execution failure. We also promise to pass the _service\_id_ and _url_ parameters to the scripts. 
+Without going too deep into Aquamarine and AIR, this script specifies that we call a public peer-to-peer relay \(node\) on the network, ask to run the \(curl\) _request_ function with data parameter _url_ and _service\_id_ parameter, and collect the _result_ **xor** the _error message_ in case of execution failure. We also promise to pass the _service\_id_ and _url_ parameters to the scripts.
 
 The "magic" happens by handing the script to the `fldist` CLI tool, which then sends the script for execution to the specified p2p network and locally shadows the execution. Please note that Instead of developing full-fledged frontend applications, we use the `fldist` CLI tool. However, a [JS SDK](https://github.com/fluencelabs/fluence-js) is available to accelerate the development of more complex frontend applications.
 

@@ -1,6 +1,5 @@
 # cUrl as a Service
 
-
 ## Overview
 
 [Curl](https://curl.se/) is a widely available and used command-line tool to receive or send data using URL syntax. Chances are, you probably just used it when you set up your Fluence development environment. For Fluence services to be able to interact with the world, cUrl is one option to facilitate https calls. Since Fluence modules are Wasm IT modules, cUrl cannot not be a service intrinsic. Instead, the curl command-line tool needs to be made available and accessible at the node level. And for Fluence services to be able to interact with Curl, we need to code a cUrl adapter taking care of the mounted \(cUrl\) binary.
@@ -47,7 +46,6 @@ We are basically linking the [external](https://doc.rust-lang.org/std/keyword.ex
 
 * [Mounted binaries](https://github.com/fluencelabs/fce/blob/c559f3f2266b924398c203a45863ebf2fb9252ec/fluence-faas/src/host_imports/mounted_binaries.rs)
 * [cUrl](https://github.com/curl/curl)
-
 
 ### Service Construction
 

@@ -50,7 +50,7 @@ _seq_ is the _sequential_ instruction that wraps arguments and executes them, yo
 _xor_ is the _branching_ instruction that takes two **instructions,** e.g., two _seq_ instructions as arguments and evaluates the first argument only to proceed to the second instruction if the first one failed.
 
 _call_ is the _execution_ instruction to launch distributed service methods and takes the following data:  
-            **\(**_call_  **node-id \(service-id  service-method\) \[input parameters\] result\)**
+**\(**_call_ **node-id \(service-id service-method\) \[input parameters\] result\)**
 {% endhint %}
 
 As with the previous AIR script, the _xor_ takes care of capturing errors in case things don't pan out the way we've planned. Other than that, we are calling the `hex_to_int` method and we need to supply the service and node ids as well the the hex value. Save the above script to a local file called _hex2int.clj_ and use `fldist` to deploy the script:

@@ -8,5 +8,3 @@ The further your understanding, please checkout the remainder of the documentati
 * The [Tutorials](../tutorials_tutorials/) section offers a a set of how-to's ranging from node and network configuration to fairly large-scale application development.
 * The [Recipes](../recipes_recipes/) section provides a \(growing\) set of pattern and pattern-like best practices and approaches.
 
-
-

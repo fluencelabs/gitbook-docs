@@ -14,11 +14,9 @@ Each Fluence peer is equipped with a set of "built-in" services that can be call
 
 Please note that the [`fldist`](../knowledge_tools.md#fluence-proto-distributor-fldist) CLI tool, as well as the [JS SDK](../knowledge_tools.md#fluence-js-sdk), provide access to node-based services.
 
-
 ## API
 
 ### peer is\_connected
-
 
 Checks if there is a direct connection to the peer identified by a given PeerId
 
@@ -89,7 +87,6 @@ Example of service call:
 
 ### peer timestamp\_ms
 
-
 Get Unix timestamp in milliseconds
 
 * **Arguments**: None
@@ -102,7 +99,6 @@ Example of service call:
 ```
 
 ### peer timestamp\_sec
-
 
 Get Unix timestamp in seconds
 
@@ -365,8 +361,7 @@ Example of service call:
 
 ### deprecated add\_provider
 
-Used in service aliasing. _\*\*_Stores the specified service provider \(provider\) in the internal storage of the node indicated in the service call and associates it with the given key \(key\). After executing add\_provider, the provider can be accessed via the get\_providers service using this key.
-
+Used in service aliasing. \_\*\*\_Stores the specified service provider \(provider\) in the internal storage of the node indicated in the service call and associates it with the given key \(key\). After executing add\_provider, the provider can be accessed via the get\_providers service using this key.
 
 * Arguments:
 
@@ -394,7 +389,6 @@ Used in service aliasing to retrieve providers for a given key.
 * Returns: an array of objects of the following structure:
 
   ```javascript
-
   { 
       "peer": "123D...", // required field
       "service_id": "uuid-1234-..." // optional field
@@ -404,7 +398,6 @@ Used in service aliasing to retrieve providers for a given key.
 Example of service call:
 
 ```scheme
-
 (call node ("deprecated" "get_providers") [key] providers)
 ```
 

@@ -33,7 +33,7 @@ The _**par**_ instruction takes two instructions at most as its arguments and pa
 
 TODO: add better graphic showing the disticntion of branching vs seq.
 
-**Figure 4: Fold Instruction** ![Execution](../../.gitbook/assets/air_fold_4%20%281%29%20%282%29%20%281%29.png)
+**Figure 4: Fold Instruction** ![Execution](https://github.com/fluencelabs/gitbook-docs/tree/84e814d02d9299034c9c031adf7f081bb59898b9/.gitbook/assets/air_fold_4%20%281%29%20%282%29%20%281%29.png)
 
 The _**fold**_ instruction iterates over the elements of an array and workds as follows:
 
@@ -49,8 +49,7 @@ This instruction is intended for organizing branches in the flow of execution as
 * The first instruction is executed and if the execution is successful, then the second instruction is ignored
 * If the first instruction fails, then the second one is executed.
 
-**Figure 6: Null Instruction** ![Execution](../../.gitbook/assets/air_null_6%20%281%29%20%282%29.png)
+**Figure 6: Null Instruction** ![Execution](https://github.com/fluencelabs/gitbook-docs/tree/84e814d02d9299034c9c031adf7f081bb59898b9/.gitbook/assets/air_null_6%20%281%29%20%282%29.png)
 
 This is an empty instruction: it takes no arguments and does nothing. The _**null**_ instruction is useful for generating code.
-
 
