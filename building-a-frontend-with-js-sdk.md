@@ -1,18 +1,20 @@
+---
+description: WIP -- Tread Carefully
+---
+
 # Building A Frontend with JS SDK
 
-Fluence provides means to connect to the network from a javascript environment. It is currently tested to work in nodejs and modern browsers.
+The JS SDK provides the means to connect to a Fluence peer-to-peer network from a javascript environment and is currently available for _node.js_ and modern browsers.
 
-To create an application you will need two main building blocks: the JS SDK itself and the aqua compiler. Both of them are provided in a form npm packages. JS SDK wraps the air interpreter and provides a connection to the network. There is low-level api for executing air scripts and registering for service calls handlers. Aqua compiler allows to write code in aqua language and compile it into typescript code which can be directly used with the SDK.
-
-Even though all the logic could be programmed by hand with raw air it is strongly recommended to use aqua.
+To create an application two building blocks are needed: the JS SDK and the Aqua compiler.  Both packages are available as _npm_ packages. The JS SDK wraps the AIR interpreter and provides a connection to the network. There is la ow-level api for executing AIR scripts and registering for service call handlers. The Aqua compiler allows to write code in Aqua language and compile it  to typescript code which can be directly used with the JS SDK.
 
 ### Basic usage
 
-As previously said you can use fluence with any frontend or nodejs framework. JS SDK could be as any other npm library. For the purpose of the demo we will init a bare-bones nodejs package and show you the steps needed install JS SDK and aqua compiler. Feel free to use the tool most suitable for the framework used in application, the installation process should be roughly the same
+To demonstrate the development of a client application,  we initiate a bare-bones _node.js_ package and review the steps needed to install the JS SDK and Aqua compiler. 
 
-#### 1. Start with npm package
+#### 1. Install The _npm_ Package
 
-For the purpose of the demo we will use a very minimal npm package with typescript support:
+For the purpose of the demo we will use a very minimal _npm_ package with typescript support:
 
 ```text
 src
@@ -112,7 +114,7 @@ $
 
 #### 3. Setting up aqua compiler
 
-Aqua is the proffered language for the Fluence network. It can be used with javascript-based environments via npm package.
+Aqua is the proffered language for the Fluence network. It can be used with javascript-based environments via _npm_ package.
 
 **Warning: the package requires java to be installed \(it will call "java -jar ... "\)** 
 
