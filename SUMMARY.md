@@ -19,7 +19,6 @@
     * [Blocks To Database](development_development/development_reward_block_app/development_persisting_blocks.md)
     * [Additional Concepts](development_development/development_reward_block_app/development_additional_concepts.md)
   * [Summary](development_development/summary.md)
-* [Building A Frontend with JS SDK](building-a-frontend-with-js-sdk.md)
 * [Knowledgebase](knowledge_knowledge/README.md)
   * [Overview](knowledge_knowledge/knowledge_overview.md)
   * [Concepts](knowledge_knowledge/knowledge_concepts.md)
