@@ -2,9 +2,12 @@
 
 * [Introduction](README.md)
 * [Thinking In Distributed](p2p.md)
+* [Quick Start](quick-start/README.md)
+  * [Setup](quick-start/setup.md)
+  * [Using A Distributed Service](quick-start/using-a-distributed-service.md)
 * [Aqua](aqua/README.md)
   * [Untitled](aqua/untitled.md)
-* [Quick Start](quick_start/README.md)
+* [Quick Start -- AIR](quick_start/README.md)
   * [Setup](quick_start/quick_start_setup.md)
   * [Using a Service](quick_start/quick_start_using_a_service.md)
   * [Building An Application From Multiple Services](quick_start/quick_start_building_from_multiple_services.md)
