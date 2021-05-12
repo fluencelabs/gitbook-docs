@@ -1,3 +1,7 @@
+---
+description: WIP -- need to circle back
+---
+
 # Setup
 
 The Fluence and Aquamarine stacks depend on Rust, Typescript, and several tools. Luckily, we provide a dockerized development solution that bundles all the pre-requisites and even provides VSCode integration, if that happens to be your IDE of choice.
