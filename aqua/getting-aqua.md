@@ -61,15 +61,39 @@ todo: run  aqua version once we can do it
 
 #### 
 
-#### DevContainer Without IDE Integration
+#### Docker Without IDE Integration
+
+To pull the container from Docker Hub:
+
+```text
+docker pull fluencelabs/devcontainer:latest
+```
+
+Once the image is downloaded, connect to the container shell with:
+
+```text
+docker run -it fluencelabs/devcontainer:latest  /bash
+```
+
+which gets you to the bash shell root directory:
+
+```text
+=========
+Welcome to the Fluence devcontainer!
+To download example projects, run /download_examples.sh
+Available tools:
+    $ marine           – build wasm from Rust
+    $ marine repl      – run wasm services locally
+    $ aqua-cli         – compile Aqua to AIR + Typescript
+    $ fldist           – deploy & query services
+
+Have fun!
+root@95aa2b3404aa:/#
+```
 
 
 
-#### 
-
-#### 
-
-#### From Binary
+**From Binary**
 
 You can download 
 
