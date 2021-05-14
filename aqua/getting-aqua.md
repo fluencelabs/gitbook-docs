@@ -111,11 +111,11 @@ root@d52a2ba85b1d:/#
 
 ### **From Binary**
 
-You can download 
-
-
+You can download the latest Aqua release from the repo and please make sure you have java installed. 
 
 ### From Source
+
+
 
 ```text
 git clone git@github.com:fluencelabs/aqua.git
