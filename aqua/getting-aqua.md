@@ -46,7 +46,7 @@ Have fun!
 Done. Press any key to close the terminal.
 ```
 
-After the installation, simply connect to your docker container by
+After the installation, simply connect VSCODE to your docker container by
 
 * Run Remote-Containers: Attach To Running Container
 * Select your instance
@@ -54,7 +54,7 @@ After the installation, simply connect to your docker container by
 In a \(new\) terminal tab, you see the root directory of the container and 
 
 ```text
-todo: run  aqua version once we can do it
+todo: run aqua version once we can do it
 ```
 
 #### 
@@ -91,15 +91,31 @@ Have fun!
 root@95aa2b3404aa:/#
 ```
 
+If you want the examples installed:
 
+```text
+root@d52a2ba85b1d:/# ./download_examples.sh
+Cloning into 'fluence/examples'...
+<snip>
 
-**From Binary**
+=======
+Source code to learn from:
+    fluence/examples         –  AIR + Rust examples
+    fluence/aqua-playground  –  Aqua + Typescript examples
+    fluence/fluentpad        -  Frontend + backend project written in Aqua
+
+root@d52a2ba85b1d:/#
+```
+
+### \*\*\*\*
+
+### **From Binary**
 
 You can download 
 
 
 
-#### From Source
+### From Source
 
 ```text
 git clone git@github.com:fluencelabs/aqua.git
