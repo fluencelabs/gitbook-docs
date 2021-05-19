@@ -57,10 +57,6 @@ In a \(new\) terminal tab, you see the root directory of the container and
 todo: run aqua version once we can do it
 ```
 
-#### 
-
-#### 
-
 #### Docker Without IDE Integration
 
 To pull the container from Docker Hub:
@@ -91,7 +87,7 @@ Have fun!
 root@95aa2b3404aa:/#
 ```
 
-If you want the examples installed:
+If you want the [examples](https://github.com/fluencelabs/examples) installed, run the shell script:
 
 ```text
 root@d52a2ba85b1d:/# ./download_examples.sh
@@ -111,13 +107,28 @@ root@d52a2ba85b1d:/#
 
 ### **From Binary**
 
-You can download the latest Aqua release from the repo and please make sure you have java installed. 
+You can download the latest Aqua release from the repo -- make sure you have java installed. 
 
 ### From Source
 
+In order to build from source, you need _sbt_, the build tool for Scala. Follow the [Scala](https://www.scala-sbt.org/) documentation to install _sbt_ for you OS. aqua
 
+Clone the aqua repo to a directory of your choice and compile the code:
 
 ```text
 git clone git@github.com:fluencelabs/aqua.git
+cd aqua
+sbt assembly
 ```
+
+This may take some time but once it's done, you'll find the  in the `cli/target/scala-2.13/` directory:
+
+```text
+java -jar  cli/target/scala-2.13/aqua-cli-0.1.1-SNAPSHOT.jar --version
+0.1.1-SNAPSHOT
+```
+
+
+
+In one way or or another, you should be ready to put Aqua to work.
 

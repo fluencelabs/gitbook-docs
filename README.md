@@ -4,9 +4,9 @@ Fluence Labs builds distributed networks, development tools, components and supp
 
 Aquamarine is comprised of:
 
-* Aqua -- add, link
-* Aqua VM -- add, link
-* Marine VM -- add, link
+* Aqua: [https://github.com/fluencelabs/aqua](https://github.com/fluencelabs/aqua)
+* Aqua VM: [https://github.com/fluencelabs/air](https://github.com/fluencelabs/air)
+* Marine VM: [https://github.com/fluencelabs/marine](https://github.com/fluencelabs/marine)
 
 Aquamarine provides the programming and runtime tools that allow developers to avoid the typical peer-to-peer development challenges and accelerate the development and deployment of distributed services and applications.
 
