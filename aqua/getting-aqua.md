@@ -46,12 +46,10 @@ Have fun!
 Done. Press any key to close the terminal.
 ```
 
-After the installation, simply connect VSCODE to your docker container by
+After the installation,  connect your docker container \(make sure it is running\) via the command palette:
 
-* Run Remote-Containers: Attach To Running Container
-* Select your instance
-
-In a \(new\) terminal tab, you see the root directory of the container and 
+* Run _**Remote-Containers: Attach To Running Container**_
+* Select your _**fluencelabs/devcontainer**_ instance\(new\) terminal tab, you see the root directory of the container and 
 
 ```text
 todo: run aqua version once we can do it
@@ -71,7 +69,7 @@ Once the image is downloaded, connect to the container shell with:
 docker run -it fluencelabs/devcontainer:latest  /bash
 ```
 
-which gets you to the bash shell root directory:
+which gets us to the bash shell root directory:
 
 ```text
 =========
@@ -109,11 +107,11 @@ root@d52a2ba85b1d:/#
 
 You can download the latest Aqua release from the repo -- make sure you have java installed. 
 
+ToD
+
 ### From Source
 
-In order to build from source, you need _sbt_, the build tool for Scala. Follow the [Scala](https://www.scala-sbt.org/) documentation to install _sbt_ for you OS. aqua
-
-Clone the aqua repo to a directory of your choice and compile the code:
+In order to build from source, you need _sbt_, the build tool for Scala. Follow the [Scala](https://www.scala-sbt.org/) documentation to install _sbt_ for your OS, clone the aqua repo to a directory of your choice and compile the code:
 
 ```text
 git clone git@github.com:fluencelabs/aqua.git
@@ -121,7 +119,7 @@ cd aqua
 sbt assembly
 ```
 
-This may take some time but once it's done, you'll find the  in the `cli/target/scala-2.13/` directory:
+This may take some time but once it's done, you'll find the executable in the `cli/target/scala-2.13/` directory:
 
 ```text
 java -jar  cli/target/scala-2.13/aqua-cli-0.1.1-SNAPSHOT.jar --version
@@ -130,5 +128,5 @@ java -jar  cli/target/scala-2.13/aqua-cli-0.1.1-SNAPSHOT.jar --version
 
 
 
-In one way or or another, you should be ready to put Aqua to work.
+Regardless of your installation choice, Aqua is ready to go.
 
