@@ -6,7 +6,7 @@
   * [Setup](quick-start/setup.md)
   * [Using A Distributed Service](quick-start/using-a-distributed-service.md)
 * [Aqua](aqua/README.md)
-  * [Overview](aqua/untitled.md)
+  * [Introduction](aqua/untitled.md)
   * [Setting Up Aqua](aqua/getting-aqua.md)
   * [Hello World](aqua/hello-world.md)
   * [Language](aqua/documentation/README.md)

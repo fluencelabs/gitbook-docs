@@ -4,31 +4,39 @@ description: WIP
 
 # Hello World
 
-In order to write our first peer-to-peer application, we will take advantage of an already deployed greeting, aka hello world, service. 
+_**Hello World**_, the obligatory introduction to just about any programming language, ... TODO  
+
+In order to write our first peer-to-peer application, we need a network, a service and a workflow to coordinate the service into an application. For the purposes of this introduction to Aqua, we reuse an already deployed service
+
+
 
 ToDo: Dashboard -- no testnet
 
+
+
 ```text
--- greeter.aqua                                    1
-service Echo("service-id"):                        2
-    echo: []string -> []string
+-- greeter.aqua                                        1
+service Local("returnService"):                        2
+  run: string -> ()
 
-
-service Greeting("service-id"):                    3
+service Greeting("service-id"):                        3
     greeting: string, bool -> string
 
-func seq_echo_greeter(data: []string, name: string, greeter: bool) -> []string:    4
-    big_res: []string
-    echo_res <- Echo.echo(data)
-    for s <- echo_res:
-        big_res.append(Greeting.greeting(s, greeter))
-    <- big_res
+func greeting(name: string, greeter: bool, node: string, greeting_service: string) -> string:
+  on node:
+    Greeting greeting_service
+    res <- Greeting.greeting(name, greeter)
+  Local.run(res)
+  <- res
 
-func echo_greeter_seq(data: []string, name: string, greeter: bool) -> []string:    5
-    echo_res <- Echo.echo(data)
+
+
 ```
 
-
+1. `--` is a comment with the Aqua file name
+2.  We define a local services ...
+3. We define the interface to the deployed service ...
+4. we define our workflow by specifying node, service 
 
 
 

@@ -2,7 +2,7 @@
 description: WIP
 ---
 
-# Overview
+# Introduction
 
 [Aqua](https://github.com/fluencelabs/aqua) is a new programming language aimed at programming distributed, and especially peer-to-peer, systems, backends, and applications.
 
