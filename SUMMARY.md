@@ -1,9 +1,7 @@
 # Table of contents
 
 * [Introduction](README.md)
-* [Thinking In Aquamarine](p2p/README.md)
-  * [For Blockchain Developers](p2p/for-blockchain-developers.md)
-  * [For Client-Server Developers](p2p/for-client-server-developers.md)
+* [Thinking In Aquamarine](p2p.md)
 * [Quick Start](quick-start/README.md)
   * [Setup](quick-start/setup.md)
   * [Using A Distributed Service](quick-start/using-a-distributed-service.md)
