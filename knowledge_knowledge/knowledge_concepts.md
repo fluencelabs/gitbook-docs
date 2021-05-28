@@ -28,7 +28,7 @@ Services are logical compute units derived from linking of one or more Wasm modu
 * Permission to resources
 * Maximum memory allocation
 
-FCE uses a [shared nothing](https://en.wikipedia.org/wiki/Shared-nothing_architecture) linking scheme meaning that modules only expose functions explicitly marked to be publicly available while not sharing memeory or any other resources. It should be further noted that services can **not** call on other services directly.
+FCE uses a [shared nothing](https://en.wikipedia.org/wiki/Shared-nothing_architecture) linking scheme meaning that modules only expose functions explicitly marked to be publicly available while not sharing memory or any other resources. It should be further noted that services can **not** call on other services directly.
 
 ## Blueprint
 
