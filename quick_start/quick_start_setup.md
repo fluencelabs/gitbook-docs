@@ -29,7 +29,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 nvm install --lts
 ```
 
-which allows us to install the \[Fluence Service Distribution and Management too\]\([https://github.com/fluencelabs/proto-distributor](https://github.com/fluencelabs/proto-distributor)\), `fldist`.
+which allows us to install the [Fluence Service Distribution and Management tool](https://github.com/fluencelabs/proto-distributor), `fldist`.
 
 ```bash
 npm install -g @fluencelabs/fldist
