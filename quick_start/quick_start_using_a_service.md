@@ -2,7 +2,7 @@
 
 Let's dive right into peer-to-peer awesomeness by harnessing a distributed curl service, which pretty much keeps with its namesake: pass it a url and collect the response. Instead of developing our service from scratch, we reuse one already deployed to the [Fluence testnet](https://dash.fluence.dev/nodes).
 
-The [Fluence Dashboard](https://dash.fluence.dev/) facilitates the discovery of available services, such as the [Curl Adapter](https://dash.fluence.dev/blueprint/b7d2454e-2a75-408c-a23a-fe35de3beeb9) service, which allows us to harness http\(s\) requests as a service. Drilling down on the metadata provides a few useful parameters such as _service id_, _node id_ and _ip address_, which we need to execute our distributed curl service.
+The [Fluence Dashboard](https://dash.fluence.dev/) facilitates the discovery of available services, such as the [Curl Adapter](https://dash.fluence.dev/blueprint/929890ac497a8322df366a42c6b7d09606e589963102aa578029079e6fe743d5) service, which allows us to harness http\(s\) requests as a service. Drilling down on the metadata provides a few useful parameters such as _service id_, _node id_ and _ip address_, which we need to execute our distributed curl service.
 
 In order to execute the cUrl service and collect the result, i.e., response, we call upon our composition and coordination medium Aquamarine via an Aquamarine Intermediate Representation \(AIR\) script.
 
