@@ -1,6 +1,6 @@
 # Using a Service
 
-Let's dive right into peer-to-peer awesomeness by harnessing a distributed curl service, which pretty much keeps with its namesake: pass it a url and collect the response. Instead of developing our service from scratch, we reuse one already deployed to the \[Fluence testnet\]\([https://dash.fluence.dev/nodes](https://dash.fluence.dev/nodes)\).
+Let's dive right into peer-to-peer awesomeness by harnessing a distributed curl service, which pretty much keeps with its namesake: pass it a url and collect the response. Instead of developing our service from scratch, we reuse one already deployed to the [Fluence testnet](https://dash.fluence.dev/nodes).
 
 The [Fluence Dashboard](https://dash.fluence.dev/) facilitates the discovery of available services, such as the [Curl Adapter](https://dash.fluence.dev/blueprint/b7d2454e-2a75-408c-a23a-fe35de3beeb9) service, which allows us to harness http\(s\) requests as a service. Drilling down on the metadata provides a few useful parameters such as _service id_, _node id_ and _ip address_, which we need to execute our distributed curl service.
 
@@ -35,10 +35,10 @@ With the service id parameter obtained from the dashboard lookup above, e.g., "f
 2. execute the service and
 3. collect the response
 
-In your directory of choice, save the above script as _curl\_request.clj_ and run:
+In your directory of choice, save the above script as _curl\_request.air_ and run:
 
 ```bash
-$ fldist run_air -p curl_request.clj -d '{"service_id": "f92ce98b-1ed6-4ce3-9864-11f4e93a478f", "url":"https://api.duckduckgo.com/?q=homotopy&format=json"}'
+$ fldist run_air --path curl_request.air --data '{"service_id": "f92ce98b-1ed6-4ce3-9864-11f4e93a478f", "url":"https://api.duckduckgo.com/?q=homotopy&format=json"}' --env testnet
 ```
 
 and voila, book-ended by process and network metadata, we see our result in the stdout pipe ready for further processing.
