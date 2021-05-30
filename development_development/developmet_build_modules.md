@@ -10,7 +10,7 @@ The general process to create a Fluence \(module\) project is to:
 cargo +nightly create your_module_name --release
 ```
 
-and add the [binary target](https://doc.rust-lang.org/cargo/reference/cargo-targets.html#binaries) and [Flunece Rust SDK](https://crates.io/crates/fce) to the Cargo.toml:
+and add the [binary target](https://doc.rust-lang.org/cargo/reference/cargo-targets.html#binaries) and [Fluence Rust SDK](https://crates.io/crates/fluence) to the Cargo.toml:
 
 ```text
 <snip>
@@ -36,14 +36,14 @@ cd greeting
 and update _main.rs_:
 
 ```rust
-use fluence::fce;                               // 1
+use fluence::marine;                            // 1
 use fluence::module_manifest;                   // 2
 
 module_manifest!();                             // 3
 
 pub fn main() {}                                // 4
 
-#[fce]                                          // 5
+#[marine]                                       // 5
 pub fn greeting(name: String) -> String {
     format!("Hi, {}", name)
 }
@@ -51,11 +51,11 @@ pub fn greeting(name: String) -> String {
 
 Let's go line by line:
 
-1. Import the [fce](https://github.com/fluencelabs/fce/tree/5effdcba7215cd378f138ab77f27016024720c0e) module from the [Fluence crate](https://crates.io/crates/fluence), which allows us to compile our code to the [wamser32-wasi](https://docs.rs/crate/wasi/0.6.0) target
+1. Import the [fluence](https://github.com/fluencelabs/rust-sdk) module from the [Fluence crate](https://crates.io/crates/fluence), which allows us to compile our code to the [wamser32-wasi](https://docs.rs/crate/wasi/0.6.0) target
 2. Import the [module\_manifest](https://github.com/fluencelabs/rust-sdk/blob/master/crates/main/src/module_manifest.rs), which allows us to embed the SDK version in our module
 3. Initiate the module\_manifest macro
 4. Initiate the main function which generally stays empty or is used to instantiate a logger
-5. Markup the public function we want to expose with the FCE macro which, among other things, checks that only Wasm IT types are used
+5. Markup the public function we want to expose with the _marine_ macro which, among other things, checks that only Wasm IT(Interface Types) are used
 
 Once we compile our code, we generate the wasm32-wasi file, which can be found in the `target/wasm32-wasi` path of your directory. The `greeting.wasm` file is what we need for testing and eventual upload to the peer-to-peer network.
 
@@ -65,7 +65,7 @@ To make things a little easier on us, let's create a build script, _build.sh_:
 #!/bin/sh
 # This script builds all sub-projects and puts our Wasm module(s) in a high-level dir
 
-fce build --release                                            // 1
+marine build --release                                         // 1
 
 mkdir -p artifacts                                             // 2
 rm artifacts/*                                                     
@@ -74,7 +74,7 @@ cp target/wasm32-wasi/release/greeting.wasm artifacts/         // 3
 
 Our script executes the following steps in one handy executable:
 
-1. Compile the FCE annotated Rust code to the wasm32-wasi target generating the wasm module we so very much desire
+1. Compile the _marine_ annotated Rust code to the wasm32-wasi target generating the wasm module we so very much desire
 2. Make a higher-level artifacts directory to hold wasm file\(s\) in a more convenient location
 3. Copy the wasm build to the artifacts directory
 
@@ -111,14 +111,18 @@ The source code for the module can be found in the [examples repo](https://githu
 
 ## Taking The Greeting Module For A Spin
 
-Now that we have a Wasm module and service configuration, we can explore and test our achievements locally with the Fluence REPL tool `fce-repl`. Load the service for inspection and testing:
+Now that we have a Wasm module and service configuration, we can explore and test our achievements locally with the Fluence REPL tool `mrepl`. Load the service for inspection and testing:
 
 ```bash
-fce-repl Config.toml
+mrepl Config.toml
 
-Welcome to the FCE REPL (version 0.5.2)
-app service was created with service id = 10afa1aa-22e6-4c8a-b668-6be95d2d3530
-elapsed time 54.290336ms
+Welcome to the Marine REPL (version 0.7.2)
+Minimal supported versions
+  sdk: 0.6.0
+  interface-types: 0.20.0
+
+app service was created with service id = daf63a52-2110-4ea6-ada2-bf8633eff633
+elapsed time 65.8531ms
 
 1> interface
 Loaded modules interface:
@@ -139,7 +143,7 @@ result: String("Hi, Fluence")
 3>
 ```
 
-The _interface_ command lists the available interfaces by module, i.e., the functions we designated as public and marked up with the _FCE_ macro in our source code. For more command info, use the _help_ command:
+The _interface_ command lists the available interfaces by module, i.e., the functions we designated as public and marked up with the _marine_ macro in our source code. For more command info, use the _help_ command:
 
 ```text
 1> help
@@ -310,10 +314,10 @@ And that's a wrap.
 In this section we worked through the various requisites and requirements to develop modules and services. To recap:
 
 1. Create a Rust bin project and update the Cargo.toml to reflect our binary target
-2. Mark public module functions with the _FCE_ macro
-3. Build and compile the project with the `fce` tool
+2. Mark public module functions with the _marine_ macro
+3. Build and compile the project with the `marine` tool
 4. Create a service config toml file to specify wasm file location, included modules, module permissions and more
-5. Use `fce-repl` to inspect and test modules and services
+5. Use `mrepl` to inspect and test modules and services
 6. Create a deployment json config file for each module for service deployment
 7. Deploy a service with `fldist` tool
 8. Execute the service with an AIR script from the `fldst` command-line tool
