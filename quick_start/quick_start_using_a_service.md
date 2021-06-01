@@ -38,7 +38,7 @@ With the service id parameter obtained from the dashboard lookup above, e.g., "f
 In your directory of choice, save the above script as _curl\_request.clj_ and run:
 
 ```bash
-$ fldist run_air --path curl_request.air --data '{"service_id": "f92ce98b-1ed6-4ce3-9864-11f4e93a478f", "url":"https://api.duckduckgo.com/?q=homotopy&format=json"}' --env testnet
+$ fldist run_air --path curl_request.clj --data '{"service_id": "f92ce98b-1ed6-4ce3-9864-11f4e93a478f", "url":"https://api.duckduckgo.com/?q=homotopy&format=json"}' --env testnet
 ```
 
 and voila, book-ended by process and network metadata, we see our result in the stdout pipe ready for further processing.
