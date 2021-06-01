@@ -36,7 +36,7 @@ docker logs -f fluence
 <snip>
 ```
 
-For future interaction with the node, we need to retain the server peer id 12D3KooWLFCmDq4vDRfaxW2GA6kYnorxAiie78XzQrVDVoWEZnPx. And if you feel the need to snoop around the container:
+For future interaction with the node, we need to retain the `server peer id` 12D3KooWLFCmDq4vDRfaxW2GA6kYnorxAiie78XzQrVDVoWEZnPx. And if you feel the need to snoop around the container:
 
 ```bash
 docker exec -it fluence bash
@@ -67,7 +67,7 @@ node peerId: 12D3KooWLFCmDq4vDRfaxW2GA6kYnorxAiie78XzQrVDVoWEZnPx
 to expand interfaces, use get_interfaces --expand
 ```
 
-Since we just initiated the node, we expect no modules and no interfaces and the `fldist` queries confirm our expectations. To further explore and validate the node, we can create a small [greeting](https://github.com/fluencelabs/fce/tree/master/examples/greeting) service.
+Since we just initiated the node, we expect no modules and no interfaces and the `fldist` queries confirm our expectations. To further explore and validate the node, we can create a small [greeting](https://github.com/fluencelabs/examples/tree/master/greeting) service.
 
 ```bash
 mkdir fluence-greeter
@@ -90,7 +90,7 @@ service id: 64551400-6296-4701-8e82-daf0b4e02751
 service created successfully
 ```
 
-We now have a greeting service running on our node. As always, make a note of the service id, 64551400-6296-4701-8e82-daf0b4e02751.
+We now have a greeting service running on our node. As always, make a note of the `service id`, 64551400-6296-4701-8e82-daf0b4e02751.
 
 ```bash
 fldist get_modules --node-id 12D3KooWLFCmDq4vDRfaxW2GA6kYnorxAiie78XzQrVDVoWEZnPx  --node-addr /ip4/127.0.0.1/tcp/9999/ws/p2p/12D3KooWLFCmDq4vDRfaxW2GA6kYnorxAiie78XzQrVDVoWEZnPx
@@ -147,7 +147,7 @@ docker logs -f fluence
 [2021-03-12T02:42:51.046652Z INFO  particle_node::network_api] Sent particle 14db3aff-b1a9-439e-8890-d0cdc9a0bacd to 12D3KooWLFqJwuHNe2kWF8SMgX6cm24L83JUADFcbrj5fC1z3b21 @ [/ip4/172.17.0.1/tcp/61636/ws]
 ```
 
-Looks like our node container and logging is up and running and ready for your development use. As the Fluence team is rapidly developig, make sure you stay up to date. Check the repo or [Docke rhub](https://hub.docker.com/r/fluencelabs/fluence) and update with `docker pull fluencelabs/fluence:latest`.
+Looks like our node container and logging is up and running and ready for your development use. As the Fluence team is rapidly developig, make sure you stay up to date. Check the repo or [Docke hub](https://hub.docker.com/r/fluencelabs/fluence) and update with `docker pull fluencelabs/fluence:latest`.
 
 Happy composing!
 
