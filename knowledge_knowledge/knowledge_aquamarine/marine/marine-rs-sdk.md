@@ -1,0 +1,26 @@
+# Marine-RS-SDK
+
+The marine-rs-sdk empowers developers to write services suitable for peer hosting in peer-to-peer networks using the Marine Virtual Machine by enabling the wasm32-wasi compile target for Marine. For an introduction to writing services with the marine-rs-sdk, see the [Developing Modules And Services](../../../development_development/) section. 
+
+### API
+
+The procedural macros `[marine]` and `[marine_test]` are the two primary features provided by the SDK. The `[marine]` macro can be applied to a function, external block or structure. The `[marine_test]` macro, on the other hand, allows the use of the familiar `cargo test` to execute \(unit\) tests over the actual Wasm module generated from the service code.
+
+#### Function Export
+
+Applying the `[marine]` macro to a function results in its export, which means that it can be called from other modules or AIR scripts. For the function to be compatible with this macro, its arguments must be of the `ftype`, which is defined as follows:
+
+`ftype` = `bool`, `u8`, `u16`, `u32`, `u64`, `i8`, `i16`, `i32`, `i64`, `f32`, `f64`, `String`  
+`ftype` = `ftype` \| `Vec`&lt;`ftype`&gt;  
+`ftype` = `ftype` \| `Record`&lt;`ftype`&gt;
+
+In other words, the arguments must be one of the types listed below:
+
+* one of the following Rust basic types: `bool`, `u8`, `u16`, `u32`, `u64`, `i8`, `i16`, `i32`, `i64`, `f32`, `f64`, `String`
+* a vector of elements of the above types
+* a vector composed of vectors of the above type, where recursion is acceptable, e.g. the type `Vec<Vec<Vec<u8>>>` is permissible
+* a record, where all fields are of the basic Rust types
+* a record, where all fields are of any above types or other records 
+
+The return type of a function must follow the same rules, but currently only one return type is possible.
+
