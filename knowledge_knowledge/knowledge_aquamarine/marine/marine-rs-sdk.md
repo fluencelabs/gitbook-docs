@@ -78,6 +78,16 @@ extern "C" {
 
 
 
+{% hint style="info" %}
+
+
+#### Function import requirements
+
+* wrap an extern block with the function\(s\) to be imported with the `[marine]` macro
+* all function\(s\) arguments must be of the `ftype` type
+* the return type of the function\(s\) must be `ftype`
+{% endhint %}
+
 
 
 
