@@ -24,3 +24,36 @@ In other words, the arguments must be one of the types listed below:
 
 The return type of a function must follow the same rules, but currently only one return type is possible.
 
+Below an example of an exposed function with a complex type signature and return value:
+
+```rust
+// export TestRecord as a public data structure bound by 
+// the IT type constraints
+#[marine]
+pub struct TestRecord {
+    pub field_0: i32,
+    pub field_1: Vec<Vec<u8>>,
+}
+
+// export foo as a public function bound by the 
+// IT type contraints 
+#[marine] # 
+pub fn foo(arg_1: Vec<Vec<Vec<Vec<TestRecord>>>>, arg_2: String) -> Vec<Vec<Vec<Vec<TestRecord>>>> { 
+    unimplemented!() 
+}
+```
+
+
+
+{% hint style="info" %}
+Function Export Requirements
+
+* wrap a target function with the `[marine]` macro
+* function arguments must by of `ftype`
+* the function return type also must be of `ftype` 
+{% endhint %}
+
+#### Function Import
+
+
+
