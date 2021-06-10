@@ -55,5 +55,30 @@ Function Export Requirements
 
 #### Function Import
 
+The `[marine]` macro can also wrap an [`extern` block](https://doc.rust-lang.org/std/keyword.extern.html). In this case, all functions declared in it are considered imported functions. If there are imported functions in some module, say, module A, then:
+
+* There should be another module, module B, that exports the same functions. The name of module B is indicated in the `link` macro \(see examples below\).
+* Module B should be loaded to `Marine` by the moment the loading of module A starts. Module A cannot be loaded if at least one imported function is absent in `Marine`.
+
+```text
+#[marine]
+pub struct TestRecord {
+    pub field_0: i32,
+    pub field_1: Vec<Vec<u8>>,
+}
+
+// wrap the extern block with the marine macro to expose the function
+// as an import to the Marine VM
+#[marine]
+#[link(wasm_import_module = "some_module")]
+extern "C" {
+    pub fn foo(arg: Vec<Vec<Vec<Vec<TestRecord>>>>, arg_2: String) -> Vec<Vec<Vec<Vec<TestRecord>>>>;
+}
+```
+
+
+
+
+
 
 
