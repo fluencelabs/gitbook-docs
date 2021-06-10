@@ -24,7 +24,7 @@ In other words, the arguments must be one of the types listed below:
 
 The return type of a function must follow the same rules, but currently only one return type is possible.
 
-Below an example of an exposed function with a complex type signature and return value:
+See the example below of an exposed function with a complex type signature and return value:
 
 ```rust
 // export TestRecord as a public data structure bound by 
@@ -60,7 +60,11 @@ The `[marine]` macro can also wrap an [`extern` block](https://doc.rust-lang.org
 * There should be another module, module B, that exports the same functions. The name of module B is indicated in the `link` macro \(see examples below\).
 * Module B should be loaded to `Marine` by the moment the loading of module A starts. Module A cannot be loaded if at least one imported function is absent in `Marine`.
 
-```text
+
+
+See the example below of a wrapped `extern` block:
+
+```rust
 #[marine]
 pub struct TestRecord {
     pub field_0: i32,
@@ -87,6 +91,218 @@ extern "C" {
 * all function\(s\) arguments must be of the `ftype` type
 * the return type of the function\(s\) must be `ftype`
 {% endhint %}
+
+#### 
+
+#### Structures
+
+Finally, the `[marine]` macro can wrap a `struct` making possible to use it as a function argument or return type. Note that 
+
+* only macro-wrapped structures can be used as function arguments and return types
+* all fields of the wrapped structure must be public and of the `ftype`.
+* it is possible to have inner records in the macro-wrapped structure
+
+See the example below for a wrapped `struc`t:
+
+```rust
+#[marine]
+pub struct TestRecord0 {
+    pub field_0: i32,
+}
+
+#[marine]
+pub struct TestRecord1 {
+    pub field_0: i32,
+    pub field_1: String,
+    pub field_2: Vec<u8>,
+    pub test_record_0: TestRecord0,
+}
+
+#[marine]
+pub struct TestRecord2 {
+    pub test_record_0: TestRecord0,
+    pub test_record_1: TestRecord1,
+}
+
+#[marine]
+fn foo(mut test_record: TestRecord2) -> TestRecord2 { unimplemented!(); }
+```
+
+
+
+{% hint style="info" %}
+
+
+> #### Structure passing requirements
+>
+> * wrap a structure with the `[marine]` macro
+> * all structure fields must be of the `ftype`
+> * the structure must be pointed to without preceding package import in a function signature, i.e`StructureName` but not `package_name::module_name::StructureName`
+{% endhint %}
+
+
+
+#### Call Parameters
+
+There is a special API function `fluence::get_call_parameters()` that returns an instance of the `CallParameters` structure defined as follows:
+
+```rust
+pub struct CallParameters {
+    pub call_id: String,
+    pub user_name: String,
+    pub application_id: String,
+}
+```
+
+Where
+
+* **call\_id**  is the id, or nonce, of the current call to the service. This number is unique across the calls.
+* **user\_name** is the  user name of the caller
+* **application\_id**  is the  id of the application that this service belongs to
+
+
+
+#### Testing
+
+
+
+
+
+
+
+### Features
+
+The SDK has two useful features: `logger` and `debug`.
+
+#### Logger
+
+Using logging is a simple way to assist in the debugging without deploying the module\(s\)  to a peer-to-peer network node. The `logger` feature allows you to use a special logger that is based at the top of the [log](https://crates.io/crates/log) crate.
+
+To enable logging please specify the `logger` feature of the Fluence SDK in `Config.toml` and add the [log](https://docs.rs/log/0.4.11/log/) crate:
+
+```rust
+[dependencies]
+log = "0.4.14"
+fluence = { version = "0.6.9", features = ["logger"] }
+```
+
+The logger should be initialized before its usage. This can be done in the `main` function as shown in the example below.
+
+```rust
+use fluence::marine;
+use fluence::WasmLogger;
+
+pub fn main() {
+    WasmLogger::new()
+        // with_log_level can be skipped,
+        // logger will be initialized with Info level in this case.
+        .with_log_level(log::Level::Info)
+        .build()
+        .unwrap();
+}
+
+#[marine]
+pub fn put(name: String, file_content: Vec<u8>) -> String {
+    log::info!("put called with file name {}", file_name);
+    unimplemented!()
+}
+```
+
+
+
+In addition to the standard log creation features, the Fluence logger allows the so-called target map to be configured during the initialization step. This allows you to filter out logs by `logging_mask`, which can be set for each module in the service configuration. Let's consider an example:
+
+```rust
+const TARGET_MAP: [(&str, i64); 4] = [
+    ("instruction", 1 << 1),
+    ("data_cache", 1 << 2),
+    ("next_peer_pks", 1 << 3),
+    ("subtree_complete", 1 << 4),
+];
+
+pub fn main() {
+  use std::collections::HashMap;
+    use std::iter::FromIterator;
+  
+    let target_map = HashMap::from_iter(TARGET_MAP.iter().cloned());
+    
+  fluence::WasmLogger::new()
+        .with_target_map(target_map)
+        .build()
+        .unwrap();
+}
+
+#[fce]
+pub fn foo() {
+    log::info!(target: "instruction", "this will print if (logging_mask & 1) != 0");
+    log::info!(target: "data_cache", "this will print if (logging_mask & 2) != 0");
+}
+```
+
+
+
+Here, an array called `TARGET_MAP` is defined and provided to a logger in the `main` function of a module. Each entry of this array contains a string \(a target\) and a number that represents the bit position in the 64-bit mask `logging_mask`. When you write a log message request `log::info!`, its target must coincide with one of the strings \(the targets\) defined in the `TARGET_MAP` array. The log will be printed if `logging_mask` for the module has the corresponding target bit set.
+
+{% hint style="info" %}
+REPL also uses the log crate to print logs from Wasm modules. Log messages will be printed if`RUST_LOG` environment variable is specified.
+{% endhint %}
+
+
+
+#### Debug
+
+The application of the second feature is limited to obtaining some of the internal details of the IT execution. Normally, this feature should not be used by a backend developer. Here you can see example of such details for the greeting service compiled with the `debug` feature:
+
+```bash
+# running the greeting service compiled with debug feature
+~ $ RUST_LOG="info" fce-repl Config.toml
+Welcome to the Fluence FaaS REPL
+app service's created with service id = e5cfa463-ff50-4996-98d8-4eced5ac5bb9
+elapsed time 40.694769ms
+
+1> call greeting greeting "user"
+[greeting] sdk.allocate: 4
+[greeting] sdk.set_result_ptr: 1114240
+[greeting] sdk.set_result_size: 8
+[greeting] sdk.get_result_ptr, returns 1114240
+[greeting] sdk.get_result_size, returns 8
+[greeting] sdk.get_result_ptr, returns 1114240
+[greeting] sdk.get_result_size, returns 8
+[greeting] sdk.deallocate: 0x110080 8
+
+result: String("Hi, user")
+ elapsed time: 222.675µs
+```
+
+The most important information these logs relates to the `allocate`/`deallocate` function calls. The `sdk.allocate: 4` line corresponds to passing the 4-byte `user` string to the Wasm module, with the memory allocated inside the module and the string is copied there. Whereas `sdk.deallocate: 0x110080 8` refers to passing the 8-byte resulting string `Hi, user` to the host side. Since all arguments and results are passed by value, `deallocate` is called to delete unnecessary memory inside the Wasm module.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
