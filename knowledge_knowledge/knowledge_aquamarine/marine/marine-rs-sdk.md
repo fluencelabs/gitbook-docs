@@ -60,10 +60,10 @@ The `[marine]` macro can also wrap an [`extern` block](https://doc.rust-lang.org
 * There should be another module, module B, that exports the same functions. The name of module B is indicated in the `link` macro \(see examples below\).
 * Module B should be loaded to `Marine` by the moment the loading of module A starts. Module A cannot be loaded if at least one imported function is absent in `Marine`.
 
+See the examples below for wrapped `extern` block usage:
 
-
-See the example below of a wrapped `extern` block:
-
+{% tabs %}
+{% tab title="Example 1" %}
 ```rust
 #[marine]
 pub struct TestRecord {
@@ -79,6 +79,18 @@ extern "C" {
     pub fn foo(arg: Vec<Vec<Vec<Vec<TestRecord>>>>, arg_2: String) -> Vec<Vec<Vec<Vec<TestRecord>>>>;
 }
 ```
+{% endtab %}
+
+{% tab title="Example 2" %}
+```rust
+[marine]
+#[link(wasm_import_module = "some_module")]
+extern "C" {
+  pub fn foo(arg: Vec<Vec<Vec<Vec<u8>>>>) -> Vec<Vec<Vec<Vec<u8>>>>;
+}
+```
+{% endtab %}
+{% endtabs %}
 
 
 
