@@ -114,7 +114,7 @@ Finally, the `[marine]` macro can wrap a `struct` making possible to use it as a
 * all fields of the wrapped structure must be public and of the `ftype`.
 * it is possible to have inner records in the macro-wrapped structure
 
-See the example below for a wrapped `struct` :
+See the example below for  wrapping `struct`:
 
 {% tabs %}
 {% tab title="Example 1" %}
@@ -169,6 +169,33 @@ pub struct TestRecord2 {
 extern "C" {
   fn foo(mut test_record: TestRecord2) -> TestRecord2;
 }
+```
+{% endtab %}
+
+{% tab title="Example 3" %}
+```rust
+mod data_crate {
+    use fluence::marine;
+    #[marine]
+    pub struct Data {
+        pub name: String,
+        pub data: f64,
+    }
+}
+
+use data_crate::Data;
+use fluence::marine;
+
+fn main() {}
+
+#[marine]
+fn some_function() -> Data {
+    Data {
+        name: "example".into(),
+        data: 1.0,
+    }
+}
+
 ```
 {% endtab %}
 {% endtabs %}
