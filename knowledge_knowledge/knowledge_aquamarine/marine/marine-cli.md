@@ -1,6 +1,6 @@
 # Marine CLI
 
-The [Marine command line tool](https://github.com/fluencelabs/marine) 
+The [Marine command line tool](https://github.com/fluencelabs/marine) provides the project `marine build` functionality, analogous to `cargo build`,  that results in our Rust code to be compiled to the _wasm32-wasi_ module. In addition,  `marine` provides utilities to inspect Wasm modules, expose Wasm module attributes or manually set module properties.
 
 ```rust
 mbp16~(:|✔) % marine --help
@@ -24,6 +24,10 @@ SUBCOMMANDS:
     set      Sets interface types and version to the provided Wasm file
 mbp16~(:|✔) %
 ```
+
+
+
+ 
 
 
 
