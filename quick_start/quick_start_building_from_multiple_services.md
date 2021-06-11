@@ -43,7 +43,7 @@ Let's test the hex conversion test in isolation with the following AIR script:
 ```
 
 {% hint style="info" %}
-Aquamarine Intermediate Representation \(AIR\) is a low level implementation of Aquamarine to coordinate services into applications. For a detailed introduction to AIR, please refer to the [Knowledgebase](../knowledge_knowledge/knowledge_aquamarine/knowledge_aquamarine_air.md). For the remainder of this section, we will see three AIR _instructions_: _seq, xor,_ and _call._
+Aquamarine Intermediate Representation \(AIR\) is a low level implementation of Aquamarine to coordinate services into applications. For a detailed introduction to AIR, please refer to the [Knowledgebase](../knowledge_knowledge/knowledge_aquamarine/hll/knowledge_aquamarine_air.md). For the remainder of this section, we will see three AIR _instructions_: _seq, xor,_ and _call._
 
 _seq_ is the _sequential_ instruction that wraps arguments and executes them, you guessed it, sequentially. And yes, there is a _parallel_ instruction in the language.
 

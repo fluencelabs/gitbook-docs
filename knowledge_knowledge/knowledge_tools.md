@@ -1,14 +1,21 @@
 # Tools
 
-## Fluence FCE REPL
+## Fluence Marine REPL
 
-\`\`[`fce-repl`](https://crates.io/crates/frepl) is a command line tool \(CLI\) to locally inspect, run, and test module and service configurations making it an invaluable development tool.
+[`mrepl`](https://crates.io/crates/mrepl) is a command line tool \(CLI\) to locally run a Marine instance to inspect, run, and test module and service configurations.
 
 ```text
-mbp16~(:|✔) % fce-repl
-Welcome to the FCE REPL (version 0.5.2)
-app service was created with service id = 2321fc56-8cb9-497a-8abb-03d04665e1cc
-elapsed time 282.52µs
+mbp16~(:|✔) % mrepl
+Welcome to the Marine REPL (version 0.7.2)
+Minimal supported versions
+  sdk: 0.6.0
+  interface-types: 0.20.0
+
+New version is available! 0.7.2 -> 0.7.4
+To update run: cargo +nightly install mrepl --force
+
+app service was created with service id = d81a4de5-55c3-4cb7-935c-3d5c6851320d
+elapsed time 486.234µs
 
 1> help
 Commands:
@@ -22,6 +29,8 @@ e/envs <module_name>                      print environment variables of a modul
 f/fs <module_name>                        print filesystem state of a module
 h/help                                    print this message
 q/quit/Ctrl-C                             exit
+
+2>
 ```
 
 ## Fluence Proto Distributor: FLDIST

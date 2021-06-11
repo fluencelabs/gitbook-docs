@@ -15,11 +15,11 @@ rustup toolchain install nightly
 rustup target add wasm32-wasi
 ```
 
-In addition, install the Fluence REPL,`frepl`, and CLI, `fcli`, tools:
+In addition, install the Marine REPL,`mrepl`, and CLI, `marine`, tools:
 
 ```bash
-$ cargo install fcli --force
-$ cargo install +nightly install frepl --force
+$ cargo install marine --force
+$ cargo +nightly install mrepl --force
 ```
 
 Finally, you need [node](https://nodejs.org/en/) installed, and if you don't have it already, you may be best served by installing [NVM](https://github.com/nvm-sh/nvm):
@@ -29,7 +29,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 nvm install --lts
 ```
 
-which allows us to install the \[Fluence Service Distribution and Management too\]\([https://github.com/fluencelabs/proto-distributor](https://github.com/fluencelabs/proto-distributor)\), `fldist`.
+which allows us to install the [Fluence Service Distribution and Management tool](https://github.com/fluencelabs/proto-distributor), `fldist`.
 
 ```bash
 npm install -g @fluencelabs/fldist
