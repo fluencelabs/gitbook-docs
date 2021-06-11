@@ -4,7 +4,7 @@ The marine-rs-sdk empowers developers to write services suitable for peer hostin
 
 ### API
 
-The procedural macros `[marine]` and `[marine_test]` are the two primary features provided by the SDK. The `[marine]` macro can be applied to a function, external block or structure. The `[marine_test]` macro, on the other hand, allows the use of the familiar `cargo test` to execute \(unit\) tests over the actual Wasm module generated from the service code.
+The procedural macros `[marine]` and `[marine_test]` are the two primary features provided by the SDK. The `[marine]` macro can be applied to a function, external block or structure. The `[marine_test]` macro, on the other hand, allows the use of the familiar `cargo test` to execute tests over the actual Wasm module generated from the service code.
 
 #### Function Export
 
@@ -177,23 +177,53 @@ extern "C" {
 
 #### Call Parameters
 
-There is a special API function `fluence::get_call_parameters()` that returns an instance of the `CallParameters` structure defined as follows:
+There is a special API function `fluence::get_call_parameters()` that returns an instance of the [`CallParameters`](https://github.com/fluencelabs/marine-rs-sdk/blob/master/fluence/src/call_parameters.rs#L35) structure defined as follows:
 
 ```rust
 pub struct CallParameters {
-    pub call_id: String,
-    pub user_name: String,
-    pub application_id: String,
+    /// Peer id of the AIR script initiator.
+    pub init_peer_id: String,
+
+    /// Id of the current service.
+    pub service_id: String,
+
+    /// Id of the service creator.
+    pub service_creator_peer_id: String,
+
+    /// Id of the host which run this service.
+    pub host_id: String,
+
+    /// Id of the particle which execution resulted a call this service.
+    pub particle_id: String,
+
+    /// Security tetraplets which described origin of the arguments.
+    pub tetraplets: Vec<Vec<SecurityTetraplet>>,
 }
 ```
 
-Where
+CallParameters are especially useful in constructing authentication services:
 
-* **call\_id**  is the id, or nonce, of the current call to the service. This number is unique across the calls.
-* **user\_name** is the  user name of the caller
-* **application\_id**  is the  id of the application that this service belongs to
+```text
+// auth.rs
+use fluence::{marine, CallParameters};
+use::marine;
+use crate::get_connection;
 
+pub fn is_owner() -> bool {
+    let meta = marine::get_call_parameters();
+    let caller = meta.init_peer_id;
+    let owner = meta.service_creator_peer_id;
 
+    caller == owner
+}
+
+#[fce]
+pub fn am_i_owner() -> bool {
+    is_owner()
+}
+```
+
+#### 
 
 #### MountedBinaryResult
 
