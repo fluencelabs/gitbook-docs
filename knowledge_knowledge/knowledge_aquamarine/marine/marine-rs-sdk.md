@@ -162,6 +162,70 @@ Where
 
 
 
+#### MountedBinaryResult
+
+Due to the inherent limitations of Wasm modules, such as a lack of sockets, it may be necessary for a module to interact with its host to bridge such gaps, e.g. use a https transport provider like _curl_. In order for a Wasm module to use a host's _curl_  capabilities, we need to provide access to the binary, which at the code level is achieved through the Rust `extern` block:
+
+```rust
+// Importing a linked binary, curl, to a Wasm module
+#![allow(improper_ctypes)]
+
+use fluence::marine;
+use fluence::module_manifest;
+use fluence::MountedBinaryResult;
+
+module_manifest!();
+
+pub fn main() {}
+
+#[marine]
+pub fn curl_request(curl_cmd: Vec<String>) -> MountedBinaryResult {
+    let response = curl(curl_cmd);
+    response
+}
+
+#[marine]
+#[link(wasm_import_module = "host")]
+extern "C" {
+    fn curl(cmd: Vec<String>) -> MountedBinaryResult;
+}
+```
+
+The above code creates a "curl adapter", i.e., a Wasm module that allows other Wasm modules to use the the `curl_request` function, which calls the imported _curl_  binary in this case, to make http calls. Please note that we are wrapping the `extern` block with the `[marine]`macro and introduce a Marine-native data structure [`MountedBinaryResult`](https://github.com/fluencelabs/marine/blob/master/examples/url-downloader/curl_adapter/src/main.rs) as the linked-function return value.
+
+Please not that if you want to use `curl_request` with testing, see below, the curl call needs to be marked unsafe, e.g.:
+
+```rust
+    let response = unsafe { curl(curl_cmd) };
+```
+
+since cargo does not have access to the magic in place in the marine rs sdk to handle unsafe.
+
+MountedBinaryResult itself is a Marine-compatible struct containing a binary's return process code, error string, stdout and stderr:
+
+```rust
+#[marine]
+#[derive(Clone, PartialEq, Default, Eq, Debug, Serialize, Deserialize)]
+pub struct MountedBinaryResult {
+    /// Return process exit code or host execution error code, where SUCCESS_CODE means success.
+    pub ret_code: i32,
+
+    /// Contains the string representation of an error, if ret_code != SUCCESS_CODE.
+    pub error: String,
+
+    /// The data that the process wrote to stdout.
+    pub stdout: Vec<u8>,
+
+    /// The data that the process wrote to stderr.
+    pub stderr: Vec<u8>,
+}
+
+```
+
+MountedBinaryResult then can be used on a variety of match or conditional tests.
+
+
+
 #### Testing
 
 Since we are compiling to a wasm32-wasi target with `ftype` constrains, the basic `cargo test` is not all that useful or even usable for our purposes. To alleviate that limitation, Fluence has introduced the [`[marine-test]` macro ](https://github.com/fluencelabs/marine-rs-sdk/tree/master/crates/marine-test-macro)that does a lot of the heavy lifting to allow developers to use `cargo test` as intended. That is,  `[marine-test]` macro generates the necessary code to call Marine, one instance per test function, based on the Wasm module and associated configuration file so that the actual test function is run against the Wasm module not the native code.

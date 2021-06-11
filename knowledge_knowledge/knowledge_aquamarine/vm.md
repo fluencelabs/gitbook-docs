@@ -1,2 +1,2 @@
-# Aqua VM
+# VM
 
