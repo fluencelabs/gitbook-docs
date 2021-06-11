@@ -1,6 +1,6 @@
-# Marine-RS-SDK
+# Marine Rust SDK
 
-The marine-rs-sdk empowers developers to write services suitable for peer hosting in peer-to-peer networks using the Marine Virtual Machine by enabling the wasm32-wasi compile target for Marine. For an introduction to writing services with the marine-rs-sdk, see the [Developing Modules And Services](../../../development_development/) section. 
+The [marine-rs-sdk](https://github.com/fluencelabs/marine-rs-sdk) empowers developers to write services suitable for peer hosting in peer-to-peer networks using the Marine Virtual Machine by enabling the wasm32-wasi compile target for Marine. For an introduction to writing services with the marine-rs-sdk, see the [Developing Modules And Services](../../../development_development/) section. 
 
 ### API
 
@@ -210,9 +210,10 @@ fn some_function() -> Data {
 > * wrap a structure with the `[marine]` macro
 > * all structure fields must be of the `ftype`
 > * the structure must be pointed to without preceding package import in a function signature, i.e`StructureName` but not `package_name::module_name::StructureName`
+> * wrapped structs can be imported from crates
 {% endhint %}
 
-
+#### 
 
 #### Call Parameters
 
@@ -325,6 +326,8 @@ pub struct MountedBinaryResult {
 
 MountedBinaryResult then can be used on a variety of match or conditional tests.
 
+
+
 #### Testing
 
 Since we are compiling to a wasm32-wasi target with `ftype` constrains, the basic `cargo test` is not all that useful or even usable for our purposes. To alleviate that limitation, Fluence has introduced the [`[marine-test]` macro ](https://github.com/fluencelabs/marine-rs-sdk/tree/master/crates/marine-test-macro)that does a lot of the heavy lifting to allow developers to use `cargo test` as intended. That is,  `[marine-test]` macro generates the necessary code to call Marine, one instance per test function, based on the Wasm module and associated configuration file so that the actual test function is run against the Wasm module not the native code.
@@ -375,7 +378,7 @@ The SDK has two useful features: `logger` and `debug`.
 
 #### Logger
 
-Using logging is a simple way to assist in the debugging without deploying the module\(s\)  to a peer-to-peer network node. The `logger` feature allows you to use a special logger that is based at the top of the [log](https://crates.io/crates/log) crate.
+Using logging is a simple way to assist in debugging without deploying the module\(s\)  to a peer-to-peer network node. The `logger` feature allows you to use a special logger that is based at the top of the [log](https://crates.io/crates/log) crate.
 
 To enable logging please specify the `logger` feature of the Fluence SDK in `Config.toml` and add the [log](https://docs.rs/log/0.4.11/log/) crate:
 
@@ -407,8 +410,6 @@ pub fn put(name: String, file_content: Vec<u8>) -> String {
 }
 ```
 
-
-
 In addition to the standard log creation features, the Fluence logger allows the so-called target map to be configured during the initialization step. This allows you to filter out logs by `logging_mask`, which can be set for each module in the service configuration. Let's consider an example:
 
 ```rust
@@ -431,14 +432,12 @@ pub fn main() {
         .unwrap();
 }
 
-#[fce]
+#[marine]
 pub fn foo() {
     log::info!(target: "instruction", "this will print if (logging_mask & 1) != 0");
     log::info!(target: "data_cache", "this will print if (logging_mask & 2) != 0");
 }
 ```
-
-
 
 Here, an array called `TARGET_MAP` is defined and provided to a logger in the `main` function of a module. Each entry of this array contains a string \(a target\) and a number that represents the bit position in the 64-bit mask `logging_mask`. When you write a log message request `log::info!`, its target must coincide with one of the strings \(the targets\) defined in the `TARGET_MAP` array. The log will be printed if `logging_mask` for the module has the corresponding target bit set.
 
@@ -477,7 +476,36 @@ The most important information these logs relates to the `allocate`/`deallocate`
 
 
 
+#### Module Manifest
 
+The `module_manifest!` macro embeds the Interface Type \(IT\), SDK and Rust project version as well as additional project and build information into Wasm module.  For the macro to be usable, it needs to be imported and initialized in the _main.rs_ file:
+
+```text
+// main.rs
+use fluence::marine;
+use fluence::module_manifest;    // import manifest macro
+
+module_manifest!();              // initialize macro
+
+fn main() {}
+
+#[marine]
+fn some_function() {}
+}
+```
+
+Using the Marine CLI, we can inspect a module's manifest with `marine info`:
+
+```rust
+mbp16~/localdev/struct-exp(main|…) % marine info -i artifacts/*.wasm
+it version:  0.20.1
+sdk version: 0.6.0
+authors:     The Fluence Team
+version:     0.1.0
+description: foo-wasm, a Marine wasi module
+repository:
+build time:  2021-06-11 21:08:59.855352 +00:00 UTC
+```
 
 
 
