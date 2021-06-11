@@ -201,7 +201,7 @@ Please not that if you want to use `curl_request` with testing, see below, the c
 
 since cargo does not have access to the magic in place in the marine rs sdk to handle unsafe.
 
-MountedBinaryResult itself is a Marine-compatible struct containing a binary's return process code, error string, stdout and stderr:
+MountedBinaryResult itself is a Marine-compatible struct containing a binary's return process code, error string and  stdout and stderr as byte arrays:
 
 ```rust
 #[marine]
@@ -223,8 +223,6 @@ pub struct MountedBinaryResult {
 ```
 
 MountedBinaryResult then can be used on a variety of match or conditional tests.
-
-
 
 #### Testing
 

@@ -1,4 +1,4 @@
-# HLL
+# Aqua
 
 ## Aquamarine High Level Language
 
