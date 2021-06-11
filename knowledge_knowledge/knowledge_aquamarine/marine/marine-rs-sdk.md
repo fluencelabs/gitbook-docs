@@ -328,10 +328,6 @@ MountedBinaryResult then can be used on a variety of match or conditional tests.
 
 
 
-
-
-
-
 #### Testing
 
 Since we are compiling to a wasm32-wasi target with `ftype` constrains, the basic `cargo test` is not all that useful or even usable for our purposes. To alleviate that limitation, Fluence has introduced the [`[marine-test]` macro ](https://github.com/fluencelabs/marine-rs-sdk/tree/master/crates/marine-test-macro)that does a lot of the heavy lifting to allow developers to use `cargo test` as intended. That is,  `[marine-test]` macro generates the necessary code to call Marine, one instance per test function, based on the Wasm module and associated configuration file so that the actual test function is run against the Wasm module not the native code.
