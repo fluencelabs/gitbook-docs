@@ -29,7 +29,6 @@
     * [Aqua VM](knowledge_knowledge/knowledge_aquamarine/vm.md)
     * [Marine](knowledge_knowledge/knowledge_aquamarine/marine/README.md)
       * [Marine-RS-SDK](knowledge_knowledge/knowledge_aquamarine/marine/marine-rs-sdk.md)
-  * [Fluence Compute Engine](knowledge_knowledge/fluence-compute-engine.md)
   * [Node](knowledge_knowledge/node/README.md)
     * [Overview](knowledge_knowledge/node/overview.md)
     * [Services](knowledge_knowledge/node/knowledge_node_services.md)
