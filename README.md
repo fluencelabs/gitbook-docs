@@ -1,16 +1,24 @@
 # Introduction
 
-Fluence Labs provides an open protocol and open source framework to create modern peer-to-peer Web 3.0 internet applications from distributed Wasm building blocks without having to rely on centralized and untrustworthy parties.
+Fluence Labs builds distributed networks, development tools, components and support systems to allow developers to efficiently and reliably build, operate, maintain, and monetize distributed and decentralized services and applications. An integral component of the Fluence solution is Aquamarine, a programming and runtime stack purpose-built to program peer-to-peer networks, backends and applications.
 
-Aquamarine, Fluence Labs' open-source development and runtime environment, allows application developers to take full advantage of peer-to-peer architectures and to compose applications by using and reusing Wasm services deployed to one or more peers. Aquamarine enables the ergonomic development of decentralized applications and consists of:
+Aquamarine is comprised of:
 
-* [Aqua](https://github.com/fluencelabs/aqua), a non-Touring complete interface description language \(IDL\) to compose distributed Wasm services deployed to one or more nodes into applications
-* [AIR](https://github.com/fluencelabs/air), an interpreter/VM for moving data and scripts across network destinations as programmatically specified by the Aqua application script
-* [Marine](https://github.com/fluencelabs/marine), an Aqua VM and Wasm runtime environment for deployment on peer-to-peer nodes, such as Fluence Labs' peer-to-peer node reference implementation
+* Aqua -- add, link
+* Aqua VM -- add, link
+* Marine VM -- add, link
 
-~~The remainder of this document introduces a set of incremental, hands-on tutorials developing with Aquamarine on the Fluence stack.~~
+Aquamarine provides the programming and runtime tools that allow developers to avoid the typical peer-to-peer development challenges and accelerate the development and deployment of distributed services and applications.
 
-Additional resources and support are available on [Discord](https://discord.gg/aR2AYErM), [Telegram](https://t.me/fluence_project), [Github](https://github.com/fluencelabs), [Youtube](https://www.youtube.com/channel/UC3b5eFyKRFlEMwSJ1BTjpbw), and [Twitter](https://twitter.com/fluence_project).
+The remainder of this document introduces a set of incremental, hands-on tutorials developing with Aquamarine on the Fluence stack.
+
+Additional resources and support are available:
+
+* [Youtube](https://www.youtube.com/channel/UC3b5eFyKRFlEMwSJ1BTjpbw)
+* [Github](https://github.com/fluencelabs)
+* [Discord](https://discord.gg/aR2AYErM)
+* [Telegram](https://t.me/fluence_project)
+* [Twitter](https://twitter.com/fluence_project)
 
 Documentation is work in progress and your feedback is extremely valuable and much appreciated. If you have suggestions or unearth errors or inaccuracies, please open an Issue or push a PR.
 
