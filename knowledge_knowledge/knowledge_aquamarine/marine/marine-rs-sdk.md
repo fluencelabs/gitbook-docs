@@ -207,7 +207,6 @@ CallParameters are especially useful in constructing authentication services:
 // auth.rs
 use fluence::{marine, CallParameters};
 use::marine;
-use crate::get_connection;
 
 pub fn is_owner() -> bool {
     let meta = marine::get_call_parameters();
@@ -217,7 +216,7 @@ pub fn is_owner() -> bool {
     caller == owner
 }
 
-#[fce]
+#[marine]
 pub fn am_i_owner() -> bool {
     is_owner()
 }
