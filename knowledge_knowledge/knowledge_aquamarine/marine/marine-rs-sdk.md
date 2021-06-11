@@ -102,8 +102,10 @@ Finally, the `[marine]` macro can wrap a `struct` making possible to use it as a
 * all fields of the wrapped structure must be public and of the `ftype`.
 * it is possible to have inner records in the macro-wrapped structure
 
-See the example below for a wrapped `struc`t:
+See the example below for a wrapped `struct` :
 
+{% tabs %}
+{% tab title="Example 1" %}
 ```rust
 #[marine]
 pub struct TestRecord0 {
@@ -127,6 +129,37 @@ pub struct TestRecord2 {
 #[marine]
 fn foo(mut test_record: TestRecord2) -> TestRecord2 { unimplemented!(); }
 ```
+{% endtab %}
+
+{% tab title="Example 2" %}
+```rust
+#[fce]
+pub struct TestRecord0 {
+    pub field_0: i32,
+}
+
+#[fce]
+pub struct TestRecord1 {
+    pub field_0: i32,
+    pub field_1: String,
+    pub field_2: Vec<u8>,
+    pub test_record_0: TestRecord0,
+}
+
+#[fce]
+pub struct TestRecord2 {
+    pub test_record_0: TestRecord0,
+    pub test_record_1: TestRecord1,
+}
+
+#[fce]
+#[link(wasm_import_module = "some_module")]
+extern "C" {
+  fn foo(mut test_record: TestRecord2) -> TestRecord2;
+}
+```
+{% endtab %}
+{% endtabs %}
 
 
 
