@@ -112,7 +112,7 @@ Finally, the `[marine]` macro can wrap a `struct` making possible to use it as a
 
 * only macro-wrapped structures can be used as function arguments and return types
 * all fields of the wrapped structure must be public and of the `ftype`.
-* it is possible to have inner records in the macro-wrapped structure
+* it is possible to have inner records in the macro-wrapped structure and to import wrapped structs from other crates
 
 See the example below for  wrapping `struct`:
 
