@@ -101,11 +101,15 @@ and the associated data file:
 
 **Scheduling Script**
 
+TBD
 
+see previous reference in [additional concepts](../development_development/development_reward_block_app/development_additional_concepts.md)
+
+Scheduling scripts allows us to decouple service execution from the client and instead can rely on a cron-like scheduler to independently trigger our service\(s\).
 
 #### Directory Structure
 
-
+Now that we got our requirements covered, we can populate the directory structure we started to lay out at the beginning of this section. As mentioned above, service deployment as a builtin is an automated workflow one our PR is accepted. Hence, it is imperative to adhere to the directory structure below: 
 
 ```text
 -- builtins
@@ -122,5 +126,5 @@ and the associated data file:
         ...
 ```
 
-
+can we call service _alias just service name._
 
