@@ -34,13 +34,70 @@ Now we can build and populate the required directory structure with your service
 
 In order to deploy a builtin service, you need
 
-* the Wasm files for each module comprising the service
-* a blueprint file specifying service dependencies
-* service start or schedule scripts
+* the Wasm file for each module required for the service
+* the blueprint file for the service
+* start and scheduling scripts
 
-Blueprints
+Just to recap, blueprints capture the service name and dependencies. For example:
+
+```javascript
+// example_blueprint.json
+{
+  "name": "my-new-super-service", 
+  "dependencies": [
+    "name:my_module_1",
+    "name:my_module_2"
+  ]
+}
+```
+
+where name specifies the service's name and _my\_module\_i_ refers to ith module created when you compiled your service code, i.e. _my\_module\_i.wasm_. Please note that dependencies may also be specified as hashes:
+
+```javascript
+// example_blueprint.json with hashes
+{
+  "name": "aqua-dht",
+  "dependencies": [
+    "hash:558a483b1c141b66765947cf6a674abe5af2bb5b86244dfca41e5f5eb2a86e9e",
+    "name:aqua-dht"
+  ]
+}
+```
+
+
+
+Start Script
+
+
+
+Scheduling Script
+
+
+
+Putting it all together:
+
+```text
+-- builtins
+    -- {service_alias}
+        -- scheduled
+            -- {script_name}_{interval_in_seconds}.air [optional]
+        -- blueprint.json
+        -- on_start.air [optional]
+        -- on_start.json [optional]
+        -- {module1_name}.wasm
+        -- {module1_name}_config.json
+        -- {module2_name}.wasm
+        -- {module2_name}_config.json
+        ...
+```
+
+In blueprint you can specify dependencies either with name or hashes but .wasm files and config should have corresponding names. `blieprint.json` example:
 
 Just to recap, blueprints specify the service name and module dependencies:
+
+
+
+In blueprint you can specify dependencies either with name or hashes but .wasm files and config should have corresponding names. `blieprint.json` example:
 
 ```javascript
 // blueprint.json
