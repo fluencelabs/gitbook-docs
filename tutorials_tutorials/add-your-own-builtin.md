@@ -30,7 +30,7 @@ Now we can build and populate the required directory structure with your service
 
 **TODO: check if that applies to new repo approach.**
 
-#### Requirements
+### Requirements
 
 In order to deploy a builtin service, you need
 
@@ -38,7 +38,9 @@ In order to deploy a builtin service, you need
 * the blueprint file for the service
 * start and scheduling scripts
 
-Just to recap, blueprints capture the service name and dependencies. For example:
+#### Blueprint
+
+Just to recap, blueprints capture the service name and dependencies:
 
 ```javascript
 // example_blueprint.json
@@ -132,7 +134,7 @@ So modules and configs names should look like this:
 -- 558a483b1c141b66765947cf6a674abe5af2bb5b86244dfca41e5f5eb2a86e9e_config.json
 ```
 
-**Start Script**
+#### **Start Script**
 
 Start scripts, which are optional, execute once after service deployment or node restarts and are submitted as _air_  files and may be accompanied by a json file containing the necessary parameters.
 
@@ -156,7 +158,7 @@ and the associated data file:
 
 
 
-**Scheduling Script**
+#### **Scheduling Script**
 
 TBD
 
