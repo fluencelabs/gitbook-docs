@@ -39,7 +39,7 @@
 * [Tutorials](tutorials_tutorials/README.md)
   * [Deploy A Local Fluence Node](tutorials_tutorials/tutorial_run_local_node.md)
   * [Deploy A Private Fluence Network](tutorials_tutorials/running-a-fluence-network.md)
-  * [Add Your Own Builtin](tutorials_tutorials/add-your-own-builtin.md)
+  * [Add Your Own Node Native Service](tutorials_tutorials/add-your-own-builtin.md)
   * [TrustGraph In Action](tutorials_tutorials/tutorial_trustgraph.md)
   * [Securing Services](tutorials_tutorials/securing-services.md)
   * [Developing a Frontend Application with JS-SDK](tutorials_tutorials/developing-a-frontend-application-with-js-sdk.md)

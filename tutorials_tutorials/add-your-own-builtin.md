@@ -1,14 +1,48 @@
-# Add Your Own Builtin
+---
+description: The Case For Node Native Services
+---
 
+# Add Your Own Node Native Service
 
+As discussed in the [Node](../knowledge_knowledge/node/knowledge_node_services.md) section, some service functionalities useful to a large audience. Such services and can be directly deployed to a peer node as a Wasm module. The remainder of this tutorial guides you through the steps necessary to create and submit a Node Native Service candidate. 
 
-If you want to have a service that available out-of-the-box with startup script and scheduled scripts, you can use `builtins deployer` feature. It will upload modules, deploy service, run init script and schedule others.  
-You should put your service files in the corresponding folder specified in config as `builtins_base_dir`.
+In order to have a service available out-of-the-box with the necessary startup and scheduling scripts,  we can take advantage of the Fluence [deployer feature](https://github.com/fluencelabs/fluence/tree/master/deploy) for Node native Services. This feature  handles the complete deployment process including  
 
-### Builtins directory structure
+* module uploads,
+* service deployment, 
+* script initialization and scheduling
+
+Note that the deployment process is a fully automated workflow requiring you to merely submit your service assets in the appropriate structure as a PR to the appropriate GitHub repository. At this point you should have a solid grasp of creating service modules and their associated configuration files. See the [Developing Modules And Services](../development_development/) section for details.
+
+Our first step is fork  the ??? repo by clicking on the Fork button, upper right of the repo webpage, and follow the instructions to create a local copy. In your local repo copy, checkout a new branch with a new, unique branch name:
 
 ```text
--- builtins
+git checkout -b MyBranchName 
+```
+
+In your new branch create a new directory with the service name in the _builtin_ directory:
+
+```text
+cd builtins 
+mkdir my-new-super-service
+cd new-super-service
+```
+
+ Replace my-_new-super-service_ with your service name. 
+
+Now we can build and populate the required directory structure with your service assets. You should put your service files in the corresponding my-_new-super-service_  directory specified in config as `builtins_base_dir`   **TODO: check if that applies to new repo approach.**
+
+Asset Requirements
+
+In order to deploy a builtin service, you need
+
+* the wasm files for each module as the module build
+* the blueprint file for the service
+* start and schedule scripts
+
+Just to recap, Blueprints capture module names, blueprint name, and blueprint id. -- builtins
+
+```text
     -- {service_alias}
         -- scheduled
             -- {script_name}_{interval_in_seconds}.air [optional]
