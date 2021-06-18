@@ -1,10 +1,6 @@
----
-description: The Case For Node Native Services
----
+# Add Your Own Builtins
 
-# Add Your Own Node Native Service
-
-As discussed in the [Node](../knowledge_knowledge/node/knowledge_node_services.md) section, some service functionalities useful to a large audience. Such services and can be directly deployed to a peer node as a Wasm module. The remainder of this tutorial guides you through the steps necessary to create and submit a Node Native Service candidate. 
+As discussed in the [Node](../knowledge_knowledge/node/knowledge_node_services.md) section, some service functionalities useful to a large audience and such services and can be directly deployed to a peer node. The remainder of this tutorial guides you through the steps necessary to create and deploy a Builtin service. 
 
 In order to have a service available out-of-the-box with the necessary startup and scheduling scripts,  we can take advantage of the Fluence [deployer feature](https://github.com/fluencelabs/fluence/tree/master/deploy) for Node native Services. This feature  handles the complete deployment process including  
 
@@ -30,35 +26,37 @@ cd new-super-service
 
  Replace my-_new-super-service_ with your service name. 
 
-Now we can build and populate the required directory structure with your service assets. You should put your service files in the corresponding my-_new-super-service_  directory specified in config as `builtins_base_dir`   **TODO: check if that applies to new repo approach.**
+Now we can build and populate the required directory structure with your service assets. You should put your service files in the corresponding my-_new-super-service_  directory specified in config as `builtins_base_dir`   
 
-Asset Requirements
+**TODO: check if that applies to new repo approach.**
+
+#### Requirements
 
 In order to deploy a builtin service, you need
 
-* the wasm files for each module as the module build
-* the blueprint file for the service
-* start and schedule scripts
+* the Wasm files for each module comprising the service
+* a blueprint file specifying service dependencies
+* service start or schedule scripts
 
-Just to recap, Blueprints capture module names, blueprint name, and blueprint id. -- builtins
+Blueprints
 
-```text
-    -- {service_alias}
-        -- scheduled
-            -- {script_name}_{interval_in_seconds}.air [optional]
-        -- blueprint.json
-        -- on_start.air [optional]
-        -- on_start.json [optional]
-        -- {module1_name}.wasm
-        -- {module1_name}_config.json
-        -- {module2_name}.wasm
-        -- {module2_name}_config.json
-        ...
-```
-
-In blueprint you can specify dependencies either with name or hashes but .wasm files and config should have corresponding names. `blieprint.json` example:
+Just to recap, blueprints specify the service name and module dependencies:
 
 ```javascript
+// blueprint.json
+{
+  "name": "my-new-super-service",
+  "dependencies": [
+    "name: module_1",
+    "name: module_2"
+  ]
+}
+```
+
+where _module\_i_ is the name of the Wasm module. Note that dependencies can be specified as string literals or hashes:
+
+```javascript
+// blueprint.json
 {
   "name": "aqua-dht",
   "dependencies": [
@@ -77,23 +75,52 @@ So modules and configs names should look like this:
 -- 558a483b1c141b66765947cf6a674abe5af2bb5b86244dfca41e5f5eb2a86e9e_config.json
 ```
 
-`on_start.air` is optional and can contain some startup script and you can specify necessary variables in `on_start.json`. It will be executed only once after service deployment or node restart.
+**Start Script**
 
-`on_start.json` example:
+Start scripts, which are optional, execute once after service deployment or node restarts and are submitted as _air_  files and may be accompanied by a json file containing the necessary parameters.
+
+```text
+;; on_start.air
+(seq
+    (call relay ("some_service_alias" "some_func1") [variable1] result)
+    (call relay ("some_service_alias" "some_func2") [variable2 result])
+)
+```
+
+and the associated data file:
 
 ```javascript
+// on_start.json
 {
     "variable1" : "some_string",
     "variable2" : 5,
 }
 ```
 
-`on_start.air` example:
+
+
+**Scheduling Script**
+
+
+
+#### Directory Structure
+
+
 
 ```text
-(seq
-    (call relay ("some_service_alias" "some_func1") [variable1] result)
-    (call relay ("some_service_alias" "some_func2") [variable2 result])
-)
+-- builtins
+    -- {service_alias}
+        -- scheduled
+            -- {script_name}_{interval_in_seconds}.air [optional]
+        -- blueprint.json
+        -- on_start.air [optional]
+        -- on_start.json [optional]
+        -- {module1_name}.wasm
+        -- {module1_name}_config.json
+        -- {module2_name}.wasm
+        -- {module2_name}_config.json
+        ...
 ```
+
+
 
