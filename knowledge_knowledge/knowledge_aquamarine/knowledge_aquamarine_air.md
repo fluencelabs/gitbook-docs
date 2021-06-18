@@ -23,7 +23,7 @@ AIR instructions are intended to launch the execution of a service method as fol
 4. The arguments specified by the argument list are passed to the method
 5. The result of the method returned under the name output name
 
-**Figure 2: Sequential Instruction** ![Execution](../../.gitbook/assets/air_sequential_2%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%282%29%20%283%29%20%284%29%20%284%29%20%282%29.png)
+**Figure 2: Sequential Instruction** ![Execution](../../.gitbook/assets/air_sequential_2%20%281%29%20%281%29%20%281%29%20%281%29.png)
 
 The _**seq**_ instruction takes two instructions at most as its arguments and executes them sequentially, one after the other.
 
