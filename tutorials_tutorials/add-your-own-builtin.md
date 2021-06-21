@@ -1,25 +1,25 @@
 # Add Your Own Builtins
 
-As discussed in the [Node](../knowledge_knowledge/node/knowledge_node_services.md) section, some service functionalities have ubiquitous  demand making them suitable candidates to be directly deployed to a peer node. The [Aqua distributed hash table](https://github.com/fluencelabs/fluence/tree/master/deploy/builtins/aqua-dht) \(DHT\) is an example of builtin service. The remainder of this tutorial guides you through the steps necessary to create and deploy a Builtin service. 
+As discussed in the [Node](../knowledge_knowledge/node/knowledge_node_services.md) section, some service functionalities have ubiquitous demand making them suitable candidates to be directly deployed to a peer node. The [Aqua distributed hash table](https://github.com/fluencelabs/fluence/tree/master/deploy/builtins/aqua-dht) \(DHT\) is an example of builtin service. The remainder of this tutorial guides you through the steps necessary to create and deploy a Builtin service.
 
-In order to have a service available out-of-the-box with the necessary startup and scheduling scripts,  we can take advantage of the Fluence [deployer feature](https://github.com/fluencelabs/fluence/tree/master/deploy) for Node native services. This feature  handles the complete deployment process including  
+In order to have a service available out-of-the-box with the necessary startup and scheduling scripts, we can take advantage of the Fluence [deployer feature](https://github.com/fluencelabs/fluence/tree/master/deploy) for Node native services. This feature handles the complete deployment process including
 
 * module uploads,
 * service deployment and
 * script initialization and scheduling
 
-Note that the deployment process is a fully automated workflow requiring you to merely submit your service assets, i.e., Wasm modules and configuration scripts, in the appropriate format as a PR to the [Fluence](https://github.com/fluencelabs/fluence) repository. 
+Note that the deployment process is a fully automated workflow requiring you to merely submit your service assets, i.e., Wasm modules and configuration scripts, in the appropriate format as a PR to the [Fluence](https://github.com/fluencelabs/fluence) repository.
 
 At this point you should have a solid grasp of creating service modules and their associated configuration files. See the [Developing Modules And Services](../development_development/) section for more details.
 
-Our first step is fork  the [Fluence](https://github.com/fluencelabs/fluence) repo by clicking on the Fork button, upper right of the repo webpage, and follow the instructions to create a local copy. In your local repo copy, checkout a new branch with a new, unique branch name:
+Our first step is fork the [Fluence](https://github.com/fluencelabs/fluence) repo by clicking on the Fork button, upper right of the repo webpage, and follow the instructions to create a local copy. In your local repo copy, checkout a new branch with a new, unique branch name:
 
 ```text
 cd fluence
-git checkout -b MyBranchName 
+git checkout -b MyBranchName
 ```
 
-In our new branch, we create a  directory with the service name in the _deploy/builtin_ directory:
+In our new branch, we create a directory with the service name in the _deploy/builtin_ directory:
 
 ```text
 cd deploy/builtins 
@@ -27,11 +27,11 @@ mkdir my-new-super-service
 cd new-super-service
 ```
 
- Replace _my_-_new-super-service_ with your service name. 
+Replace _my_-_new-super-service_ with your service name.
 
-Now we can build and populate the required directory structure with your service assets. You should put your service files in the corresponding _my_-_new-super-service_  directory.
+Now we can build and populate the required directory structure with your service assets. You should put your service files in the corresponding _my_-_new-super-service_ directory.
 
-### Requirements
+## Requirements
 
 In order to deploy a builtin service, we need
 
@@ -39,7 +39,7 @@ In order to deploy a builtin service, we need
 * the blueprint file for the service
 * the optional start and scheduling scripts
 
-#### Blueprint
+### Blueprint
 
 Blueprints capture the service name and dependencies:
 
@@ -55,7 +55,7 @@ Blueprints capture the service name and dependencies:
 }
 ```
 
-where 
+where
 
 * name specifies the service's name and 
 * dependencies list the names of the Wasm modules or the Blake3 hash of the Wasm module
@@ -73,9 +73,9 @@ b3sum my_module_3.wasm
 
 If you decide to use the hash approach, please use the hash for the config files names as well \(see below\).
 
-#### **Start Script**
+### **Start Script**
 
-Start scripts, which are optional, execute once after service deployment or node restarts and are submitted as _air_  files and may be accompanied by a _json_ file containing the necessary parameters.
+Start scripts, which are optional, execute once after service deployment or node restarts and are submitted as _air_ files and may be accompanied by a _json_ file containing the necessary parameters.
 
 ```text
 ;; on_start.air
@@ -95,13 +95,13 @@ and the associated data file:
 }
 ```
 
-#### **Scheduling Script**
+### **Scheduling Script**
 
 Scheduling scripts allow us to decouple service execution from the client and instead can rely on a cron-like scheduler running on a node to trigger our service\(s\). For a brief overview, see [additional concepts](../development_development/development_reward_block_app/development_additional_concepts.md)
 
-#### Directory Structure
+### Directory Structure
 
-Now that we got our requirements covered, we can populate the directory structure we started to lay out at the beginning of this section. As mentioned above, service deployment as a builtin is an automated workflow one our PR is accepted. Hence, it is imperative to adhere to the directory structure below: 
+Now that we got our requirements covered, we can populate the directory structure we started to lay out at the beginning of this section. As mentioned above, service deployment as a builtin is an automated workflow one our PR is accepted. Hence, it is imperative to adhere to the directory structure below:
 
 ```text
 -- builtins
@@ -133,5 +133,5 @@ fluence
                  -sqlite3_config.json # or 558a483b1c141b66765947cf6a674abe5af2bb5b86244dfca41e5f5eb2a86e9e_config.json
 ```
 
-which is based on the [eponymous](https://github.com/fluencelabs/aqua-dht) service project. 
+which is based on the [eponymous](https://github.com/fluencelabs/aqua-dht) service project.
 
