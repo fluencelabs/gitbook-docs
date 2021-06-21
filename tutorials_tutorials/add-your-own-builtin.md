@@ -96,15 +96,9 @@ and the associated data file:
 }
 ```
 
-
-
 #### **Scheduling Script**
 
-TBD
-
-see previous reference in [additional concepts](../development_development/development_reward_block_app/development_additional_concepts.md)
-
-Scheduling scripts allows us to decouple service execution from the client and instead can rely on a cron-like scheduler to independently trigger our service\(s\).
+Scheduling scripts allow us to decouple service execution from the client and instead can rely on a cron-like scheduler running on a node to trigger our service\(s\). For a brief overview, see [additional concepts](../development_development/development_reward_block_app/development_additional_concepts.md)
 
 #### Directory Structure
 
