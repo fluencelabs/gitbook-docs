@@ -12,7 +12,7 @@ Todo: insert graphic
 
 Aqua provides the language and compiler to ergonomically coordinate distributed services, deployed across a permissionless network of peers, into a wide range of applications and backends. 
 
-![Figure 1: Aqua Development Flow](../.gitbook/assets/image%20%286%29.png)
+![Figure 1: Aqua Development Flow](../.gitbook/assets/image%20%286%29%20%281%29%20%281%29.png)
 
 Aqua currently provides two compilation targets, a raw, low level language called Aquamarine Intermediate Representation \(AIR\) and Typescript, see Figure 1 above, with a runtime that is available for a variety of platforms ranging from browsers to servers to IoT devices.
 
