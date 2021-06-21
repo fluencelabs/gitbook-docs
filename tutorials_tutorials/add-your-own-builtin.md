@@ -8,33 +8,32 @@ In order to have a service available out-of-the-box with the necessary startup a
 * service deployment and
 * script initialization and scheduling
 
-Note that the deployment process is a fully automated workflow requiring you to merely submit your service assets, i.e., Wasm modules and configuration scripts, in the appropriate format as a PR to the ??? GitHub repository. 
+Note that the deployment process is a fully automated workflow requiring you to merely submit your service assets, i.e., Wasm modules and configuration scripts, in the appropriate format as a PR to the [Fluence](https://github.com/fluencelabs/fluence) repository. 
 
 At this point you should have a solid grasp of creating service modules and their associated configuration files. See the [Developing Modules And Services](../development_development/) section for more details.
 
-Our first step is fork  the ??? repo by clicking on the Fork button, upper right of the repo webpage, and follow the instructions to create a local copy. In your local repo copy, checkout a new branch with a new, unique branch name:
+Our first step is fork  the [Fluence](https://github.com/fluencelabs/fluence) repo by clicking on the Fork button, upper right of the repo webpage, and follow the instructions to create a local copy. In your local repo copy, checkout a new branch with a new, unique branch name:
 
 ```text
+cd fluence
 git checkout -b MyBranchName 
 ```
 
-In our new branch, we create a  directory with the service name in the _builtin_ directory:
+In our new branch, we create a  directory with the service name in the _deploy/builtin_ directory:
 
 ```text
-cd builtins 
+cd deploy/builtins 
 mkdir my-new-super-service
 cd new-super-service
 ```
 
- Replace my-_new-super-service_ with your service name. 
+ Replace _my_-_new-super-service_ with your service name. 
 
 Now we can build and populate the required directory structure with your service assets. You should put your service files in the corresponding _my_-_new-super-service_  directory.
 
-**TODO: check if that applies to new repo approach.**
-
 ### Requirements
 
-In order to deploy a builtin service, you need
+In order to deploy a builtin service, we need
 
 * the Wasm file for each module required for the service
 * the blueprint file for the service
@@ -130,9 +129,9 @@ fluence
                  -aqua-dht_config.json
                  -blueprint.json
                  -scheduled
-                 -sqlite3.wasm
-                 -sqlite3_config.json
+                 -sqlite3.wasm # or 558a483b1c141b66765947cf6a674abe5af2bb5b86244dfca41e5f5eb2a86e9e.wasm 
+                 -sqlite3_config.json # or 558a483b1c141b66765947cf6a674abe5af2bb5b86244dfca41e5f5eb2a86e9e_config.json
 ```
 
-which based on the [eponymous](https://github.com/fluencelabs/aqua-dht) service project. 
+which is based on the [eponymous](https://github.com/fluencelabs/aqua-dht) service project. 
 
