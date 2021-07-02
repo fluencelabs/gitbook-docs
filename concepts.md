@@ -1,4 +1,4 @@
-# Quick Start
+# Concepts
 
 
 
@@ -24,7 +24,7 @@ An integral enabler of the Fluence solution is Aqua, an open source language pur
 
 Figure 5: From Aqua Script To Particle Execution
 
-![](../.gitbook/assets/image%20%286%29.png)
+![](.gitbook/assets/image%20%286%29.png)
 
 Currently, compiled Aqua scripts can be executed from Typescript clients based on [Fluence SDK](https://github.com/fluencelabs/fluence-js). For more information about Aqua, see the [Aqua book](https://doc.fluence.dev/aqua-book/).
 
@@ -43,7 +43,7 @@ Services are
 
 Figure 6: Stylized Execution Flow On Peer
 
-![](../.gitbook/assets/image%20%285%29.png)
+![](.gitbook/assets/image%20%285%29.png)
 
 Please note that the Aqua VM is itself a Wasm module running on the Marine VM.
 
@@ -64,7 +64,7 @@ _Blueprints_ are json documents that provide the necessary information to build 
 
 Figure 7: Service Composition and Execution Model
 
-![](../.gitbook/assets/image%20%287%29.png)
+![](.gitbook/assets/image%20%287%29.png)
 
 Services section that services are not capable to accept more than one request at a given time.
 
@@ -110,7 +110,7 @@ At the service level, we can achieve scale through parallelization due to the de
 
 Figure 8: Stylized Par Execution
 
-![](../.gitbook/assets/image%20%288%29.png)
+![](.gitbook/assets/image%20%288%29.png)
 
 
 
