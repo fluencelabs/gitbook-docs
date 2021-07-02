@@ -8,13 +8,13 @@ In some network models, such as client server, the request-response model genera
 
 Figure 2: Client Server Request Response Model
 
- ![](https://i.imgur.com/ZYLUzne.png)
+![](https://i.imgur.com/ZYLUzne.png)
 
 The Fluence peer-to-peer protocol, on the other hand, allows for a much more effective Request-Response processing pattern where responses are forward-chained to the next consuming service\(s\) without having to make the return trip to the client. See Figure 3.
 
 Figure 3: Fluence P2P Protocol Request Response Model
 
- ![](https://i.imgur.com/g3RGBRf.png)
+![](https://i.imgur.com/g3RGBRf.png)
 
 In a Fluence p2p implementation, our client application would call a credit check API deployed or proxy-ed on some peer and then send the response directly to the SMS API service possibly deployed on another peer -- similar to the flow depicted in Figure 1.
 
