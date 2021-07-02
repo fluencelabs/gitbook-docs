@@ -2,6 +2,8 @@
 
 * [Introduction](README.md)
 * [Thinking In Distributed](p2p.md)
+* [Concepts](concepts.md)
+* [Quick Start](quick-start.md)
 * [Quick Start](quick_start/README.md)
   * [Setup](quick_start/quick_start_setup.md)
   * [Using a Service](quick_start/quick_start_using_a_service.md)

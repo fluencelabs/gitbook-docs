@@ -1,12 +1,20 @@
 # Introduction
 
-Fluence Labs builds distributed networks, development tools, components and support systems to allow developers to efficiently and reliably build, operate, maintain, and monetize distributed and decentralized services and applications. An integral component of the Fluence solution is [Aquamarine](https://github.com/fluencelabs/aquamarine), a programming language enabling peer-to-peer coordination for distributed applications and backends.
+Fluence provides an open Web3 protocol, framework and tooling to develop and host applications, interfaces and backends on permissionless peer-to-peer networks.
 
-Fluence is also developing [Marine](https://github.com/fluencelabs/marine) - a general purpose compute runtime for multi-module WebAssembly applications with WASI support and a [shared-nothing](https://en.wikipedia.org/wiki/Shared-nothing_architecture) linking scheme. FCE allows for the rapid development and deployment of portable Wasm services which can be composed and coordinated with Aquamarine into secure applications. Furthermore, Fluence has implemented innovations at the p2p [node](https://github.com/fluencelabs/fluence) level, such as [TrustGraph](https://github.com/fluencelabs/trust-graph), local development and testing tools, such as [Marine-Repl](https://github.com/fluencelabs/marine/tree/master/tools/repl), and support tooling, such as [Fluence Distributor](https://github.com/fluencelabs/proto-distributor).
+The Fluence Web3 stack enables
 
-In combination, Aquamarine and the Fluence runtimes and tools allow developers to avoid the typical peer-to-peer development challenges and accelerate the development and deployment of distributed services and applications.
+* programmable network requests 
+* distributed applications from composition without centralization
+* communication, access and transactional security as first class citizens
+* extensibility through adapter/wrapper services
+* efficiencies and improved time to market arising from the reuse of deployed services and significantly reduced devops requirements
 
-The remainder of this document introduces a set of incremental, hands-on tutorials developing with Aquamarine on the Fluence stack.
+by decoupling business logic from composition, security from business logic and resource management from infrastructure. See Figure 1.
+
+Figure 1: Decentralized Applications Composed From Distributed Services On P2P Nodes ![](https://i.imgur.com/XxC7NN3.png)
+
+An integral component of the Fluence solution is the Aquamarine stack comprised of Aqua and Marine. Aqua is a programming language and runtime environment for peer-to-peer workflows. Marine, on the other hand, is a general purpose runtime and associated tooling for multi-module Wasm applications with WASI support and a shared-nothing linking scheme. That is, Marine runs hosted code on nodes and Aqua facilitates the programming of workflows composed from hosted code. In combination, Aqua and Marine enable any distributed application.
 
 Additional resources and support are available:
 

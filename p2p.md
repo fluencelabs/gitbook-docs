@@ -1,16 +1,28 @@
 # Thinking In Distributed
 
-Building and operating distributed networks, backends and applications are non-trivial undertakings not only posing technical challenges but also requiring a significant shift in how to view and think in distributed.
+Permissionless peer-to-peer networks have a lot to offer to developers and solution architects such as decentralization, improved request-response data models and zero trust security at the application and service level. Of course, these capabilities and benefits don't just arise from putting libp2p to work. Instead, a peer-to-peer overlay is required. The Fluence protocol provides such an overlay enabling a powerful distributed data routing and management protocol allowing developers to implement modern and secure Web3 solutions.
 
-Consider a workflow tasked with calling multiple REST endpoints, in sequence, where the response of the previous call is the input to the current call. As illustrated in Figure 1, the application is the focal point and data relay.
+**Improved Request-Response Model**
 
-![Figure 1: Stylized Data Flow For Application With Multiple Endpoint Calls](.gitbook/assets/image%20%283%29.png)
+In some network models, such as client server, the request-response model generally entails a response returning to the request client. For example, a client application tasked to conduct a credit check of a customer and to inform them with a SMS typically would call a credit check API, consume the response, and then call a SMS API to send the necessary SMS.
 
-Programming a frontend application in the Fluence peer-to-peer solution, an application is not a workflow intermediary but merely the initiator of a workflow as workflow logic and data traverses the network from service to service. See Figure 2 for an illustration and please note that services may be deployed to different nodes as well as to more than one node.
+Figure 2: Client Server Request Response Model
 
-![Figure 2: Stylized Data Flow For Application With Fluence Distributed Services ](.gitbook/assets/image%20%284%29.png)
+ ![](https://i.imgur.com/ZYLUzne.png)
 
-In Fluence parlance, we call the workflow + data construct a _particle_ where the workflow is expressed in an AIR script.
+The Fluence peer-to-peer protocol, on the other hand, allows for a much more effective Request-Response processing pattern where responses are forward-chained to the next consuming service\(s\) without having to make the return trip to the client. See Figure 3.
 
-This is a rather cursory overview of probably the most salient conceptual difference developers need to take into consideration in order to succeed in a distributed ecosystem. Luckily, Aquamarine and the Fluence stack eliminate most, if not all, of the heavy lifting necessary to develop high-value per-to-peer networks, backends, and applications.
+Figure 3: Fluence P2P Protocol Request Response Model
+
+ ![](https://i.imgur.com/g3RGBRf.png)
+
+In a Fluence p2p implementation, our client application would call a credit check API deployed or proxy-ed on some peer and then send the response directly to the SMS API service possibly deployed on another peer -- similar to the flow depicted in Figure 1.
+
+Such a significantly flattened request-response model leads to much lower resource requirements for applications in terms of bandwidth and processing capacity thereby enabling a vast class of "thin" clients ranging from browsers to IoT and edge devices truly enabling decentralized machine-to-machine communication.
+
+**Zero Trust Security**
+
+The [zero trust security model](https://en.wikipedia.org/wiki/Zero_trust_security_model) assumes the worst reality, i.e., a breach, and proposes a "never trust, always verify" approach. This approach is inherent in the Fluence peer-to-peer protocol and Aqua programming model as every service request can be authenticated at the service API level.
+
+Overall, the Fluence solution enables a modern Web3 runtime and development environment on top of a peer-to-peer stack that allows developers to build powerful and secure distributed applications on thin clients and powerful servers alike.
 
