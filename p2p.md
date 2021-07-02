@@ -4,6 +4,8 @@ Permissionless peer-to-peer networks have a lot to offer to developers and solut
 
 Figure 1: Decentralized Applications Composed From Distributed Services On P2P Nodes ![](https://i.imgur.com/XxC7NN3.png)
 
+### Aquamarine
+
 As a complement to the protocol, Fluence provides the Aquamarine stack aimed at enabling developers to build high-quality, high-performance decentralized applications. Aquamarine is purpose-built to ease the programming demands commonly encountered in distributed, and especially peer-to-peer, development and is comprised of Aqua and Marine. 
 
 [Aqua](https://doc.fluence.dev/aqua-book/), is  a new generation programming language allowing developers to program peer-to-peer networks and compose distributed services hosted on peer-to-peer nodes into decentralized applications and backends. Marine, on the other hand, provides the necessary Wasm runtime environment on peers to facilitate the execution of compiled Aqua code. 
@@ -30,9 +32,7 @@ Such a significantly flattened request-response model leads to much lower resour
 
 ### **Zero Trust Security**
 
-The [zero trust security model](https://en.wikipedia.org/wiki/Zero_trust_security_model) assumes the worst reality, i.e., a breach, and proposes a "never trust, always verify" approach. This approach is inherent in the Fluence peer-to-peer protocol and Aqua programming model as every service request can be authenticated at the service API level.
-
-Overall, the Fluence solution enables a modern Web3 runtime and development environment on top of a peer-to-peer stack that allows developers to build powerful and secure distributed applications on thin clients and powerful servers alike.
+The [zero trust security model](https://en.wikipedia.org/wiki/Zero_trust_security_model) assumes the worst, i.e., a breach, at all times and proposes a "never trust, always verify" approach. This approach is inherent in the Fluence peer-to-peer protocol and Aqua programming model as every service request can be authenticated at the service API level. That is, every service exposes functions which may require authentication and authorization. Aquamarine implements SecurityTetraplets as verifiable origins of the function arguments to enable fine-grained authorization.
 
 ### Summary
 
