@@ -1,8 +1,12 @@
 # Thinking In Aquamarine
 
-Permissionless peer-to-peer networks have a lot to offer to developers and solution architects such as decentralization, user control over their data, improved request-response data models and zero trust security at the application and service level. Of course, these capabilities and benefits don't just arise from putting [libp2p](https://libp2p.io/) to work. Instead, a peer-to-peer overlay is required. The Fluence protocol provides such an overlay enabling a powerful distributed data routing and management protocol allowing developers to implement modern and secure Web3 solutions. See Figure 1 for a stylized representation decentralized applications development by programming the composition of services distributed across a peer-to-peer network.
+Permissionless peer-to-peer networks have a lot to offer to developers and solution architects such as decentralization,  control over data, improved request-response data models and zero trust security at the application and service level. Of course, these capabilities and benefits don't just arise from putting [libp2p](https://libp2p.io/) to work. Instead, a peer-to-peer overlay is required. The Fluence protocol provides such an overlay enabling a powerful distributed data routing and management protocol allowing developers to implement modern and secure Web3 solutions. See Figure 1 for a stylized representation decentralized applications development by programming the composition of services distributed across a peer-to-peer network.
 
-Figure 1: Decentralized Applications Composed From Distributed Services On P2P Nodes ![](https://i.imgur.com/XxC7NN3.png)
+Figure 1: Decentralized Applications Composed From Distributed Services On P2P Nodes 
+
+![](https://i.imgur.com/XxC7NN3.png)
+
+### 
 
 ### Aquamarine
 
@@ -10,7 +14,7 @@ As a complement to the protocol, Fluence provides the Aquamarine stack aimed at 
 
 [Aqua](https://doc.fluence.dev/aqua-book/), is  a new generation programming language allowing developers to program peer-to-peer networks and compose distributed services hosted on peer-to-peer nodes into decentralized applications and backends. Marine, on the other hand, provides the necessary Wasm runtime environment on peers to facilitate the execution of compiled Aqua code. 
 
-A major contribution of Aquamarine is that  [Layer 3 and Layer 7](https://en.wikipedia.org/wiki/OSI_model), i.e. network and application layer, programming is accessible to developers as a seamless and ergonomic composition-from-services experience in Aqua thereby greatly reducing, or even eliminating, common barriers to distributed and decentralized application development.
+A major contribution of Aquamarine is that network and application layer, i.e.,  [Layer 3 and Layer 7](https://en.wikipedia.org/wiki/OSI_model), programming is accessible to developers as a seamless and ergonomic composition-from-services experience in Aqua thereby greatly reducing, if not eliminating, common barriers to distributed and decentralized application development.
 
 ### **Improved Request-Response Model**
 
