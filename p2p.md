@@ -14,7 +14,7 @@ As a complement to the protocol, Fluence provides the Aquamarine stack aimed at 
 
 [Aqua](https://doc.fluence.dev/aqua-book/), is  a new generation programming language allowing developers to program peer-to-peer networks and compose distributed services hosted on peer-to-peer nodes into decentralized applications and backends. Marine, on the other hand, provides the necessary Wasm runtime environment on peers to facilitate the execution of compiled Aqua code. 
 
-A major contribution of Aquamarine is that network and application layer, i.e.,  [Layer 3 and Layer 7](https://en.wikipedia.org/wiki/OSI_model), programming is accessible to developers as a seamless and ergonomic composition-from-services experience in Aqua thereby greatly reducing, if not eliminating, common barriers to distributed and decentralized application development.
+A major contribution of Aquamarine is that network and application layer, i.e.,  [Layer 3 and Layer 7](https://en.wikipedia.org/wiki/OSI_model), programming is accessible to developers as a seamless and ergonomic composition-from-services experience in Aqua thereby greatly reducing, if not eliminating, common barriers to distributed and decentralized application development. 
 
 ### **Improved Request-Response Model**
 
@@ -43,7 +43,7 @@ The [zero trust security model](https://en.wikipedia.org/wiki/Zero_trust_securit
 Programming distributed applications on the Fluence protocol with Aquamarine unlocks significant benefits from peer-to-peer networks while greatly easing  the design and development processes. Nevertheless, a mental shift concerning peer-to-peer solution design and development process is required. Specifically, the successful mindset accommodates
 
 * an application architecture based on the composition of distributed services across peer-to-peer networks by decoupling business logic from application workflow
-* a services-first approach with respect to both the network and application layer allowing a unified network an application  programming model encapsulated by Aqua
+* a services-first approach with respect to both the network and application layer allowing a unified network and application  programming model encapsulated by Aqua
 * a multi-layer security approach enabling zero-trust models at the service level
 * a flattened request-response model enabling data free from centralized control
 
