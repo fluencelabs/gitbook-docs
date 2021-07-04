@@ -58,7 +58,7 @@ pub fn greeting(name: String) -> String {
 }
 ```
 
-### **Service Creation**
+### **Services**
 
 Services are logical constructs instantiated from Wasm modules that contain some business logic and configuration data. That is, services are created, i.e., linked, at the Marine VM runtime level from uploaded Wasm modules and the relevant metadata
 
@@ -68,7 +68,30 @@ Figure 7: Service Composition and Execution Model
 
 ![](.gitbook/assets/image%20%287%29.png)
 
-Services section that services are not capable to accept more than one request at a given time.
+Please note that services are not capable to accept more than one request at a given time. Consider a service, FooBar, comprised of two functions, foo\(\) and bar\(\) where foo is a longer running function. 
+
+```text
+-- Stylized FooBar service with two functions
+-- foo() and bar()
+-- foo is long-running
+--- if foo is called before bar, bar is blocked
+service FooBar("service-id"):
+  bar() -> string
+  foo() -> string --< long running function 
+
+func foobar(node:string, service_id:string, func_name:string) -> string:
+  res: *string
+  on node:
+    BlockedService service_id
+    if func_name == "foo":
+      res <- BlockedService.foo()
+    else:
+      res <- BlockedService.bar()
+  <- res!
+```
+
+  
+As long as  foo\(\) is running,  the entire FooBar service, including bar\(\), is blocked. 
 
 ### **Modules**
 
@@ -98,9 +121,11 @@ SecurityTetraplets are provided with the function call arguments for each \(serv
 
 ### **Trust Layer**
 
-Since we're not really ready, should we cut this section?
+The Fluence protocol offers an alternative to node selection, i.e. connection and permissioning, approaches, such as [Kademlia](https://en.wikipedia.org/wiki/Kademlia), called TrustGraph. A TrustGraph is comprised of subjectively weights assigned to nodes to manage peer connections. TrustGraphs are node operator specific and transitive. That is, a trusted node's trusted neighbors are considered trustworthy.
 
-The Fluence protocol offers an alternative to node selection, i.e. connection and permissioning, approaches, such as Kademlia, called TrustGraph. A TrustGraph is comprised of subjectively weights assigned to nodes to manage peer connections. TrustGepahs are node operator specific and transitive. That is, a trusted node's trusted neighbors are considered trustworthy.
+{% hint style="info" %}
+[TrustGraph](https://github.com/fluencelabs/trust-graph) is currently under active development. Please check the repo for progress.
+{% endhint %}
 
 ### **Scaling Applications**
 
