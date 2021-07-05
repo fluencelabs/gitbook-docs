@@ -301,7 +301,7 @@ Please not that if you want to use `curl_request` with testing, see below, the c
     let response = unsafe { curl(curl_cmd) };
 ```
 
-since cargo does not have access to the magic in place in the marine rs sdk to handle unsafe.
+since cargo does not access to the marine macro to handle unsafe.
 
 MountedBinaryResult itself is a Marine-compatible struct containing a binary's return process code, error string and  stdout and stderr as byte arrays:
 
@@ -325,8 +325,6 @@ pub struct MountedBinaryResult {
 ```
 
 MountedBinaryResult then can be used on a variety of match or conditional tests.
-
-
 
 #### Testing
 
@@ -445,8 +443,6 @@ Here, an array called `TARGET_MAP` is defined and provided to a logger in the `m
 REPL also uses the log crate to print logs from Wasm modules. Log messages will be printed if`RUST_LOG` environment variable is specified.
 {% endhint %}
 
-
-
 #### Debug
 
 The application of the second feature is limited to obtaining some of the internal details of the IT execution. Normally, this feature should not be used by a backend developer. Here you can see example of such details for the greeting service compiled with the `debug` feature:
@@ -473,8 +469,6 @@ result: String("Hi, user")
 ```
 
 The most important information these logs relates to the `allocate`/`deallocate` function calls. The `sdk.allocate: 4` line corresponds to passing the 4-byte `user` string to the Wasm module, with the memory allocated inside the module and the string is copied there. Whereas `sdk.deallocate: 0x110080 8` refers to passing the 8-byte resulting string `Hi, user` to the host side. Since all arguments and results are passed by value, `deallocate` is called to delete unnecessary memory inside the Wasm module.
-
-
 
 #### Module Manifest
 
