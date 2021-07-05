@@ -24,28 +24,41 @@ rustup self update
 rustup update
 ```
 
-There are a number of good Rust installation and IDE integration tutorials available. [DuckDuckGo](https://duckduckgo.com/) is your friend but if that's too much effort, have a look at [koderhq](https://www.koderhq.com/tutorial/rust/environment-setup/).
-
-
+There are a number of good Rust installation and IDE integration tutorials available. [DuckDuckGo](https://duckduckgo.com/) is your friend but if that's too much effort, have a look at [koderhq](https://www.koderhq.com/tutorial/rust/environment-setup/). Please note, however, that currently only VSCode is supported with Aqua syntax support.
 
 ### Aqua Tools
 
+The Aqua compiler and standard library and be installed via npm:
+
 ```text
-# aqua compiler
+npm -g install @fluencelabs/aqua-cli
+npm -g install @fluencelabs/aqua-lib
+```
+
+
+
+If you are a VSCode user, note that am Aqua syntax-highlighting extension is available. In VSCode, click on the Extensions button, search for `aqua`and install the extension.
+
+![](https://gblobscdn.gitbook.com/assets%2F-MbmEhQUL-bljop_DzuP%2F-MdMDybZMQJ5kUjN4zhr%2F-MdME2UUjaxKs6pzcDLH%2FScreen%20Shot%202021-06-29%20at%201.06.39%20PM.png?alt=media&token=812fcb5c-cf28-4240-b072-a51093d0aaa4)
+
+Moreover, the aqua-playground provides a ready to go Typescript template and Aqua example. In a directory of you choice:
+
+```text
+git clone git@github.com:fluencelabs/aqua-playground.git
 ```
 
 ### Marine Tools
 
-Fluence provides several tools to support developers. Fluence cli, `flcli`, facilitates the compilation of modules to the necessary wasm32-wasi target. Fluence REPL, `fce-repl`, on the other hand, is a cli tool to test and experiment with FCE modules and services locally.
+Fluence provides several tools to support developers. `marine` is the command line compiler required to compile Rust modules to the necessary wasm32-wasi target. `mrepl`, on the other hand, is a command line  tool providing access to the Marine runtime to test and experiment with marine modules and services locally:
 
 ```bash
 cargo install marine 
 cargo +nightly install mrepl
 ```
 
-In addition, Fluence provides the [proto-distributor](https://github.com/fluencelabs/proto-distributor) tool, aka `fldist`, for service lifecyle management. From deploying services to the network to executing AIR scripts, `fldist` does it all.
-
 ### Fluence Tools
+
+In addition, Fluence provides the `fldist` tool for the lifecycle management of services. From deploying services to the network to executing compiled Aqua scripts from the command line , `fldist` does it:
 
 ```bash
 npm install -g @fluencelabs/fldist
