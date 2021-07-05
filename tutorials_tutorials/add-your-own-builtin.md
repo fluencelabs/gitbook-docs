@@ -1,6 +1,6 @@
 # Add Your Own Builtins
 
-As discussed in the [Node](../node/knowledge_node_services.md) section, some service functionalities have ubiquitous demand making them suitable candidates to be directly deployed to a peer node. The [Aqua distributed hash table](https://github.com/fluencelabs/fluence/tree/master/deploy/builtins/aqua-dht) \(DHT\) is an example of builtin service. The remainder of this tutorial guides you through the steps necessary to create and deploy a Builtin service.
+As discussed in the [Node]() section, some service functionalities have ubiquitous demand making them suitable candidates to be directly deployed to a peer node. The [Aqua distributed hash table](https://github.com/fluencelabs/fluence/tree/master/deploy/builtins/aqua-dht) \(DHT\) is an example of builtin service. The remainder of this tutorial guides you through the steps necessary to create and deploy a Builtin service.
 
 In order to have a service available out-of-the-box with the necessary startup and scheduling scripts, we can take advantage of the Fluence [deployer feature](https://github.com/fluencelabs/fluence/tree/master/deploy) for Node native services. This feature handles the complete deployment process including
 
