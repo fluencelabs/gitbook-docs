@@ -1,7 +1,7 @@
 # Table of contents
 
 * [Introduction](README.md)
-* [Thinking In Distributed](p2p.md)
+* [Thinking In Aquamarine](p2p.md)
 * [Concepts](concepts.md)
 * [Quick Start](quick-start.md)
 * [Quick Start](quick_start/README.md)

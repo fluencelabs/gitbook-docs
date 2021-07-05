@@ -10,9 +10,7 @@ The Fluence Web3 stack enables
 * extensibility through adapter/wrapper services
 * efficiencies and improved time to market arising from the reuse of deployed services and significantly reduced devops requirements
 
-by decoupling business logic from composition, security from business logic and resource management from infrastructure. See Figure 1.
-
-Figure 1: Decentralized Applications Composed From Distributed Services On P2P Nodes ![](https://i.imgur.com/XxC7NN3.png)
+by decoupling business logic from composition, security from business logic and resource management from infrastructure.
 
 An integral component of the Fluence solution is the Aquamarine stack comprised of Aqua and Marine. Aqua is a programming language and runtime environment for peer-to-peer workflows. Marine, on the other hand, is a general purpose runtime and associated tooling for multi-module Wasm applications with WASI support and a shared-nothing linking scheme. That is, Marine runs hosted code on nodes and Aqua facilitates the programming of workflows composed from hosted code. In combination, Aqua and Marine enable any distributed application.
 
