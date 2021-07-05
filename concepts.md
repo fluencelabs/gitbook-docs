@@ -1,7 +1,5 @@
 # Concepts
 
-
-
 The Fluence solution enables a new class of decentralized Web3 solutions providing technical, security and business benefits otherwise not available. In order for solution architects and developers to realize these benefits, a shift in philosophy and implementation is required. With the Fluence tool chain available, developers should find it possible to code meaningful Web3 solutions in short order once an understanding of the core concepts and Aqua is in place.
 
 The remainder of this section introduces the core concepts underlying the Fluence solution.
@@ -138,6 +136,4 @@ At the service level, we can achieve scale through parallelization due to the de
 Figure 8: Stylized Par Execution
 
 ![](.gitbook/assets/image%20%288%29.png)
-
-
 

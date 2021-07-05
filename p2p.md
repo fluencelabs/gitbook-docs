@@ -21,14 +21,14 @@ A major contribution of Aquamarine is that network and application layer, i.e., 
 In some network models, such as client server, the request-response model generally entails a response returning to the request client. For example, a client application tasked to conduct a credit check of a customer and to inform them with a SMS typically would call a credit check API, consume the response, and then call a SMS API to send the necessary SMS.
 
 Figure 2: Client Server Request Response Model
-
 ![](.gitbook/assets/image%20%2811%29.png)
+
 
 The Fluence peer-to-peer protocol, on the other hand, allows for a much more effective Request-Response processing pattern where responses are forward-chained to the next consuming service\(s\) without having to make the return trip to the client. See Figure 3.
 
 Figure 3: Fluence P2P Protocol Request Response Model
-
 ![](.gitbook/assets/image%20%2810%29.png)
+
 
 In a Fluence p2p implementation, our client application would call a credit check API deployed or proxy-ed on some peer and then send the response directly to the SMS API service possibly deployed on another peer -- similar to the flow depicted in Figure 1.
 
