@@ -2,7 +2,7 @@
 
 ## Overview
 
-Each Fluence peer is equipped with a set of "built-in" services that can be called from Aquamarine and fall into the following namespaces:
+Each Fluence node is equipped with a set of "builtin" services that can be called from Aquamarine and fall into the following namespaces:
 
 1. _peer_ - operations related to connectivity or state of a given peer
 2. _kad_ - Kademlia API
