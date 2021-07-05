@@ -1,6 +1,6 @@
 # Add Your Own Builtins
 
-As discussed in the [Node](../knowledge_knowledge/node/knowledge_node_services.md) section, some service functionalities have ubiquitous demand making them suitable candidates to be directly deployed to a peer node. The [Aqua distributed hash table](https://github.com/fluencelabs/fluence/tree/master/deploy/builtins/aqua-dht) \(DHT\) is an example of builtin service. The remainder of this tutorial guides you through the steps necessary to create and deploy a Builtin service.
+As discussed in the [Node]() section, some service functionalities have ubiquitous demand making them suitable candidates to be directly deployed to a peer node. The [Aqua distributed hash table](https://github.com/fluencelabs/fluence/tree/master/deploy/builtins/aqua-dht) \(DHT\) is an example of builtin service. The remainder of this tutorial guides you through the steps necessary to create and deploy a Builtin service.
 
 In order to have a service available out-of-the-box with the necessary startup and scheduling scripts, we can take advantage of the Fluence [deployer feature](https://github.com/fluencelabs/fluence/tree/master/deploy) for Node native services. This feature handles the complete deployment process including
 
@@ -10,7 +10,7 @@ In order to have a service available out-of-the-box with the necessary startup a
 
 Note that the deployment process is a fully automated workflow requiring you to merely submit your service assets, i.e., Wasm modules and configuration scripts, in the appropriate format as a PR to the [Fluence](https://github.com/fluencelabs/fluence) repository.
 
-At this point you should have a solid grasp of creating service modules and their associated configuration files. See the [Developing Modules And Services](../development_development/) section for more details.
+At this point you should have a solid grasp of creating service modules and their associated configuration files. See the [Developing Modules And Services]() section for more details.
 
 Our first step is fork the [Fluence](https://github.com/fluencelabs/fluence) repo by clicking on the Fork button, upper right of the repo webpage, and follow the instructions to create a local copy. In your local repo copy, checkout a new branch with a new, unique branch name:
 
@@ -97,7 +97,7 @@ and the associated data file:
 
 ### **Scheduling Script**
 
-Scheduling scripts allow us to decouple service execution from the client and instead can rely on a cron-like scheduler running on a node to trigger our service\(s\). For a brief overview, see [additional concepts](../development_development/development_reward_block_app/development_additional_concepts.md)
+Scheduling scripts allow us to decouple service execution from the client and instead can rely on a cron-like scheduler running on a node to trigger our service\(s\). For a brief overview, see [additional concepts]()
 
 ### Directory Structure
 

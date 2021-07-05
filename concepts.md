@@ -124,7 +124,11 @@ The Fluence protocol offers an alternative to node selection, i.e. connection an
 [TrustGraph](https://github.com/fluencelabs/trust-graph) is currently under active development. Please check the repo for progress.
 {% endhint %}
 
-## **Scaling Applications**
+# **Application**
+
+An application is the "frontend" to one or more services and their execution sequence. Applications are developed by coordinating one or more services into a logical compute unit and tend to live outside the Fluence network**,** e.g., the browser as a peer-client. They can be executed in various runtime environments ranging from browsers to backend daemons.
+
+### **Scaling Applications**
 
 As discussed previously, decoupling at the network and business logic levels is at the core of the Fluence protocol and provides the major entry points for scaling solutions.
 

@@ -60,7 +60,8 @@ func foobar(node:string, service_id:string, func_name:string) -> string:
   <- res!
 ```
 
-As long as foo\(\) is running, the entire FooBar service, including bar\(\), is blocked. This has implications with respect to both service granularity and redundancy.
+As long as  foo\(\) is running,  the entire FooBar service, including bar\(\), is blocked. This has implications with respect to both service granularity and redundancy, where service granularity captures to number of functions per service and redundancy refers to the  number of service instances deployed to different peers. 
+
 
 ## Summary
 
