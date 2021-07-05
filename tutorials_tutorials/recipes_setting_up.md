@@ -10,7 +10,7 @@ Install Rust:
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-once Rust is installed, we need to expand the toolchain and include [nightly build](https://rust-lang.github.io/rustup/concepts/channels.html) and the [Wasm](https://doc.rust-lang.org/stable/nightly-rustc/rustc_target/spec/wasm32_wasi/index.html) compile target.
+Once Rust is installed, we need to expand the toolchain and include [nightly build](https://rust-lang.github.io/rustup/concepts/channels.html) and the [Wasm](https://doc.rust-lang.org/stable/nightly-rustc/rustc_target/spec/wasm32_wasi/index.html) compile target.
 
 ```bash
 rustup install nightly
