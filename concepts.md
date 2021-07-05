@@ -68,7 +68,7 @@ Figure 7: Service Composition and Execution Model
 
 ![](.gitbook/assets/image%20%287%29.png)
 
-Please note that services are not capable to accept more than one request at a given time. Consider a service, FooBar, comprised of two functions, foo\(\) and bar\(\) where foo is a longer running function. 
+Please note that services are not capable to accept more than one request at any given time. Consider a service, FooBar, comprised of two functions, foo\(\) and bar\(\) where foo is a longer running function. 
 
 ```text
 -- Stylized FooBar service with two functions
@@ -91,7 +91,7 @@ func foobar(node:string, service_id:string, func_name:string) -> string:
 ```
 
   
-As long as  foo\(\) is running,  the entire FooBar service, including bar\(\), is blocked. 
+As long as  foo\(\) is running,  the entire FooBar service, including bar\(\), is blocked. This has implications with respect to both service granularity and redundancy.
 
 ### **Modules**
 
