@@ -9,5 +9,7 @@ The Fluence protocol is implemented as the Fluence [reference node](https://gith
 
 and more.
 
-Builtin services are available on every Fluence peer and can be programmatically accessed and composed using Aqua. For a complete list of builtin services see the builtin.aqua file in the [Aqua Lib](https://github.com/fluencelabs/aqua-lib) repo. How to create your own builtin service, see the [Add Your Own Builtins](tutorials_tutorials/add-your-own-builtin.md) tutorial.
+Builtin services are available on every Fluence peer and can be programmatically accessed and composed using Aqua just like any other service. For a complete list of builtin services see the `builtin.aqua` file in the [Aqua Lib](https://github.com/fluencelabs/aqua-lib) repo. 
+
+To find out how to create your own builtin service, see the [Add Your Own Builtins](tutorials_tutorials/add-your-own-builtin.md) tutorial.
 
