@@ -1,10 +1,12 @@
 # Concepts
 
+## Concepts
+
 The Fluence solution enables a new class of decentralized Web3 solutions providing technical, security and business benefits otherwise not available. In order for solution architects and developers to realize these benefits, a shift in philosophy and implementation is required. With the Fluence tool chain available, developers should find it possible to code meaningful Web3 solutions in short order once an understanding of the core concepts and Aqua is in place.
 
 The remainder of this section introduces the core concepts underlying the Fluence solution.
 
-## **Particles**
+### **Particles**
 
 Particles are Fluence's secure distributed state medium, i.e., conflict free replication data structures containing application data, workflow scripts and some metadata, that traverse programmatically specified routes in a highly secure manner. That is, _particles_ hop from distributed compute service to distributed compute service across the peer-to-peer network as specified by the application workflow updating along the way.
 
@@ -18,7 +20,7 @@ While the application state change resulting from passing a particle "through" a
 
 As depicted in Figure 4, a particle traverses to a destination node's Aqua VM where the next execution step is evaluated and, if specified, triggered. That is, the service programmatically specified to operate on the particle's data is called from the Aqua VM, the particle's data and workflow \(step\) are updated and the Aqua VM routes the particle to the next specified destination, which may be on the same, another or the client peer.
 
-## **Aqua**
+### **Aqua**
 
 An integral enabler of the Fluence solution is Aqua, an open source language purpose-built to enable developers to ergonomically program distributed networks and applications by composition. Aqua scripts compile to an intermediary representation, called AIR, which execute on the Aqua Virtual Machine, Aqua VM, itself a Wasm module hosted on the Marine interpreter on every peer node.
 
@@ -28,7 +30,7 @@ Figure 5: From Aqua Script To Particle Execution
 
 Currently, compiled Aqua scripts can be executed from Typescript clients based on [Fluence SDK](https://github.com/fluencelabs/fluence-js). For more information about Aqua, see the [Aqua book](https://doc.fluence.dev/aqua-book/).
 
-## **Marine**
+### **Marine**
 
 Marine is Fluence's generalized Wasm runtime executing Wasm Interface Type \(IT\) modules with Aqua VM compatible interfaces on each peer. Let's unpack.
 
@@ -56,7 +58,7 @@ pub fn greeting(name: String) -> String {
 }
 ```
 
-## **Services**
+### **Services**
 
 Services are logical constructs instantiated from Wasm modules that contain some business logic and configuration data. That is, services are created, i.e., linked, at the Marine VM runtime level from uploaded Wasm modules and the relevant metadata
 
@@ -90,7 +92,7 @@ func foobar(node:string, service_id:string, func_name:string) -> string:
 
 As long as foo\(\) is running, the entire FooBar service, including bar\(\), is blocked. This has implications with respect to both service granularity and redundancy.
 
-## **Modules**
+### **Modules**
 
 In the Fluence solution, Wasm IT modules take one of three forms:
 
@@ -100,7 +102,7 @@ In the Fluence solution, Wasm IT modules take one of three forms:
 
 It is important for architects and developers to be aware of their module and services construction with respect to state changes.
 
-## **Authentication And Permissioning**
+### **Authentication And Permissioning**
 
 Authentication at the service API level is an inherent feature of the Fluence solution. This fine-grained approach essentially provides [ambient authority](https://en.wikipedia.org/wiki/Ambient_authority) out of the box.
 
@@ -116,7 +118,7 @@ struct SecurityTetraplet:
 
 SecurityTetraplets are provided with the function call arguments for each \(service\) function call and are checked by the called service. Hence, authentication based on the **\(service caller id == service owner id\)** relation can be established at service ingress and leveraged to build powerful, fine-grained identity and access management solutions enabling true zero trust architectures.
 
-## **Trust Layer**
+### **Trust Layer**
 
 The Fluence protocol offers an alternative to node selection, i.e. connection and permissioning, approaches, such as [Kademlia](https://en.wikipedia.org/wiki/Kademlia), called TrustGraph. A TrustGraph is comprised of subjectively weights assigned to nodes to manage peer connections. TrustGraphs are node operator specific and transitive. That is, a trusted node's trusted neighbors are considered trustworthy.
 
@@ -124,11 +126,11 @@ The Fluence protocol offers an alternative to node selection, i.e. connection an
 [TrustGraph](https://github.com/fluencelabs/trust-graph) is currently under active development. Please check the repo for progress.
 {% endhint %}
 
-# **Application**
+## **Application**
 
 An application is the "frontend" to one or more services and their execution sequence. Applications are developed by coordinating one or more services into a logical compute unit and tend to live outside the Fluence network**,** e.g., the browser as a peer-client. They can be executed in various runtime environments ranging from browsers to backend daemons.
 
-### **Scaling Applications**
+#### **Scaling Applications**
 
 As discussed previously, decoupling at the network and business logic levels is at the core of the Fluence protocol and provides the major entry points for scaling solutions.
 

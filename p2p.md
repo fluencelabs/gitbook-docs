@@ -1,6 +1,6 @@
 # Thinking In Aquamarine
 
-Permissionless peer-to-peer networks have a lot to offer to developers and solution architects such as decentralization, control over data, improved request-response data models and zero trust security at the application and service level. Of course, these capabilities and benefits don't just arise from putting [libp2p](https://libp2p.io/) to work. Instead, a peer-to-peer overlay is required. The Fluence protocol provides such an overlay enabling a powerful distributed data routing and management protocol allowing developers to implement modern and secure Web3 solutions. See Figure 1 for a stylized representation decentralized applications development by programming the composition of services distributed across a peer-to-peer network.
+Permissionless peer-to-peer networks have a lot to offer to developers and solution architects such as decentralization, improved control over data, flattened request-response data models and zero trust security at the application and service level. Of course, these capabilities and benefits don't just arise from putting [libp2p](https://libp2p.io/) to work. Instead, a peer-to-peer overlay is required. The Fluence protocol provides such an overlay enabling a powerful distributed data routing and management protocol allowing developers to implement modern and secure Web3 solutions. See Figure 1 for a stylized representation decentralized applications development by programming the composition of services distributed across a peer-to-peer network.
 
 Figure 1: Decentralized Applications Composed From Distributed Services On P2P Nodes
 
@@ -8,11 +8,11 @@ Figure 1: Decentralized Applications Composed From Distributed Services On P2P N
 
 ## Aquamarine
 
-As a complement to the protocol, Fluence provides the Aquamarine stack aimed at enabling developers to build high-quality, high-performance decentralized applications. Aquamarine is purpose-built to ease the programming demands commonly encountered in distributed, and especially peer-to-peer, development and is comprised of Aqua and Marine.
+As a complement to the protocol, Fluence provides the open source Aquamarine stack aimed at enabling developers to build high-quality, high-performance decentralized applications. Specifically, Aquamarine is purpose-built to ease the design and programming demands commonly encountered in distributed, and especially peer-to-peer, development. The Aquamarine stack is comprised of Aqua and Marine.
 
-[Aqua](https://doc.fluence.dev/aqua-book/), is a new generation programming language allowing developers to program peer-to-peer networks and compose distributed services hosted on peer-to-peer nodes into decentralized applications and backends. Marine, on the other hand, provides the necessary Wasm runtime environment on peers to facilitate the execution of compiled Aqua code.
+[Aqua](https://doc.fluence.dev/aqua-book/), is a new generation programming language allowing developers to program peer-to-peer networks and compose distributed services hosted on peer-to-peer nodes into decentralized applications and backends. [Marine](https://github.com/fluencelabs/marine), on the other hand, provides the necessary Wasm runtime environment on peers to facilitate the execution of compiled Aqua code.
 
-A major contribution of Aquamarine is that network and application layer, i.e., [Layer 3 and Layer 7](https://en.wikipedia.org/wiki/OSI_model), programming is accessible to developers as a seamless and ergonomic composition-from-services experience in Aqua thereby greatly reducing, if not eliminating, common barriers to distributed and decentralized application development.
+A major contribution of Aquamarine is that network and application layer, i.e., [Layer 3 and Layer 7](https://en.wikipedia.org/wiki/OSI_model), programming is accessible to developers as a seamless and ergonomic composition-from-services experience in Aqua, thereby greatly reducing, if not eliminating, the high barriers to entry when it comes to the design and development of distributed and decentralized applications.
 
 ## **Improved Request-Response Model**
 
@@ -60,8 +60,7 @@ func foobar(node:string, service_id:string, func_name:string) -> string:
   <- res!
 ```
 
-As long as  foo\(\) is running,  the entire FooBar service, including bar\(\), is blocked. This has implications with respect to both service granularity and redundancy, where service granularity captures to number of functions per service and redundancy refers to the  number of service instances deployed to different peers. 
-
+As long as foo\(\) is running, the entire FooBar service, including bar\(\), is blocked. This has implications with respect to both service granularity and redundancy, where service granularity captures to number of functions per service and redundancy refers to the number of service instances deployed to different peers.
 
 ## Summary
 
