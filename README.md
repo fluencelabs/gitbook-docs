@@ -18,7 +18,7 @@ Additional resources and support are available:
 
 * [Youtube](https://www.youtube.com/channel/UC3b5eFyKRFlEMwSJ1BTjpbw)
 * [Github](https://github.com/fluencelabs)
-* [Discord](https://discord.gg/ReUw5UQ7)
+* [Discord](https://fluence.chat)
 * [Telegram](https://t.me/fluence_project)
 * [Twitter](https://twitter.com/fluence_project)
 
