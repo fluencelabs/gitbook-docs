@@ -35,7 +35,7 @@ With Docker and VSCode in place:
 
 ![Installed And Ready Devcontainer in VSCode](.gitbook/assets/image%20%2812%29.png)
 
-Congratulations, you now have a fully functional Fluence development environment. For a variety of container management options, click on the `Dev Container: Fluence` button in the lower left of your tools bar:
+Congratulations, you now have a fully functional Fluence development environment. For a variety of container management options, click on the `Dev Container: Fluence` button in the lower left of your tool bar:
 
 ![Container Management Option Menu](.gitbook/assets/image%20%2816%29.png)
 
