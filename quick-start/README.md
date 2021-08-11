@@ -4,7 +4,7 @@ Welcome to our quick-start tutorials which guide you through the necessary steps
 
 1. Create a browser-to-browser messaging web application
 2. Create and deploy a hosted service
-3. Create a browser-to-service messaging web application 
+3. Enhance a browser-to-browser application with a network-hosted service
 
 For your development convenience, Fluence provides a [docker-based development environment](https://github.com/fluencelabs/devcontainer) that comes with the necessary dependencies, tooling and quick-start code pre-installed.
 
@@ -19,7 +19,7 @@ Fluence's devcontainer is a ready to use dockerized development environment with
 
 ### How to install
 
-Docker and optionally VSCode need to be available on your system. For Docker installation, follow the [Get Docker](https://docs.docker.com/get-docker/) instructions for your OS. For VSCode, see [VSCocde](https://code.visualstudio.com/) for instructions.
+Docker and optionally VSCode need to be available on your system. For Docker installation, follow the [Get Docker](https://docs.docker.com/get-docker/) instructions for your OS. For VSCode, see [VSCode](https://code.visualstudio.com/) for instructions.
 
 With Docker and VSCode in place:
 
@@ -46,4 +46,6 @@ Congratulations, you now have a fully functional Fluence development environment
 ![Container Management Option Menu](../.gitbook/assets/image%20%2816%29.png)
 
 If you encounter any problems or have suggestions, please open an issue or submit a PR. You can also reach out in [Discord](https://fluence.chat) or [Telegram](https://t.me/fluence_project). For more detailed reference resources, see the [Fluence documentation](https://doc.fluence.dev/docs/) and [Aqua book](https://doc.fluence.dev/aqua-book/).
+
+All right, now we are ready to proceed to the first application on Fluence.
 
