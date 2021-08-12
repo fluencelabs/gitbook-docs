@@ -11,7 +11,7 @@
   * [Aqua](knowledge_aquamarine/hll.md)
   * [Marine](knowledge_aquamarine/marine/README.md)
     * [Marine CLI](knowledge_aquamarine/marine/marine-cli.md)
-    * [Marine Repl](knowledge_aquamarine/marine/marine-repl.md)
+    * [Marine REPL](knowledge_aquamarine/marine/marine-repl.md)
     * [Marine Rust SDK](knowledge_aquamarine/marine/marine-rs-sdk.md)
 * [Tools](knowledge_tools.md)
 * [Node](node.md)

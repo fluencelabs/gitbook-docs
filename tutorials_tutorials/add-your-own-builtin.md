@@ -10,7 +10,7 @@ In order to have a service available out-of-the-box with the necessary startup a
 
 Note that the deployment process is a fully automated workflow requiring you to merely submit your service assets, i.e., Wasm modules and configuration scripts, in the appropriate format as a PR to the [Fluence](https://github.com/fluencelabs/fluence) repository.
 
-At this point you should have a solid grasp of creating service modules and their associated configuration files. See the [Developing Modules And Services]() section for more details.
+At this point you should have a solid grasp of creating service modules and their associated configuration files.
 
 Our first step is fork the [Fluence](https://github.com/fluencelabs/fluence) repo by clicking on the Fork button, upper right of the repo webpage, and follow the instructions to create a local copy. In your local repo copy, checkout a new branch with a new, unique branch name:
 
@@ -24,7 +24,7 @@ In our new branch, we create a directory with the service name in the _deploy/bu
 ```text
 cd deploy/builtins 
 mkdir my-new-super-service
-cd new-super-service
+cd my-new-super-service
 ```
 
 Replace _my_-_new-super-service_ with your service name.
@@ -55,7 +55,7 @@ Blueprints capture the service name and dependencies:
 }
 ```
 
-where
+Where
 
 * name specifies the service's name and 
 * dependencies list the names of the Wasm modules or the Blake3 hash of the Wasm module
@@ -75,7 +75,7 @@ If you decide to use the hash approach, please use the hash for the config files
 
 ### **Start Script**
 
-Start scripts, which are optional, execute once after service deployment or node restarts and are submitted as _air_ files and may be accompanied by a _json_ file containing the necessary parameters.
+Start scripts, which are optional, execute once after service deployment or node restarts and are submitted as _AIR_ files and may be accompanied by a _json_ file containing the necessary parameters.
 
 ```text
 ;; on_start.air
@@ -97,7 +97,7 @@ and the associated data file:
 
 ### **Scheduling Script**
 
-Scheduling scripts allow us to decouple service execution from the client and instead can rely on a cron-like scheduler running on a node to trigger our service\(s\). For a brief overview, see [additional concepts]()
+Scheduling scripts allow us to decouple service execution from the client and instead can rely on a cron-like scheduler running on a node to trigger our service\(s\). 
 
 ### Directory Structure
 

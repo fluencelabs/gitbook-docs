@@ -1,6 +1,6 @@
 # Marine Rust SDK
 
-The [marine-rs-sdk](https://github.com/fluencelabs/marine-rs-sdk) empowers developers to write services suitable for peer hosting in peer-to-peer networks using the Marine Virtual Machine by enabling the wasm32-wasi compile target for Marine. For an introduction to writing services with the marine-rs-sdk, see the [Developing Modules And Services]() section. 
+The [marine-rs-sdk](https://github.com/fluencelabs/marine-rs-sdk) empowers developers to write services suitable for peer hosting in peer-to-peer networks using the Marine Virtual Machine by enabling the wasm32-wasi compile target for Marine. 
 
 ### API
 
@@ -364,7 +364,7 @@ mod tests {
 ```
 
 1. We wrap a basic _greeting_ function with the `[marine`\] macro which results in the greeting.wasm module
-2. We wrap our tests as usual with `[cfg(test)]` and import the fluence_test crate._ Do **not** import _super_ or the _local crate_. 
+2. We wrap our tests as usual with `[cfg(test)]` and import the fluence _test crate._ Do **not** import _super_ or the _local crate_. 
 3. Instead, we apply the `[marine_test]` to each of the test functions by providing the path to the config file, e.g., Config.toml, and the directory containing the Wasm module we obtained after compiling our project with `marine build`. It is imperative that project compilation proceeds the test runner otherwise there won't be the required Wasm file.
 4. The target of our tests is the `pub fn greeting` function. Since we are calling the function from the Wasm module we must prefix the function name with the module namespace -- `greeting` in this example case.
 

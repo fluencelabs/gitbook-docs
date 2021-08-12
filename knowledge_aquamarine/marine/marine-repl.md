@@ -1,4 +1,4 @@
-# Marine Repl
+# Marine REPL
 
 [`mrepl`](https://crates.io/crates/mrepl) is a command line tool to locally run a Marine instance to inspect, run, and test Wasm modules and service configurations. We can run the Repl either with `mrepl` or `marine repl` 
 

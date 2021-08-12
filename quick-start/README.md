@@ -37,7 +37,7 @@ With Docker and VSCode in place:
 
 * When asked for branch, press enter \(main\)
 * When asked for volume, press enter \(unique\)
-* open Terminal within VSCode \(ctrl-\`\)
+* Open Terminal in VSCode \(ctrl-\`\)
 
 ![Installed And Ready Devcontainer in VSCode](../.gitbook/assets/image%20%2812%29.png)
 

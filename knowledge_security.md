@@ -155,5 +155,5 @@ This makes decomposition a pain: why decouple services if we need them to know s
 
 * [Tetraplet implementation in the Aquamarine interpreter](https://github.com/fluencelabs/aquamarine/blob/master/crates/polyplets/src/tetraplet.rs)
 * [Example of checking tetraplets for authorization in Fluent Pad](https://github.com/fluencelabs/fluent-pad/blob/main/services/history-inmemory/src/service_api.rs#L91)
-* [Getting tetraplets with Rust SDK](https://github.com/fluencelabs/rust-sdk/blob/master/crates/main/src/call_parameters.rs#L35)
+* [Getting tetraplets with Rust SDK](https://github.com/fluencelabs/marine-rs-sdk/blob/7c8f65fb64e64ba7e068b124449e745ef28c742d/sdk/src/call_parameters.rs#L35)
 
