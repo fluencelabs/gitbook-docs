@@ -1,6 +1,10 @@
 # Setting Up Your Environment
 
-In order to develop within the Fluence solution, [Rust](https://www.rust-lang.org/tools/install) and small number of tools are required.
+In order to develop within the Fluence solution, [Node](https://nodejs.org/en/), [Rust](https://www.rust-lang.org/tools/install) and small number of tools are required.
+
+### NodeJs
+
+Download the \[installer\]\([https://nodejs.org/en/download/](https://nodejs.org/en/download/)\) for your platform and follow the instructions.
 
 ### Rust
 
