@@ -17,7 +17,7 @@ To create a new peer simple instantiate the `FluencePeer` class:
 const peer = new FluencePeer();
 ```
 
-The constructor simply creates a new object and does not initialize any workflow. The `init` function starts the Aqua VM, initialized the default call service handlers and (optionally) connect to the Fluence network. The function takes an optional object specifying additonal peer configuration. On option you will be using a lot is `connectTo`. It tells the peer to connect to a relay. For example:
+The constructor simply creates a new object and does not initialize any workflow. The `init` function starts the Aqua VM, initializes the default call service handlers and (optionally) connect to the Fluence network. The function takes an optional object specifying additonal peer configuration. On option you will be using a lot is `connectTo`. It tells the peer to connect to a relay. For example:
 
 ```typescript
 await peer.init({
@@ -25,9 +25,7 @@ await peer.init({
 });
 ```
 
-connects the first node of the Kranodar network. You can find the officially maintained list networks in the `@fluencelabs/fluence-network-environment` package. The full list of supported options is described in the [API reference](js-sdk/6_reference.md)
-
-The reverse to
+connects the first node of the Kranodar network. You can find the officially maintained list networks in the `@fluencelabs/fluence-network-environment` package. The full list of supported options is described in the [API reference](js-sdk/6_reference/modules.md)
 
 Most of the time a single peer is enough for the whole application. For these use cases`FluncePeer` class contains the default instance which can be accessed with the corresponding property:
 

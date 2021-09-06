@@ -21,7 +21,7 @@
   - [In-depth](js-sdk/3_basics.md)
   - [Running app in nodejs](js-sdk/4_run_in_node.md)
   - [Running app in browser](js-sdk/5_run_in_browser.md)
-  - [Api reference](js-sdk/6_reference.md)
+  - [Api reference](js-sdk/6_reference/modules.md)
   - [Changelog](js-sdk/changelog.md)
 - [Security](knowledge_security.md)
 - [Tutorials](tutorials_tutorials/README.md)
