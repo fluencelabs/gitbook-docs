@@ -9,19 +9,15 @@ It provides all the necessary features to communicate with Fluence network
 
 - [constructor](js-sdk/6_reference/classes/FluencePeer.md#constructor)
 
-### Properties
-
-- [callServiceHandler](js-sdk/6_reference/classes/FluencePeer.md#callservicehandler)
-
 ### Accessors
 
 - [connectionInfo](js-sdk/6_reference/classes/FluencePeer.md#connectioninfo)
+- [internals](js-sdk/6_reference/classes/FluencePeer.md#internals)
 - [default](js-sdk/6_reference/classes/FluencePeer.md#default)
 
 ### Methods
 
 - [init](js-sdk/6_reference/classes/FluencePeer.md#init)
-- [initiateFlow](js-sdk/6_reference/classes/FluencePeer.md#initiateflow)
 - [uninit](js-sdk/6_reference/classes/FluencePeer.md#uninit)
 
 ## Constructors
@@ -35,17 +31,7 @@ In order to work with the Peer it has to be initialized with the `init` method
 
 #### Defined in
 
-[internal/FluencePeer.ts:111](https://github.com/fluencelabs/fluence-js/blob/284a59b/src/internal/FluencePeer.ts#L111)
-
-## Properties
-
-### callServiceHandler
-
-• **callServiceHandler**: `CallServiceHandler`
-
-#### Defined in
-
-[internal/FluencePeer.ts:201](https://github.com/fluencelabs/fluence-js/blob/284a59b/src/internal/FluencePeer.ts#L201)
+[internal/FluencePeer.ts:111](https://github.com/fluencelabs/fluence-js/blob/c2e280d/src/internal/FluencePeer.ts#L111)
 
 ## Accessors
 
@@ -61,7 +47,28 @@ Get the information about Fluence Peer connections
 
 #### Defined in
 
-[internal/FluencePeer.ts:116](https://github.com/fluencelabs/fluence-js/blob/284a59b/src/internal/FluencePeer.ts#L116)
+[internal/FluencePeer.ts:116](https://github.com/fluencelabs/fluence-js/blob/c2e280d/src/internal/FluencePeer.ts#L116)
+
+___
+
+### internals
+
+• `get` **internals**(): `Object`
+
+Does not intended to be used manually. Subject to change
+
+#### Returns
+
+`Object`
+
+| Name | Type |
+| :------ | :------ |
+| `callServiceHandler` | `CallServiceHandler` |
+| `initiateFlow` | (`request`: `RequestFlow`) => `Promise`<`void`\> |
+
+#### Defined in
+
+[internal/FluencePeer.ts:190](https://github.com/fluencelabs/fluence-js/blob/c2e280d/src/internal/FluencePeer.ts#L190)
 
 ___
 
@@ -78,7 +85,7 @@ by the Aqua compiler if not specified otherwise.
 
 #### Defined in
 
-[internal/FluencePeer.ts:181](https://github.com/fluencelabs/fluence-js/blob/284a59b/src/internal/FluencePeer.ts#L181)
+[internal/FluencePeer.ts:181](https://github.com/fluencelabs/fluence-js/blob/c2e280d/src/internal/FluencePeer.ts#L181)
 
 ## Methods
 
@@ -101,27 +108,7 @@ and (optionally) connect to the Fluence network
 
 #### Defined in
 
-[internal/FluencePeer.ts:130](https://github.com/fluencelabs/fluence-js/blob/284a59b/src/internal/FluencePeer.ts#L130)
-
-___
-
-### initiateFlow
-
-▸ **initiateFlow**(`request`): `Promise`<`void`\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `request` | `RequestFlow` |
-
-#### Returns
-
-`Promise`<`void`\>
-
-#### Defined in
-
-[internal/FluencePeer.ts:187](https://github.com/fluencelabs/fluence-js/blob/284a59b/src/internal/FluencePeer.ts#L187)
+[internal/FluencePeer.ts:130](https://github.com/fluencelabs/fluence-js/blob/c2e280d/src/internal/FluencePeer.ts#L130)
 
 ___
 
@@ -138,4 +125,4 @@ and disconnects from the Fluence network
 
 #### Defined in
 
-[internal/FluencePeer.ts:172](https://github.com/fluencelabs/fluence-js/blob/284a59b/src/internal/FluencePeer.ts#L172)
+[internal/FluencePeer.ts:172](https://github.com/fluencelabs/fluence-js/blob/c2e280d/src/internal/FluencePeer.ts#L172)
