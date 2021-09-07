@@ -31,7 +31,7 @@ In order to work with the Peer it has to be initialized with the `init` method
 
 #### Defined in
 
-[internal/FluencePeer.ts:111](https://github.com/fluencelabs/fluence-js/blob/c2e280d/src/internal/FluencePeer.ts#L111)
+[internal/FluencePeer.ts:111](https://github.com/fluencelabs/fluence-js/blob/480d630/src/internal/FluencePeer.ts#L111)
 
 ## Accessors
 
@@ -47,7 +47,7 @@ Get the information about Fluence Peer connections
 
 #### Defined in
 
-[internal/FluencePeer.ts:116](https://github.com/fluencelabs/fluence-js/blob/c2e280d/src/internal/FluencePeer.ts#L116)
+[internal/FluencePeer.ts:116](https://github.com/fluencelabs/fluence-js/blob/480d630/src/internal/FluencePeer.ts#L116)
 
 ___
 
@@ -68,7 +68,7 @@ Does not intended to be used manually. Subject to change
 
 #### Defined in
 
-[internal/FluencePeer.ts:190](https://github.com/fluencelabs/fluence-js/blob/c2e280d/src/internal/FluencePeer.ts#L190)
+[internal/FluencePeer.ts:190](https://github.com/fluencelabs/fluence-js/blob/480d630/src/internal/FluencePeer.ts#L190)
 
 ___
 
@@ -85,7 +85,7 @@ by the Aqua compiler if not specified otherwise.
 
 #### Defined in
 
-[internal/FluencePeer.ts:181](https://github.com/fluencelabs/fluence-js/blob/c2e280d/src/internal/FluencePeer.ts#L181)
+[internal/FluencePeer.ts:181](https://github.com/fluencelabs/fluence-js/blob/480d630/src/internal/FluencePeer.ts#L181)
 
 ## Methods
 
@@ -108,7 +108,7 @@ and (optionally) connect to the Fluence network
 
 #### Defined in
 
-[internal/FluencePeer.ts:130](https://github.com/fluencelabs/fluence-js/blob/c2e280d/src/internal/FluencePeer.ts#L130)
+[internal/FluencePeer.ts:130](https://github.com/fluencelabs/fluence-js/blob/480d630/src/internal/FluencePeer.ts#L130)
 
 ___
 
@@ -125,4 +125,4 @@ and disconnects from the Fluence network
 
 #### Defined in
 
-[internal/FluencePeer.ts:172](https://github.com/fluencelabs/fluence-js/blob/c2e280d/src/internal/FluencePeer.ts#L172)
+[internal/FluencePeer.ts:172](https://github.com/fluencelabs/fluence-js/blob/480d630/src/internal/FluencePeer.ts#L172)

@@ -6,6 +6,10 @@
 
 - [FluencePeer](js-sdk/6_reference/classes/FluencePeer.md)
 
+### Interfaces
+
+- [CallParams](js-sdk/6_reference/interfaces/CallParams.md)
+
 ### Type aliases
 
 - [AvmLoglevel](js-sdk/6_reference/modules.md#avmloglevel)
@@ -29,7 +33,7 @@ Possible values: 'info', 'trace', 'debug', 'info', 'warn', 'error', 'off';
 
 #### Defined in
 
-[internal/FluencePeer.ts:35](https://github.com/fluencelabs/fluence-js/blob/c2e280d/src/internal/FluencePeer.ts#L35)
+[internal/FluencePeer.ts:35](https://github.com/fluencelabs/fluence-js/blob/480d630/src/internal/FluencePeer.ts#L35)
 
 ___
 
@@ -41,7 +45,7 @@ Peer ID's id as a base58 string (multihash/CIDv0).
 
 #### Defined in
 
-[internal/commonTypes.ts:20](https://github.com/fluencelabs/fluence-js/blob/c2e280d/src/internal/commonTypes.ts#L20)
+[internal/commonTypes.ts:22](https://github.com/fluencelabs/fluence-js/blob/480d630/src/internal/commonTypes.ts#L22)
 
 ## Functions
 
@@ -65,7 +69,7 @@ Generates a new peer id from base64 string contatining the 32 byte Ed25519S secr
 
 #### Defined in
 
-[internal/peerIdUtils.ts:26](https://github.com/fluencelabs/fluence-js/blob/c2e280d/src/internal/peerIdUtils.ts#L26)
+[internal/peerIdUtils.ts:26](https://github.com/fluencelabs/fluence-js/blob/480d630/src/internal/peerIdUtils.ts#L26)
 
 ___
 
@@ -89,7 +93,7 @@ Converts peer id into base64 string contatining the 32 byte Ed25519S secret key
 
 #### Defined in
 
-[internal/peerIdUtils.ts:45](https://github.com/fluencelabs/fluence-js/blob/c2e280d/src/internal/peerIdUtils.ts#L45)
+[internal/peerIdUtils.ts:45](https://github.com/fluencelabs/fluence-js/blob/480d630/src/internal/peerIdUtils.ts#L45)
 
 ___
 
@@ -107,7 +111,7 @@ Generates a new peer id with random private key
 
 #### Defined in
 
-[internal/peerIdUtils.ts:59](https://github.com/fluencelabs/fluence-js/blob/c2e280d/src/internal/peerIdUtils.ts#L59)
+[internal/peerIdUtils.ts:59](https://github.com/fluencelabs/fluence-js/blob/480d630/src/internal/peerIdUtils.ts#L59)
 
 ___
 
@@ -127,4 +131,4 @@ ___
 
 #### Defined in
 
-[index.ts:23](https://github.com/fluencelabs/fluence-js/blob/c2e280d/src/index.ts#L23)
+[index.ts:23](https://github.com/fluencelabs/fluence-js/blob/480d630/src/index.ts#L23)
