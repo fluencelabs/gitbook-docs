@@ -55,7 +55,7 @@ npx tsc --init
 
 # Setting up aqua compiler
 
-Let's put aqua described earlier into `aqua\hello-world.aqua` file. You probably want to keep the generated TypeScript in the same directory with other typescript files, usually `src`. Let's create the `src\_aqua` directory for that.
+Let's put aqua described earlier into `aqua/hello-world.aqua` file. You probably want to keep the generated TypeScript in the same directory with other typescript files, usually `src`. Let's create the `src/_aqua` directory for that.
 
 The overall project structure looks like this:
 
@@ -91,7 +91,7 @@ We recommend to store this logic inside a script in `packages.json` file:
 }
 ```
 
-`compile-aqua` (1) runs the compilation once, producing `src\_aqua\hello-world.ts` in our case
+`compile-aqua` (1) runs the compilation once, producing `src/_aqua/hello-world.ts` in our case
 `watch-aqua` (2) starts watching for any changes in .aqua files recompiling them on the fly
 
 # Using the compiled code in our application

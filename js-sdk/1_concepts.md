@@ -14,7 +14,7 @@ Even though the js-based implementation closely resembles [node](node.md) there 
 
 Due to the limitations of browser-based environment `FluencePeer` cannot be discovered by it's Peer Id on it's own. To overcome this `FluencePeer` must use an existing node which will act as a `relay`. When a peer is connected through a relay it is considered to be `client`. The `FluencePeer` routes all it's particle through it's relay thus taking advantage of the peer discovery implemented on the node. A particle sent to the connected client must be routed through it's relay.
 
-The js-based peer does not implement the full set of builtin functions due the limitations described previously. E.g there is no builtins implementation for _kad_ or _srv_ services. However _op_ service is fully implemented. For the full descriptions of implemented builtins refer to [api reference?](js-sdk/5_reference.md)
+The js-based peer does not implement the full set of builtin functions due the limitations described previously. E.g there is no builtins implementation for _kad_ or _srv_ services. However _op_ service is fully implemented. For the full descriptions of implemented builtins refer to [Api reference](js-sdk/6_reference/modules.md)
 
 In contrast with the node implementation `FluencePeer` can initiate new particles execution. Aqua compiler generates executable functions from `func` definitions in aqua code.
 

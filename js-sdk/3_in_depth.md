@@ -151,5 +151,185 @@ It is possible to combine usage of the default peer with another one. Pay close 
 
 Aqua compiler emits TypeScript or JavaScript which in turn can be called from a js-based environemt. The compiler outputs code for the following entities:
 
-1. Exported `func` declarations are turned into callable async functiokns
+1. Exported `func` declarations are turned into callable async functioks
 2. Exported `service` declarations are turned into functions which register callback handler in a typed manner
+3. For every exported `service` the compiler generated it's interface under the name `{serviceName}Def`
+
+## Function definitions
+
+For every exported function definition in aqua the compiler generated two overloads. One accepting the `FluencePeer` instance as the first argument, and one without it. Otherwise arguments are the same and correspond to the arguments of aqua functions. The last argument is always an optional config object with the following properties:
+
+- `ttl`: Optional parameter which specify TTL (time to live) of particle with execution logic for the function
+
+The return type is always a promise of the aqua function return type. If the function does not return anything, the return type will be `Promise<void>`.
+
+Consider the following example:
+
+```
+func myFunc(arg0: string, arg1: string):
+    -- implementation
+
+```
+
+The compiler will generate the following overloads:
+
+```typescript
+export async function myFunc(
+  arg0: string,
+  arg1: string,
+  config?: { ttl?: number }
+): Promise<void>;
+
+export async function callMeBack(
+  peer: FluencePeer,
+  arg0: string,
+  arg1: string,
+  config?: { ttl?: number }
+): Promise<void>;
+```
+
+## Service definitions
+
+For every exported `service` declaration the compiler will generate two entities: service interface under the name `{serviceName}Def` and a function named `register{serviceName}` with several overloads. First let's describe the most complete one using the following example:
+
+```typescript
+export interface ServiceNameDef {
+  //... service function definitions
+}
+
+export function registerStringExtra(
+  peer: FluencePeer,
+  serviceId: string,
+  service: ServiceNameDef
+): void;
+```
+
+- `peer` - the Fluence Peer instance where the handler should be registered. The peer can be ommited. In that case the `FluencePeer.default` will be used instead
+- `serviceId` - the name of the service id. If the service was defined with the default service id in aqua code, this argument can be ommited.
+- `service` - the handler for the service.
+
+Depending on whether or not the services was defined with the default id the number of overloads will be different. In the case it **is defined**, there would be four overloads:
+
+```typescript
+// (1)
+export function registerStringExtra(
+  //
+  service: ServiceNameDef
+): void;
+
+// (2)
+export function registerStringExtra(
+  serviceId: string,
+  service: ServiceNameDef
+): void;
+
+// (3)
+export function registerStringExtra(
+  peer: FluencePeer,
+  service: ServiceNameDef
+): void;
+
+// (4)
+export function registerStringExtra(
+  peer: FluencePeer,
+  serviceId: string,
+  service: ServiceNameDef
+): void;
+```
+
+1. Uses `FluencePeer.default` and the default id taken from aqua definition
+2. Uses `FluencePeer.default` and specifies the service id explicitly
+3. The default id is taken from aqua definition. The peer is specified explicitly
+4. Specifying both peer and the service id.
+
+If the default id **is not defined** in aqua code the overloads will exclude ones without service id:
+
+```typescript
+// (1)
+export function registerStringExtra(
+  serviceId: string,
+  service: ServiceNameDef
+): void;
+
+// (2)
+export function registerStringExtra(
+  peer: FluencePeer,
+  serviceId: string,
+  service: ServiceNameDef
+): void;
+```
+
+1. Uses `FluencePeer.default` and specifies the service id explicitly
+2. Specifying both peer and the service id.
+
+## Service interface
+
+The service interface type follows closely the definition in aqua code. It has the form of the object which keys correspond to the names of service members and the values are functions of the type translated from aqua definition (see Type convertion). For example, for the following aqua definition:
+
+```
+service Calc("calc"):
+    add(n: f32)
+    subtract(n: f32)
+    multiply(n: f32)
+    divide(n: f32)
+    reset()
+    getResult() -> f32
+```
+
+The typescript interface will be:
+
+```typescript
+export interface CalcDef {
+  add: (n: number, callParams: CallParams<"n">) => void;
+  subtract: (n: number, callParams: CallParams<"n">) => void;
+  multiply: (n: number, callParams: CallParams<"n">) => void;
+  divide: (n: number, callParams: CallParams<"n">) => void;
+  reset: (callParams: CallParams<null>) => void;
+  getResult: (callParams: CallParams<null>) => number;
+}
+```
+
+`CallParams` will be described later in the section
+
+## Type convertion
+
+Basic types convertion is pretty much straightforward:
+
+- `string` is converted to `string` in typescript
+- `bool` is converted to `boolean` in typescript
+- All number types (`u8`, `u16`, `u32`, `u64`, `s8`, `s16`, `s32`, `s64`, `f32`, `f64`) are converted to `number` in typescript
+
+Arrow types translate to functions in typescript which have their arguments translated to typescript types. In addition to arguments defined in aqua, typescript counterparts have an additional argument for call params. For the majority of use cases this parameter is not needed and can be ommited.
+
+The type convertion works the same way for `service` and `func` definitions. For example a `func` with a callback might look like this:
+
+```
+func callMeBack(callback: string, i32 -> ()):
+    callback("hello, world", 42)
+```
+
+The type for `callback` argument will be:
+
+```typescript
+callback: (arg0: string, arg1: number, callParams: CallParams<'arg0' | 'arg1'>) => void,
+```
+
+For the service definitions arguments are named (see calc example above)
+
+## Call params and tetraplets
+
+Each service call is accompanied by additional information specific to Fluence Protocol. Including `initPeerId` - the peer which initiated the particle execution, particle signature and most importantly security tetraplets. All this data is contained inside the last `callParams` argument in every generated function definition. These data is passed to the handler on each function call can be used in the application.
+
+Tetraplets have the form of:
+
+```typescript
+{
+  argName0: SecurityTetraplet[],
+  argName1: SecurityTetraplet[],
+  // ...
+}
+```
+
+To learn more about tetraplets and application security see [Security](knowledge_security.md)
+
+To see full specification of `CallParms` type see [Api reference](js-sdk/6_reference/modules.md)
