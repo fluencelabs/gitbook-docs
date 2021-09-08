@@ -114,12 +114,8 @@ $
 
 Aqua is the proffered language for the Fluence network. It can be used with javascript-based environments via npm package.
 
-{% hint style="warning" %}
-**The package requires java to be installed as it calls "java -jar ... "** 
-{% endhint %}
-
 ```bash
-npm install --save-dev @fluencelabs/aqua-cli
+npm install --save-dev @fluencelabs/aqua
 ```
 
 We will also need the standard library for the language
@@ -163,7 +159,7 @@ The aqua code can now be compiled by using the compiler CLI. We suggest adding a
 ...
   "scripts": {
     "exec": "node -r ts-node/register src/index.ts",
-    "compile-aqua": "aqua-cli -i ./aqua/ -o ./src/compiled"
+    "compile-aqua": "aqua -i ./aqua/ -o ./src/compiled"
   },
 ...
 ```
