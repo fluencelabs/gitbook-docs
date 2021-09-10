@@ -1,2 +1,1 @@
-# Running app in browser
-
+You can use the JS SDK with any framework (or even without it). Just follow the steps from the previous sections. FluentPad is an example application written in React: https://github.com/fluencelabs/fluent-pad
