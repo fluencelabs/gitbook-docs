@@ -18,7 +18,7 @@
 - [JS SDK](js-sdk/readme.md)
   - [Concepts](js-sdk/1_concepts.md)
   - [Basics](js-sdk/2_basics.md)
-  - [In-depth](js-sdk/3_basics.md)
+  - [In-depth](js-sdk/in-depth.md)
   - [Running app in nodejs](js-sdk/4_run_in_node.md)
   - [Running app in browser](js-sdk/5_run_in_browser.md)
   - [Api reference](js-sdk/6_reference/modules.md)
