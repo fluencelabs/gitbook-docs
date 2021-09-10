@@ -19,7 +19,7 @@
   * [Concepts](js-sdk/1_concepts.md)
   * [Basics](js-sdk/2_basics.md)
   * [In-depth](js-sdk/3_in_depth.md)
-  * [Running app in nodejs](js-sdk/running-app-in-nodejs.md)
+  * [Running app in nodejs](js-sdk/4_run_in_browser.md)
   * [Running app in browser](js-sdk/running-app-in-browser.md)
   * [Api reference](js-sdk/api-reference.md)
   * [Changelog](js-sdk/changelog.md)
