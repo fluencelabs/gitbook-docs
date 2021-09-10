@@ -1,21 +1,23 @@
-# Intro
+# Running app in nodejs
+
+## Intro
 
 JS SDK makes it easy to run applications in NodeJS environment. You can take full advantage of the javascript ecosystem and at the save time expose service to the Fluence Network. That makes is an excellent choice for quick prototyping of applications for Fluence Stack.
 
-# Calc app example
+## Calc app example
 
 Lets implement a very simple app which simulates a desk calculator. The calculator has internal memory and implements the following set of operations:
 
-- Add a number
-- Subtract a number
-- Multiply by a number
-- Divide by a number
-- Get the current memory state
-- Reset the memory state to 0.0
+* Add a number
+* Subtract a number
+* Multiply by a number
+* Divide by a number
+* Get the current memory state
+* Reset the memory state to 0.0
 
 First, let's write the service definition in aqua:
 
-```
+```text
 -- service definition
 service Calc("calc"):
     add(n: f32)
@@ -104,7 +106,6 @@ application started
 peer id is:  12D3KooWLBkw4Tz8bRoSriy5WEpHyWfU11jEK3b5yCa7FBRDRWH3
 relay is:  12D3KooWSD5PToNiLQwKDXsu8JSysCwUt8BVUJEqCHcDe7P5h45e
 press any key to continue
-
 ```
 
 And the service can be called from aqua. For example:
@@ -122,3 +123,4 @@ func demoCalculation() -> f32:
         res <- Calc.getResult()
     <- res
 ```
+
