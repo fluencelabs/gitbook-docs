@@ -2,7 +2,7 @@
 
 ## Basic concepts
 
-The main export of the `@fluencelabs/fluence` package is the `FluencePeer` class. This class implements the Fluence protocol for javascript-based environments. It provides all the necessary features to communicate with Fluence network namely:
+`@fluencelabs/fluence` package export the `FluencePeer` class. This class implements the Fluence protocol for javascript-based environments. It provides all the necessary features to communicate with Fluence network namely:
 
 1. Connectivity with one or many Fluence Node which allows sending particles to and receiving from other Peers
 2. The Peer Id identifying the node in the network
@@ -31,10 +31,9 @@ To learn more about Aqua see [aqua book](https://doc.fluence.dev/aqua-book/)
 
 The building block of the application are:
 
-* Aqua code for peer-to-peer communication
-* Compiler cli package for aqua to \(java\)typescript compilation
-* Initialization of the `FluencePeer`
-* Application specific code \(java\)typescript in the framework of your choice
+- Aqua code for peer-to-peer communication
+- Compiler cli package for aqua to \(java\)typescript compilation
+- Initialization of the `FluencePeer`
+- Application specific code \(java\)typescript in the framework of your choice
 
 In the next section we see it in action
-

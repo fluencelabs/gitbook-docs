@@ -36,10 +36,8 @@ The first one is the SDK itself and the second is a maintained list of Fluence n
 
 Aqua compiler cli has to be installed, but is not needed at runtime.
 
-**Warning: the package requires java to be installed \(it will call "java -jar ... "\)**
-
 ```bash
-npm install --save-dev @fluencelabs/aqua-cli
+npm install --save-dev @fluencelabs/aqua
 ```
 
 Also we might want to have aqua source files automatically recompiled on every save. We will take advantage of chokidar for that:
@@ -76,7 +74,7 @@ The overall project structure looks like this:
 The Aqua compiler can be run with `npm`:
 
 ```bash
-npx aqua-cli  -i ./aqua/ -o ./src/_aqua
+npx aqua  -i ./aqua/ -o ./src/_aqua
 ```
 
 We recommend to store this logic inside a script in `packages.json` file:
@@ -86,7 +84,7 @@ We recommend to store this logic inside a script in `packages.json` file:
   ...
   "scripts": {
     ...
-    "compile-aqua": "aqua-cli -i ./aqua/ -o ./src/_aqua", // (1)
+    "compile-aqua": "aqua -i ./aqua/ -o ./src/_aqua", // (1)
     "watch-aqua": "chokidar \"**/*.aqua\" -c \"npm run compile-aqua\"" // (2)
   },
   ...
@@ -142,4 +140,3 @@ node -r ts-node/register src/index.ts
 If everything has been done correctly yuo should see `Hello, world!` in the console.
 
 The next secion will cover in-depth and advanced usage JS SDK
-

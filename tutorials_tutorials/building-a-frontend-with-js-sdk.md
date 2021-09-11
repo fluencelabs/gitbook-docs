@@ -110,16 +110,16 @@ $
 
 **Note**: typically you should have a single instance`FluenceClient` per application since it represents it's identity in the network. You are free to store the instance anywhere you like.
 
-#### 3. Setting Up The  Aqua Compiler
+#### 3. Setting Up The Aqua Compiler
 
 Aqua is the proffered language for the Fluence network. It can be used with javascript-based environments via npm package.
 
 {% hint style="warning" %}
-**The package requires java to be installed as it calls "java -jar ... "** 
+**The package requires java to be installed as it calls "java -jar ... "**
 {% endhint %}
 
 ```bash
-npm install --save-dev @fluencelabs/aqua-cli
+npm install --save-dev @fluencelabs/aqua
 ```
 
 We will also need the standard library for the language
@@ -136,9 +136,9 @@ aqua                   (1)
 node_modules
 src
  ┣ compiled            (3)
- ┗ index.ts     
+ ┗ index.ts
 package-lock.json
-package.json          
+package.json
 tsconfig.json
 ```
 
@@ -163,7 +163,7 @@ The aqua code can now be compiled by using the compiler CLI. We suggest adding a
 ...
   "scripts": {
     "exec": "node -r ts-node/register src/index.ts",
-    "compile-aqua": "aqua-cli -i ./aqua/ -o ./src/compiled"
+    "compile-aqua": "aqua -i ./aqua/ -o ./src/compiled"
   },
 ...
 ```
@@ -177,15 +177,15 @@ npm run compile-aqua
 A typescript file should be generated like so:
 
 ```text
-aqua                   
- ┗ demo.aqua           
+aqua
+ ┗ demo.aqua
 node_modules
 src
  ┣ compiled
  ┃ ┗ demo.ts           <--
- ┗ index.ts     
+ ┗ index.ts
 package-lock.json
-package.json          
+package.json
 tsconfig.json
 ```
 
@@ -237,6 +237,5 @@ Fluence JS SDK gives options to register own handlers for aqua vm service calls
 
 ### References
 
-* For the list of compiler options see: [https://github.com/fluencelabs/aqua](https://github.com/fluencelabs/aqua)
-* Repository with additional examples: [**https://github.com/fluencelabs/aqua-playground**](https://github.com/fluencelabs/aqua-playground)\*\*\*\*
-
+- For the list of compiler options see: [https://github.com/fluencelabs/aqua](https://github.com/fluencelabs/aqua)
+- Repository with additional examples: [**https://github.com/fluencelabs/aqua-playground**](https://github.com/fluencelabs/aqua-playground)\*\*\*\*
