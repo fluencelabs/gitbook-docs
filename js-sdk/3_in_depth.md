@@ -1,7 +1,5 @@
 # In-depth
 
-## In-depth
-
 ## Intro
 
 In this section we will cover the JS SDK in-depth.
