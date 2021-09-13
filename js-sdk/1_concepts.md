@@ -31,9 +31,10 @@ To learn more about Aqua see [aqua book](https://doc.fluence.dev/aqua-book/)
 
 The building block of the application are:
 
-- Aqua code for peer-to-peer communication
-- Compiler cli package for aqua to \(java\)typescript compilation
-- Initialization of the `FluencePeer`
-- Application specific code \(java\)typescript in the framework of your choice
+* Aqua code for peer-to-peer communication
+* Compiler cli package for aqua to \(java\)typescript compilation
+* Initialization of the `FluencePeer`
+* Application specific code \(java\)typescript in the framework of your choice
 
 In the next section we see it in action
+

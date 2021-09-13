@@ -165,7 +165,7 @@ fldist --node-id 12D3KooWLFCmDq4vDRfaxW2GA6kYnorxAiie78XzQrVDVoWEZnPx \
        --node-addr /ip4/127.0.0.1/tcp/9999/ws/p2p/12D3KooWLFCmDq4vDRfaxW2GA6kYnorxAiie78XzQrVDVoWEZnPx \
        run_air \
        -p greeting.greeting.air \
-       -d '{"service": "64551400-6296-4701-8e82-daf0b4e02751", "name":"Fluence"}'
+       -d '{"service": "64551400-6296-4701-8e82-daf0b4e02751", "name":"Fluence", "node": "12D3KooWLFCmDq4vDRfaxW2GA6kYnorxAiie78XzQrVDVoWEZnPx"}'
 ```
 
 ```bash

@@ -147,7 +147,7 @@ async function main() {
 main();
 ```
 
-\(1\) Import list of possible relay nodes (network enironment)
+\(1\) Import list of possible relay nodes \(network enironment\)
 
 \(2\) Aqua compiler provides functions which can be directly imported like any normal typescript function.
 
@@ -169,4 +169,5 @@ If everything has been done correctly yuo should see `Hello, world!` in the cons
 
 The next secion will cover in-depth and advanced usage JS SDK
 
-The code from this section is available in on (github)[https://github.com/fluencelabs/examples/tree/main/js-sdk-examples/hello-world]
+The code from this section is available in on \(github\)\[[https://github.com/fluencelabs/examples/tree/main/js-sdk-examples/hello-world](https://github.com/fluencelabs/examples/tree/main/js-sdk-examples/hello-world)\]
+
