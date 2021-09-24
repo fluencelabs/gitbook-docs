@@ -15,7 +15,7 @@
     * [Marine Rust SDK](knowledge_aquamarine/marine/marine-rs-sdk.md)
 * [Tools](knowledge_tools.md)
 * [Node](node.md)
-* [JS SDK](js-sdk/README.md)
+* [Fluence JS](js-sdk/README.md)
   * [Concepts](js-sdk/1_concepts.md)
   * [Basics](js-sdk/2_basics.md)
   * [In-depth](js-sdk/3_in_depth.md)
