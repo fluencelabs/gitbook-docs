@@ -8,19 +8,19 @@ In this section we will cover the JS SDK in-depth.
 
 `@fluencelabs/fluence` exports a facade `Fluence` which provides all the needed functionality for the most uses cases. It defined 4 functions:
 
-* `start`: Start the default peer.
-* `stop`: Stops the default peer
-* `getStatus`: Gets the status of the default peer. This includes connection
-* `getPeer`: Gets the default Fluence Peer instance \(see below\)
+- `start`: Start the default peer.
+- `stop`: Stops the default peer
+- `getStatus`: Gets the status of the default peer. This includes connection
+- `getPeer`: Gets the default Fluence Peer instance \(see below\)
 
 Under the hood `Fluence` facade calls the corresponding method on the default instance of FluencePeer. This instance is passed to the Aqua-compiler generated functions by default.
 
 ## FluencePeer class
 
-The second export `@fluencelabs/fluence` package is `FluencePeer` class. It is useful in scenarios when the application need to run everal different peer at once. The overall workflow with the `FluencePeer` is the following:
+The second export `@fluencelabs/fluence` package is `FluencePeer` class. It is useful in scenarios when the application need to run several different peer at once. The overall workflow with the `FluencePeer` is the following:
 
 1. Create an instance of the peer
-2. Startign the peer
+2. Starting the peer
 3. Using the peer in the application
 4. Stopping the peer
 
@@ -30,7 +30,7 @@ To create a new peer simple instantiate the `FluencePeer` class:
 const peer = new FluencePeer();
 ```
 
-The constructor simply creates a new object and does not initialize any workflow. The `start` function starts the Aqua VM, initializes the default call service handlers and \(optionally\) connect to the Fluence network. The function takes an optional object specifying additonal peer configuration. On option you will be using a lot is `connectTo`. It tells the peer to connect to a relay. For example:
+The constructor simply creates a new object and does not initialize any workflow. The `start` function starts the Aqua VM, initializes the default call service handlers and \(optionally\) connect to the Fluence network. The function takes an optional object specifying additional peer configuration. On option you will be using a lot is `connectTo`. It tells the peer to connect to a relay. For example:
 
 ```typescript
 await peer.star({
@@ -38,7 +38,7 @@ await peer.star({
 });
 ```
 
-connects the first node of the Kranodar network. You can find the officially maintained list networks in the `@fluencelabs/fluence-network-environment` package. The full list of supported options is described in the [API reference](https://github.com/fluencelabs/gitbook-docs/tree/77344eb147c2ce17fe1c0f37013082fc85c1ffa3/js-sdk/js-sdk/6_reference/modules.md)
+connects the first node of the Krasnodar network. You can find the officially maintained list networks in the `@fluencelabs/fluence-network-environment` package. The full list of supported options is described in the [API reference](https://github.com/fluencelabs/gitbook-docs/tree/77344eb147c2ce17fe1c0f37013082fc85c1ffa3/js-sdk/js-sdk/6_reference/modules.md)
 
 ```typescript
 await peer.stop();
@@ -124,9 +124,9 @@ It is possible to combine usage of the default peer with another one. Pay close 
 
 ## Understanding the Aqua compiler output
 
-Aqua compiler emits TypeScript or JavaScript which in turn can be called from a js-based environemt. The compiler outputs code for the following entities:
+Aqua compiler emits TypeScript or JavaScript which in turn can be called from a js-based environment. The compiler outputs code for the following entities:
 
-1. Exported `func` declarations are turned into callable async functioks
+1. Exported `func` declarations are turned into callable async functions
 2. Exported `service` declarations are turned into functions which register callback handler in a typed manner
 3. For every exported `service` the compiler generated it's interface under the name `{serviceName}Def`
 
@@ -134,7 +134,7 @@ Aqua compiler emits TypeScript or JavaScript which in turn can be called from a 
 
 For every exported function definition in aqua the compiler generated two overloads. One accepting the `FluencePeer` instance as the first argument, and one without it. Otherwise arguments are the same and correspond to the arguments of aqua functions. The last argument is always an optional config object with the following properties:
 
-* `ttl`: Optional parameter which specify TTL \(time to live\) of particle with execution logic for the function
+- `ttl`: Optional parameter which specify TTL \(time to live\) of particle with execution logic for the function
 
 The return type is always a promise of the aqua function return type. If the function does not return anything, the return type will be `Promise<void>`.
 
@@ -183,9 +183,9 @@ export function registerServiceName(
 ): void;
 ```
 
-* `peer` - the Fluence Peer instance where the handler should be registered. The peer can be ommited. In that case the default Fluence Peer will be used instead
-* `serviceId` - the name of the service id. If the service was defined with the default service id in aqua code, this argument can be ommited.
-* `service` - the handler for the service.
+- `peer` - the Fluence Peer instance where the handler should be registered. The peer can be omitted. In that case the default Fluence Peer will be used instead
+- `serviceId` - the name of the service id. If the service was defined with the default service id in aqua code, this argument can be omitted.
+- `service` - the handler for the service.
 
 Depending on whether or not the services was defined with the default id the number of overloads will be different. In the case it **is defined**, there would be four overloads:
 
@@ -270,17 +270,17 @@ export interface CalcDef {
 
 `CallParams` will be described later in the section
 
-### Type convertion
+### Type conversion
 
-Basic types convertion is pretty much straightforward:
+Basic types conversion is pretty much straightforward:
 
-* `string` is converted to `string` in typescript
-* `bool` is converted to `boolean` in typescript
-* All number types \(`u8`, `u16`, `u32`, `u64`, `s8`, `s16`, `s32`, `s64`, `f32`, `f64`\) are converted to `number` in typescript
+- `string` is converted to `string` in typescript
+- `bool` is converted to `boolean` in typescript
+- All number types \(`u8`, `u16`, `u32`, `u64`, `s8`, `s16`, `s32`, `s64`, `f32`, `f64`\) are converted to `number` in typescript
 
-Arrow types translate to functions in typescript which have their arguments translated to typescript types. In addition to arguments defined in aqua, typescript counterparts have an additional argument for call params. For the majority of use cases this parameter is not needed and can be ommited.
+Arrow types translate to functions in typescript which have their arguments translated to typescript types. In addition to arguments defined in aqua, typescript counterparts have an additional argument for call params. For the majority of use cases this parameter is not needed and can be omitted.
 
-The type convertion works the same way for `service` and `func` definitions. For example a `func` with a callback might look like this:
+The type conversion works the same way for `service` and `func` definitions. For example a `func` with a callback might look like this:
 
 ```text
 func callMeBack(callback: string, i32 -> ()):
@@ -312,4 +312,3 @@ Tetraplets have the form of:
 To learn more about tetraplets and application security see [Security](https://github.com/fluencelabs/gitbook-docs/tree/77344eb147c2ce17fe1c0f37013082fc85c1ffa3/js-sdk/knowledge_security.md)
 
 To see full specification of `CallParms` type see [Api reference](https://github.com/fluencelabs/gitbook-docs/tree/77344eb147c2ce17fe1c0f37013082fc85c1ffa3/js-sdk/js-sdk/6_reference/modules.md)
-

@@ -1,6 +1,8 @@
 # Concepts
 
-## Basic concepts
+##
+
+## Fluence peer in JS
 
 `@fluencelabs/fluence` package export the `FluencePeer` class. This class implements the Fluence protocol for javascript-based environments. It provides all the necessary features to communicate with Fluence network namely:
 
@@ -12,29 +14,28 @@
 
 Even though the js-based implementation closely resembles [node](https://github.com/fluencelabs/gitbook-docs/js-sdk/node.md) there are some considerable differences to the latter.
 
-`FluencePeer` does not host services composed of wasm modules. Instead it allows to register service call handlers directly in javascript. The Aqua language compiler creates a typed helpers for that task. Using Aqua compiler is strontly advised when working with JS SDK.
+`FluencePeer` does not host services composed of wasm modules. Instead it allows to register service call handlers directly in javascript. The Aqua language compiler creates a typed helpers for that task. Using Aqua compiler is strongly advised when working with JS SDK.
 
 Due to the limitations of browser-based environment `FluencePeer` cannot be discovered by it's Peer Id on it's own. To overcome this `FluencePeer` must use an existing node which will act as a `relay`. When a peer is connected through a relay it is considered to be `client`. The `FluencePeer` routes all it's particle through it's relay thus taking advantage of the peer discovery implemented on the node. A particle sent to the connected client must be routed through it's relay.
 
-The js-based peer does not implement the full set of builtin functions due the limitations described previously. E.g there is no builtins implementation for _kad_ or _srv_ services. However _op_ service is fully implemented. For the full descriptions of implemented builtins refer to [Api reference](https://github.com/fluencelabs/gitbook-docs/js-sdk/js-sdk/6_reference/modules.md)
+The js-based peer does not implement the full set of builtin functions due the limitations described previously. E.g there is no built-ins implementation for _kad_ or _srv_ services. However _op_ service is fully implemented. For the full descriptions of implemented built-ins refer to [Api reference](https://github.com/fluencelabs/gitbook-docs/js-sdk/js-sdk/6_reference/modules.md)
 
 In contrast with the node implementation `FluencePeer` can initiate new particles execution. Aqua compiler generates executable functions from `func` definitions in aqua code.
 
 ## Creating applications with Aqua language
 
-The official way to write applications for Fluence is using Aqua programming language. Aqua compiler emits TypeScript or JavaScript which in turn can be called from a js-based environemt. The compiler outputs code for the following entities:
+The official way to write applications for Fluence is using Aqua programming language. Aqua compiler emits TypeScript or JavaScript which in turn can be called from a js-based environment. The compiler outputs code for the following entities:
 
-1. Exported `func` declarations are turned into callable async functiokns
+1. Exported `func` declarations are turned into callable async functions
 2. Exported `service` declarations are turned into functions which register callback handler in a typed manner
 
 To learn more about Aqua see [aqua book](https://doc.fluence.dev/aqua-book/)
 
 The building block of the application are:
 
-* Aqua code for peer-to-peer communication
-* Compiler cli package for aqua to \(java\)typescript compilation
-* Initialization of the `FluencePeer`
-* Application specific code \(java\)typescript in the framework of your choice
+- Aqua code for peer-to-peer communication
+- Compiler cli package for aqua to \(java\)typescript compilation
+- Initialization of the `FluencePeer`
+- Application specific code \(java\)typescript in the framework of your choice
 
 In the next section we see it in action
-
