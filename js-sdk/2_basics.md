@@ -2,7 +2,7 @@
 
 ## Intro
 
-In this section we will show you how JS SDK can be used to create a hello world application with Fluence stack.
+In this section we will show you how Fluence JS can be used to create a hello world application with Fluence stack.
 
 ## Aqua code
 
@@ -167,6 +167,6 @@ node -r ts-node/register src/index.ts
 
 If everything has been done correctly yuo should see `Hello, world!` in the console.
 
-The next section will cover in-depth and advanced usage JS SDK
+The next section will cover in-depth and advanced usage of Fluence JS
 
 The code from this section is available in on [github](https://github.com/fluencelabs/examples/tree/main/js-sdk-examples/hello-world)

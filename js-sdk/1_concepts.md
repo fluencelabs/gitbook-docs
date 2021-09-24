@@ -34,7 +34,7 @@ The main entry point `@fluencelabs/fluence` is `Fluence` facade. It provides eas
 
 Even though the js-based implementation closely resembles [node](https://github.com/fluencelabs/gitbook-docs/js-sdk/node.md) there are some considerable differences to the latter.
 
-`FluencePeer` does not host services composed of wasm modules. Instead it allows to register service call handlers directly in javascript. The Aqua language compiler creates a typed helpers for that task. Using Aqua compiler is strongly advised when working with JS SDK.
+`FluencePeer` does not host services composed of wasm modules. Instead it allows to register service call handlers directly in javascript. The Aqua language compiler creates a typed helpers for that task.
 
 Due to the limitations of browser-based environment `FluencePeer` cannot be discovered by it's Peer Id on it's own. To overcome this `FluencePeer` must use an existing node which will act as a `relay`. When a peer is connected through a relay it is considered to be `client`. The `FluencePeer` routes all it's particle through it's relay thus taking advantage of the peer discovery implemented on the node. A particle sent to the connected client must be routed through it's relay.
 

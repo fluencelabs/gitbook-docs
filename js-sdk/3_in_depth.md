@@ -2,7 +2,7 @@
 
 ## Intro
 
-In this section we will cover the JS SDK in-depth.
+In this section we will cover the Fluence JS in-depth.
 
 ## Fluence
 

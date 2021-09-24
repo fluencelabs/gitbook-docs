@@ -9,10 +9,10 @@ Each Fluence peer is equipped with a set of "built-in" services that can be call
 3. _srv_ – management and information about services on a node
 4. _dist_ – distribution and inspection of modules and blueprints
 5. _script_ – to manage recurring scripts
-6. _op_ – basic operations on data deprecated - namespace for deprecated API Below is the reference documentation for all the existing built-in services. Please refer to the JS SDK documentation to learn how to easily use them from the JS SDK
+6. _op_ – basic operations on data deprecated - namespace for deprecated API Below is the reference documentation for all the existing built-in services. Please refer to the Fluence JS documentation to learn how to easily use them from the Fluence JS
 7. _deprecated_ - namespace for deprecated API
 
-Please note that the [`fldist`](knowledge_tools.md#fluence-proto-distributor-fldist) CLI tool, as well as the [JS SDK](knowledge_tools.md#fluence-js-sdk), provide access to node-based services.
+Please note that the [`fldist`](knowledge_tools.md#fluence-proto-distributor-fldist) CLI tool, as well as the [Fluence JS](knowledge_tools.md#fluence-js-sdk), provide access to node-based services.
 
 ## API
 
