@@ -170,3 +170,4 @@ If everything has been done correctly yuo should see `Hello, world!` in the cons
 The next section will cover in-depth and advanced usage of Fluence JS
 
 The code from this section is available in on [github](https://github.com/fluencelabs/examples/tree/main/js-sdk-examples/hello-world)
+

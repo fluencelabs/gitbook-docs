@@ -11,10 +11,10 @@ To learn more about Aqua see [aqua book](https://doc.fluence.dev/aqua-book/)
 
 The building block of the application are:
 
-- Aqua code for peer-to-peer communication
-- Compiler cli package for aqua to \(java\)typescript compilation
-- Initialization of the `FluencePeer`
-- Application specific code \(java\)typescript in the framework of your choice
+* Aqua code for peer-to-peer communication
+* Compiler cli package for aqua to \(java\)typescript compilation
+* Initialization of the `FluencePeer`
+* Application specific code \(java\)typescript in the framework of your choice
 
 In the next section we see it in action
 
@@ -41,3 +41,4 @@ Due to the limitations of browser-based environment `FluencePeer` cannot be disc
 The js-based peer does not implement the full set of builtin functions due the limitations described previously. E.g there is no built-ins implementation for _kad_ or _srv_ services. However _op_ service is fully implemented. For the full descriptions of implemented built-ins refer to [Api reference](https://github.com/fluencelabs/gitbook-docs/js-sdk/js-sdk/6_reference/modules.md)
 
 In contrast with the node implementation `FluencePeer` can initiate new particles execution. Aqua compiler generates executable functions from `func` definitions in aqua code.
+

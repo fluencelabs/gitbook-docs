@@ -1,6 +1,6 @@
 # Tools
 
-### Fluence Proto Distributor: FLDIST
+## Fluence Proto Distributor: FLDIST
 
 [`fldist`](https://github.com/fluencelabs/proto-distributor) is a command line interface \(CLI\) to Fluence peers allowing for the lifecycle management of services and offers the fastest and most effective way to service deployment.
 
@@ -39,11 +39,11 @@ Options:
                                             [number] [required] [default: 60000]
 ```
 
-### Fluence JS
+## Fluence JS
 
 The [Fluence JS](https://github.com/fluencelabs/fluence-js) supports developers to build full-fledged applications for a variety of targets ranging from browsers to backend apps and greatly expands on the `fldist` capabilities.
 
-### Marine Tools
+## Marine Tools
 
 Marine offers multiple tools including the Marine CLI, REPL and SDK. Please see the [Marine section](knowledge_aquamarine/marine/) for more detail.
 

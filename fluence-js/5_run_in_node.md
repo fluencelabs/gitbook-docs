@@ -90,7 +90,6 @@ async function main() {
 }
 
 main();
-
 ```
 
 As you can see all the service logic has been implemented in typescript. You have full power of npm at your disposal.
