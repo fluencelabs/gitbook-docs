@@ -2,7 +2,7 @@
 
 ## Intro
 
-JS SDK makes it easy to run applications in NodeJS environment. You can take full advantage of the javascript ecosystem and at the save time expose service to the Fluence Network. That makes is an excellent choice for quick prototyping of applications for Fluence Stack.
+It is easy to use Fluence JS in NodeJS applications. You can take full advantage of the javascript ecosystem and at the save time expose service to the Fluence Network. That makes is an excellent choice for quick prototyping of applications for Fluence Stack.
 
 ## Calc app example
 

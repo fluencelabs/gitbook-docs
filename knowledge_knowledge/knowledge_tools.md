@@ -72,7 +72,7 @@ Options:
                                             [number] [required] [default: 60000]
 ```
 
-## Fluence JS SDK
+## Fluence JS
 
-The Fluence [JS SDK](https://github.com/fluencelabs/fluence-js) supports developers to build full-fledged applications for a variety of targets ranging from browsers to backend apps and greatly expands on the `fldist` capabilities.
+The [Fluence JS](https://github.com/fluencelabs/fluence-js) supports developers to build full-fledged applications for a variety of targets ranging from browsers to backend apps and greatly expands on the `fldist` capabilities.
 
