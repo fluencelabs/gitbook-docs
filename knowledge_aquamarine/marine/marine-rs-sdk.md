@@ -217,7 +217,7 @@ fn some_function() -> Data {
 
 #### Call Parameters
 
-There is a special API function `fluence::get_call_parameters()` that returns an instance of the [`CallParameters`](https://github.com/fluencelabs/marine-rs-sdk/blob/master/fluence/src/call_parameters.rs#L35) structure defined as follows:
+There is a special API function `fluence::get_call_parameters()` that returns an instance of the [`CallParameters`](https://github.com/fluencelabs/marine-rs-sdk/blob/6460362f921ec59400af8c2cf98b7f0c58b61c76/sdk/src/call_parameters.rs) structure defined as follows:
 
 ```rust
 pub struct CallParameters {
