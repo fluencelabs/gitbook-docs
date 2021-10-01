@@ -7,6 +7,7 @@
   * [1. Browser-to-Browser](quick-start/1.-browser-to-browser-1.md)
   * [2. Hosted Services](quick-start/2.-hosted-services.md)
   * [3. Browser-to-Service](quick-start/3.-browser-to-service.md)
+  * [4. Service Composition And Reuse With Aqua](quick-start/4.-service-composition-and-reuse-with-aqua.md)
 * [Aquamarine](knowledge_aquamarine/README.md)
   * [Aqua](knowledge_aquamarine/hll.md)
   * [Marine](knowledge_aquamarine/marine/README.md)

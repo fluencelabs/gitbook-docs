@@ -39,7 +39,7 @@ With Docker and VSCode in place:
 * When asked for volume, press enter \(unique\)
 * Open Terminal in VSCode \(ctrl-\`\)
 
-![Installed And Ready Devcontainer in VSCode](../.gitbook/assets/image%20%2818%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29.png)
+![Installed And Ready Devcontainer in VSCode](../.gitbook/assets/image%20%2818%29%20%281%29%20%281%29.png)
 
 Congratulations, you now have a fully functional Fluence development environment. For a variety of container management options, click on the `Dev Container: Fluence` button in the lower left of your tool bar:
 
