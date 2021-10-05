@@ -348,17 +348,17 @@ module_manifest!();
 pub fn main() {}
 
 #[marine]
-pub fn greeting(name: String) -> String {    # 1  
+pub fn greeting(name: String) -> String {    // 1  
     format!("Hi, {}", name)
 }
 
 #[cfg(test)]
 mod tests {
-    use marine_rs_sdk_test::marine_test;   # 2
+    use marine_rs_sdk_test::marine_test;   // 2
 
-    #[marine_test(config_path = "../Config.toml", modules_dir = "../artifacts")] # 3
+    #[marine_test(config_path = "../Config.toml", modules_dir = "../artifacts")] // 3
     fn empty_string(greeting: marine_test_env::greeting::ModuleInterface) {
-        let actual = greeting.greeting(String::new());  # 4 
+        let actual = greeting.greeting(String::new());  // 4 
         assert_eq!(actual, "Hi, ");
     }
 
@@ -370,12 +370,147 @@ mod tests {
 }
 ```
 
-1. We wrap a basic _greeting_ function with the `[marine`\] macro which results in the greeting.wasm module
+1. We wrap a basic _greeting_ function with the `[marine]` macro which results in the greeting.wasm module
 2. We wrap our tests as usual with `[cfg(test)]` and import the marine _test crate._ Do **not** import _super_ or the _local crate_. 
-3. Instead, we apply the `[marine_test]` macro to each of the test functions by providing the path to the config file, e.g., Config.toml, and the directory containing the Wasm module we obtained after compiling our project with `marine build`. Moreover, we add the type of the test as an argument in the function signature. It is imperative that project build precedes the test runner otherwise the required Wasm file will ne missing.
+3. Instead, we apply the `[marine_test]` macro to each of the test functions by providing the path to the config file, e.g., Config.toml, and the directory containing the Wasm module we obtained after compiling our project with `marine build`. Moreover, we add the type of the test as an argument in the function signature. It is imperative that project build precedes the test runner otherwise the required Wasm file will be missing.
 4. The target of our tests is the `pub fn greeting` function. Since we are calling the function from the Wasm module we must prefix the function name with the module namespace -- `greeting` in this example case as specified in the function argument.
 
-Now that we have our Wasm module and tests in place, we can proceed with `cargo test --release.` Note that using the `release`flag vastly improves the import speed of the necessary Wasm modules.  
+Now that we have our Wasm module and tests in place, we can proceed with `cargo test --release.` Note that using the `release`flag vastly improves the import speed of the necessary Wasm modules.
+
+The same macro also allows testing data flow between multiple services, so you do not need to deploy anything to the network and write an Aqua app just for basic testing. Let's look at an example:
+
+{% tabs %}
+{% tab title="test.rs" %}
+```rust
+fn main() {}
+
+#[cfg(test)]
+mod tests {
+    use marine_rs_sdk_test::marine_test;
+    #[marine_test( // 1
+        producer(
+            config_path = "../producer/Config.toml", 
+            modules_dir = "../producer/artifacts"
+        ),
+        consumer(
+            config_path = "../consumer/Config.toml",
+            modules_dir = "../consumer/artifacts"
+        )
+    )]
+    fn test() {
+        let mut producer = marine_test_env::producer::ServiceInterface::new(); // 2
+        let mut consumer = marine_test_env::consumer::ServiceInterface::new();
+        let input = marine_test_env::producer::Input { // 3
+            first_name: String::from("John"),
+            last_name: String::from("Doe"),
+        };
+        let data = producer.produce(input); // 4
+        let result = consumer.consume(data);
+        assert_eq!(result, "John Doe")
+    }
+}
+
+```
+{% endtab %}
+
+{% tab title="producer.rs" %}
+```rust
+use marine_rs_sdk::marine;
+use marine_rs_sdk::module_manifest;
+
+module_manifest!();
+
+pub fn main() {}
+
+#[marine]
+pub struct Data {
+    pub name: String,
+}
+
+#[marine]
+pub struct Input {
+    pub first_name: String,
+    pub last_name: String,
+}
+
+#[marine]
+pub fn produce(data: Input) -> Data {
+    Data {
+        name: format!("{} {}", data.first_name, data.last_name),
+    }
+}
+
+```
+{% endtab %}
+
+{% tab title="consumer.rs" %}
+```rust
+use marine_rs_sdk::marine;
+use marine_rs_sdk::module_manifest;
+
+module_manifest!();
+
+pub fn main() {}
+
+#[marine]
+pub struct Data {
+    pub name: String,
+}
+
+#[marine]
+pub fn consume(data: Data) -> String {
+    data.name
+}
+
+```
+{% endtab %}
+{% endtabs %}
+
+1. We wrap the `test` function with the `marine_test` macro by providing named service configurations with module locations. Based on its arguments the macro defines a `marine_test_env` module with an interface to the services.
+2. We create new services. Each `ServiceInterface::new()` runs a new marine runtime with the service.
+3. We prepare data to pass to a service using structure definition from `marine_test_env`. The macro finds all structures used in the service interface functions and defines them in the corresponding submodule of  `marine_test_env` . 
+4. We call a service function through the `ServiceInterface` object.
+5. It is possible to use the result of one service call as an argument for a different service call. The interface types with the same structure have the same rust type in `marine_test_env`. 
+
+The full example is [here](https://github.com/fluencelabs/marine/tree/master/examples/multiservice_marine_test).
+
+The `marine_test` macro also gives access to the interface of internal modules which may be useful for setting up a test environment. This feature is designed to be used in situations when it is simpler to set up a service for a test through internal functions than through the service interface. To illustrate this feature we have rewritten the previous example:
+
+```rust
+fn main() {}
+
+#[cfg(test)]
+mod tests {
+    use marine_rs_sdk_test::marine_test;
+    #[marine_test(
+        producer(
+            config_path = "../producer/Config.toml",
+            modules_dir = "../producer/artifacts"
+        ),
+        consumer(
+            config_path = "../consumer/Config.toml",
+            modules_dir = "../consumer/artifacts"
+        )
+    )]
+    fn test() {
+        let mut producer = marine_test_env::producer::ServiceInterface::new();
+        let mut consumer = marine_test_env::consumer::ServiceInterface::new();
+        let input = marine_test_env::producer::modules::producer::Input { // 1
+            first_name: String::from("John"),
+            last_name: String::from("Doe"),
+        };
+        let data = producer.modules.producer.produce(input); // 2
+        let consumer_data = marine_test_env::consumer::modules::consumer::Data { name: data.name } // 3;
+        let result = consumer.modules.consumer.consume(consumer_data); 
+        assert_eq!(result, "John Doe")
+    }
+}
+
+```
+
+1. We access the internal service interface to construct an interface structure. To do so, we use the following pattern: `marine_test_env::$service_name::modules::$module_name::$structure_name`.
+2. We access the internal service interface and directly call a function from one of the modules of this service. To do so, we use the following pattern: `$service_object.modules.$module_name.$function_name` .
+3. In the previous example, the same interface types had the same rust types. It is limited when using internal modules: the property is true only when structures are defined in internal modules of one service, or when structures are defined in service interfaces of different services. So, we need to construct the proper type to pass data to the internals of another module. 
 
 ### Features
 
@@ -481,7 +616,7 @@ The most important information these logs relates to the `allocate`/`deallocate`
 
 The `module_manifest!` macro embeds the Interface Type \(IT\), SDK and Rust project version as well as additional project and build information into Wasm module.  For the macro to be usable, it needs to be imported and initialized in the _main.rs_ file:
 
-```text
+```rust
 // main.rs
 use fluence::marine;
 use fluence::module_manifest;    // import manifest macro
