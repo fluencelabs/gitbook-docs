@@ -217,7 +217,7 @@ fn some_function() -> Data {
 
 #### Call Parameters
 
-There is a special API function `fluence::get_call_parameters()` that returns an instance of the [`CallParameters`](https://github.com/fluencelabs/marine-rs-sdk/blob/6460362f921ec59400af8c2cf98b7f0c58b61c76/sdk/src/call_parameters.rs) structure defined as follows:
+There is a special API function `fluence::get_call_parameters()` that returns an instance of the [`CallParameters`](https://github.com/fluencelabs/marine-rs-sdk/blob/master/src/call_parameters.rs#L35) structure defined as follows:
 
 ```rust
 pub struct CallParameters {
@@ -328,7 +328,7 @@ MountedBinaryResult then can be used on a variety of match or conditional tests.
 
 #### Testing
 
-Since we are compiling to a wasm32-wasi target with `ftype` constrains, the basic `cargo test` is not all that useful or even usable for our purposes. To alleviate that limitation, Fluence has introduced the [`[marine-test]` macro ](https://github.com/fluencelabs/marine-rs-sdk/tree/master/crates/marine-test-macro)that does a lot of the heavy lifting to allow developers to use `cargo test` as intended. That is,  `[marine-test]` macro generates the necessary code to call Marine, one instance per test function, based on the Wasm module and associated configuration file so that the actual test function is run against the Wasm module not the native code.
+Since we are compiling to a wasm32-wasi target with `ftype` constrains, the basic `cargo test` is not all that useful or even usable for our purposes. To alleviate that limitation, Fluence has introduced the [`[marine-test]` macro ](https://github.com/fluencelabs/marine-rs-sdk-test/tree/master/crates/marine-test-macro)that does a lot of the heavy lifting to allow developers to use `cargo test` as intended. That is,  `[marine-test]` macro generates the necessary code to call Marine, one instance per test function, based on the Wasm module and associated configuration file so that the actual test function is run against the Wasm module not the native code.
 
 To use the `[marine-test]` macro please add `marine-rs-sdk-test` crate to the `[dev-dependencies]` section of `Config.toml`:
 
