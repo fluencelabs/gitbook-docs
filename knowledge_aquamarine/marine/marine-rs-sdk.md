@@ -10,9 +10,9 @@ The procedural macros `[marine]` and `[marine_test]` are the two primary feature
 
 Applying the `[marine]` macro to a function results in its export, which means that it can be called from other modules or AIR scripts. For the function to be compatible with this macro, its arguments must be of the `ftype`, which is defined as follows:
 
-`ftype` = `bool`, `u8`, `u16`, `u32`, `u64`, `i8`, `i16`, `i32`, `i64`, `f32`, `f64`, `String`  
-`ftype` = `ftype` \| `Vec`&lt;`ftype`&gt;  
-`ftype` = `ftype` \| `Record`&lt;`ftype`&gt;
+`ftype` = `bool`, `u8`, `u16`, `u32`, `u64`, `i8`, `i16`, `i32`, `i64`, `f32`, `f64`, `String`\
+`ftype` = `ftype` | `Vec`<`ftype`>\
+`ftype` = `ftype` | `Record`<`ftype`>
 
 In other words, the arguments must be one of the types listed below:
 
@@ -20,7 +20,8 @@ In other words, the arguments must be one of the types listed below:
 * a vector of elements of the above types
 * a vector composed of vectors of the above type, where recursion is acceptable, e.g. the type `Vec<Vec<Vec<u8>>>` is permissible
 * a record, where all fields are of the basic Rust types
-* a record, where all fields are of any above types or other records 
+* a record, where all fields are of any above types or other records\
+
 
 The return type of a function must follow the same rules, but currently only one return type is possible.
 
@@ -57,7 +58,7 @@ Function Export Requirements
 
 The `[marine]` macro can also wrap an [`extern` block](https://doc.rust-lang.org/std/keyword.extern.html). In this case, all functions declared in it are considered imported functions. If there are imported functions in some module, say, module A, then:
 
-* There should be another module, module B, that exports the same functions. The name of module B is indicated in the `link` macro \(see examples below\).
+* There should be another module, module B, that exports the same functions. The name of module B is indicated in the `link` macro (see examples below).
 * Module B should be loaded to `Marine` by the moment the loading of module A starts. Module A cannot be loaded if at least one imported function is absent in `Marine`.
 
 See the examples below for wrapped `extern` block usage:
@@ -99,12 +100,12 @@ extern "C" {
 
 #### Function import requirements
 
-* wrap an extern block with the function\(s\) to be imported with the `[marine]` macro
-* all function\(s\) arguments must be of the `ftype` type
-* the return type of the function\(s\) must be `ftype`
+* wrap an extern block with the function(s) to be imported with the `[marine]` macro
+* all function(s) arguments must be of the `ftype` type
+* the return type of the function(s) must be `ftype`
 {% endhint %}
 
-#### 
+####
 
 #### Structures
 
@@ -213,7 +214,7 @@ fn some_function() -> Data {
 > * wrapped structs can be imported from crates
 {% endhint %}
 
-#### 
+####
 
 #### Call Parameters
 
@@ -243,7 +244,7 @@ pub struct CallParameters {
 
 CallParameters are especially useful in constructing authentication services:
 
-```text
+```
 // auth.rs
 use fluence::{marine, CallParameters};
 use::marine;
@@ -262,7 +263,7 @@ pub fn am_i_owner() -> bool {
 }
 ```
 
-#### 
+####
 
 #### MountedBinaryResult
 
@@ -370,8 +371,8 @@ mod tests {
 }
 ```
 
-1. We wrap a basic _greeting_ function with the `[marine]` macro which results in the greeting.wasm module
-2. We wrap our tests as usual with `[cfg(test)]` and import the marine _test crate._ Do **not** import _super_ or the _local crate_. 
+1. We wrap a basic _greeting _function with the `[marine]` macro which results in the greeting.wasm module
+2. We wrap our tests as usual with `[cfg(test)]` and import the marine _test crate. _Do **not** import _super_ or the _local crate_. 
 3. Instead, we apply the `[marine_test]` macro to each of the test functions by providing the path to the config file, e.g., Config.toml, and the directory containing the Wasm module we obtained after compiling our project with `marine build`. Moreover, we add the type of the test as an argument in the function signature. It is imperative that project build precedes the test runner otherwise the required Wasm file will be missing.
 4. The target of our tests is the `pub fn greeting` function. Since we are calling the function from the Wasm module we must prefix the function name with the module namespace -- `greeting` in this example case as specified in the function argument.
 
@@ -464,6 +465,39 @@ pub fn consume(data: Data) -> String {
 
 ```
 {% endtab %}
+
+{% tab title="test_on_mod.rs" %}
+```rust
+fn main() {}
+
+#[cfg(test)]
+#[marine_rs_sdk_test::marine_test(
+    producer(
+        config_path = "../producer/Config.toml",
+        modules_dir = "../producer/artifacts"
+    ),
+    consumer(
+        config_path = "../consumer/Config.toml",
+        modules_dir = "../consumer/artifacts"
+    )
+)]
+mod tests_on_mod {
+    #[test]
+    fn test() {
+        let mut producer = marine_test_env::producer::ServiceInterface::new();
+        let mut consumer = marine_test_env::consumer::ServiceInterface::new();
+        let input = marine_test_env::producer::Input {
+            first_name: String::from("John"),
+            last_name: String::from("Doe"),
+        };
+        let data = producer.produce(input);
+        let result = consumer.consume(data);
+        assert_eq!(result, "John Doe")
+    }
+}
+
+```
+{% endtab %}
 {% endtabs %}
 
 1. We wrap the `test` function with the `marine_test` macro by providing named service configurations with module locations. Based on its arguments the macro defines a `marine_test_env` module with an interface to the services.
@@ -471,6 +505,8 @@ pub fn consume(data: Data) -> String {
 3. We prepare data to pass to a service using structure definition from `marine_test_env`. The macro finds all structures used in the service interface functions and defines them in the corresponding submodule of  `marine_test_env` . 
 4. We call a service function through the `ServiceInterface` object.
 5. It is possible to use the result of one service call as an argument for a different service call. The interface types with the same structure have the same rust type in `marine_test_env`. 
+
+In the `test_on_mod.rs` tab we can see another option  — applying `marine_test` to a `mod`. The macro just defines the `marine_test_env` at the beginning of the module and then it can be used as usual everywhere inside the module.
 
 The full example is [here](https://github.com/fluencelabs/marine/tree/master/examples/multiservice_marine_test).
 
@@ -512,13 +548,116 @@ mod tests {
 2. We access the internal service interface and directly call a function from one of the modules of this service. To do so, we use the following pattern: `$service_object.modules.$module_name.$function_name` .
 3. In the previous example, the same interface types had the same rust types. It is limited when using internal modules: the property is true only when structures are defined in internal modules of one service, or when structures are defined in service interfaces of different services. So, we need to construct the proper type to pass data to the internals of another module. 
 
+Testing sdk also has the interface for [Cargo build scripts](https://doc.rust-lang.org/cargo/reference/build-scripts.html). Some IDEs can analyze files generated in build scripts, providing code completion and error highlighting for code generated in build scripts. But using it may be a little bit tricky because build scripts are not designed for such things.
+
+Actions required to set up IDE:
+
+CLion:
+
+* in the `Help -> Actions -> Experimental Futures` enable `org.rust.cargo.evaluate.build.scripts`
+* refresh cargo project in order to update generated code: change `Cargo.toml` and build from IDE or press `Refresh Cargo Project` in Cargo tab.
+
+VS Code:
+
+* install `rust-analyzer` plugin
+* change `Cargo.toml` to let plugin update code from generated files
+
+The update will not work instantly: you should build service to wasm, and then trigger `build.rs` run again, but for the native target.
+
+And here is the example of using this:
+
+{% tabs %}
+{% tab title="build.rs" %}
+```rust
+use marine_rs_sdk_test::generate_marine_test_env;
+use marine_rs_sdk_test::ServiceDescription;
+fn main() {
+    let services = vec![ // <- 1
+        ("greeting".to_string(), ServiceDescription {
+            config_path: "Config.toml".to_string(),
+            modules_dir: Some("artifacts".to_string()),
+        })
+    ];
+
+    let target = std::env::var("CARGO_CFG_TARGET_ARCH").unwrap();
+    if target != "wasm32" { // <- 2
+        generate_marine_test_env(services, "marine_test_env.rs", file!()); // <- 3
+    }
+
+    println!("cargo:rerun-if-changed=src/main.rs"); // <- 4
+}
+```
+{% endtab %}
+
+{% tab title="src/main.rs" %}
+```rust
+use marine_rs_sdk::marine;
+use marine_rs_sdk::module_manifest;
+
+module_manifest!();
+
+pub fn main() {}
+
+#[marine]
+pub fn greeting(name: String) -> String {
+    format!("Hi, {}", name)
+}
+
+#[cfg(test)]
+mod built_tests {
+    marine_rs_sdk_test::include_test_env!("/marine_test_env.rs"); // <- 4
+    #[test]
+    fn non_empty_string() {
+        let mut greeting = marine_test_env::greeting::ServiceInterface::new();
+        let actual = greeting.greeting("name".to_string());
+        assert_eq!(actual, "Hi, name");
+    }
+}
+```
+{% endtab %}
+
+{% tab title="Cargo.toml" %}
+```toml
+[package]
+name = "wasm-build-rs"
+version = "0.1.0"
+authors = ["Fluence Labs"]
+description = "The greeting module for the Fluence network"
+repository = "https://github.com/fluencelabs/marine/tree/master/examples/build_rs"
+edition = "2018"
+publish = false
+
+[[bin]]
+name = "build_rs_test"
+path = "src/main.rs"
+
+[dependencies]
+marine-rs-sdk = "0.6.11"
+
+[dev-dependencies]
+marine-rs-sdk-test = "0.4.0"
+
+[build-dependencies]
+marine-rs-sdk-test = "0.4.0" # <- 5
+
+```
+{% endtab %}
+{% endtabs %}
+
+1. We create a vector of pairs (service_name, service_description) to pass to the generator. The structure is the same with multi-service `marine_test`.
+2. We check if we build for a non-wasm target. As we build this marine service only for `wasm32-wasi` and tests are built for native target, we can generate `marine_test_env` only for tests. This is needed because our generator depends on the artifacts from `wasm32-wasi` build. We suggest using a separate crate for using build scripts for testing purposes. It is here for simplicity.
+3. We pass our services, a name of the file to generate, and a path to the build script file to the `marine_test_env` generator. Just always use `file!()` for the last argument. The generated file will be in the directory specified by the `OUT_DIR` variable, which is set by cargo. The build script must not change any files outside of this directory.
+4. We set up condition to re-run the build script. It must be customized, a good choice is to re-run the build script when .wasm files or `Config.toml` are changed.
+5. We import the generated file with the `marine_test_env` definition to the project.
+6. Do not forget to add `marine-rs-sdk-test` to the `build-dependencies` section of `Cargo.toml`.
+
 ### Features
 
 The SDK has two useful features: `logger` and `debug`.
 
 #### Logger
 
-Using logging is a simple way to assist in debugging without deploying the module\(s\)  to a peer-to-peer network node. The `logger` feature allows you to use a special logger that is based at the top of the [log](https://crates.io/crates/log) crate.
+Using logging is a simple way to assist in debugging without deploying the module(s)  to a peer-to-peer network node. The `logger` feature allows you to use a special logger that is based at the top of the [log](https://crates.io/crates/log) crate.
 
 To enable logging please specify the `logger` feature of the Fluence SDK in `Config.toml` and add the [log](https://docs.rs/log/0.4.11/log/) crate:
 
@@ -579,7 +718,7 @@ pub fn foo() {
 }
 ```
 
-Here, an array called `TARGET_MAP` is defined and provided to a logger in the `main` function of a module. Each entry of this array contains a string \(a target\) and a number that represents the bit position in the 64-bit mask `logging_mask`. When you write a log message request `log::info!`, its target must coincide with one of the strings \(the targets\) defined in the `TARGET_MAP` array. The log will be printed if `logging_mask` for the module has the corresponding target bit set.
+Here, an array called `TARGET_MAP` is defined and provided to a logger in the `main` function of a module. Each entry of this array contains a string (a target) and a number that represents the bit position in the 64-bit mask `logging_mask`. When you write a log message request `log::info!`, its target must coincide with one of the strings (the targets) defined in the `TARGET_MAP` array. The log will be printed if `logging_mask` for the module has the corresponding target bit set.
 
 {% hint style="info" %}
 REPL also uses the log crate to print logs from Wasm modules. Log messages will be printed if`RUST_LOG` environment variable is specified.
@@ -614,7 +753,7 @@ The most important information these logs relates to the `allocate`/`deallocate`
 
 #### Module Manifest
 
-The `module_manifest!` macro embeds the Interface Type \(IT\), SDK and Rust project version as well as additional project and build information into Wasm module.  For the macro to be usable, it needs to be imported and initialized in the _main.rs_ file:
+The `module_manifest!` macro embeds the Interface Type (IT), SDK and Rust project version as well as additional project and build information into Wasm module.  For the macro to be usable, it needs to be imported and initialized in the _main.rs_ file:
 
 ```rust
 // main.rs
@@ -642,8 +781,6 @@ description: foo-wasm, a Marine wasi module
 repository:
 build time:  2021-06-11 21:08:59.855352 +00:00 UTC
 ```
-
-
 
 
 
