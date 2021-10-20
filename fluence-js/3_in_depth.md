@@ -11,7 +11,7 @@ In this section we will cover the Fluence JS in-depth.
 * `start`: Start the default peer.
 * `stop`: Stops the default peer
 * `getStatus`: Gets the status of the default peer. This includes connection
-* `getPeer`: Gets the default Fluence Peer instance \(see below\)
+* `getPeer`: Gets the default Fluence Peer instance (see below)
 
 Under the hood `Fluence` facade calls the corresponding method on the default instance of FluencePeer. This instance is passed to the Aqua-compiler generated functions by default.
 
@@ -30,7 +30,7 @@ To create a new peer simple instantiate the `FluencePeer` class:
 const peer = new FluencePeer();
 ```
 
-The constructor simply creates a new object and does not initialize any workflow. The `start` function starts the Aqua VM, initializes the default call service handlers and \(optionally\) connect to the Fluence network. The function takes an optional object specifying additional peer configuration. On option you will be using a lot is `connectTo`. It tells the peer to connect to a relay. For example:
+The constructor simply creates a new object and does not initialize any workflow. The `start` function starts the Aqua VM, initializes the default call service handlers and (optionally) connect to the Fluence network. The function takes an optional object specifying additional peer configuration. On option you will be using a lot is `connectTo`. It tells the peer to connect to a relay. For example:
 
 ```typescript
 await peer.star({
@@ -38,7 +38,7 @@ await peer.star({
 });
 ```
 
-connects the first node of the Krasnodar network. You can find the officially maintained list networks in the `@fluencelabs/fluence-network-environment` package. The full list of supported options is described in the [API reference](https://github.com/fluencelabs/gitbook-docs/tree/77344eb147c2ce17fe1c0f37013082fc85c1ffa3/js-sdk/js-sdk/6_reference/modules.md)
+connects the first node of the Krasnodar network. You can find the officially maintained list networks in the `@fluencelabs/fluence-network-environment` package. The full list of supported options is described in the [API reference](https://github.com/fluencelabs/gitbook-docs/tree/77344eb147c2ce17fe1c0f37013082fc85c1ffa3/js-sdk/js-sdk/6\_reference/modules.md)
 
 ```typescript
 await peer.stop();
@@ -134,13 +134,13 @@ Aqua compiler emits TypeScript or JavaScript which in turn can be called from a 
 
 For every exported function definition in aqua the compiler generated two overloads. One accepting the `FluencePeer` instance as the first argument, and one without it. Otherwise arguments are the same and correspond to the arguments of aqua functions. The last argument is always an optional config object with the following properties:
 
-* `ttl`: Optional parameter which specify TTL \(time to live\) of particle with execution logic for the function
+* `ttl`: Optional parameter which specify TTL (time to live) of particle with execution logic for the function
 
 The return type is always a promise of the aqua function return type. If the function does not return anything, the return type will be `Promise<void>`.
 
 Consider the following example:
 
-```text
+```
 func myFunc(arg0: string, arg1: string):
     -- implementation
 ```
@@ -164,7 +164,7 @@ export async function callMeBack(
 
 ### Service definitions
 
-```text
+```
 service ServiceName:
     -- service interface
 ```
@@ -243,9 +243,9 @@ export function registerServiceName(
 
 ### Service interface
 
-The service interface type follows closely the definition in aqua code. It has the form of the object which keys correspond to the names of service members and the values are functions of the type translated from aqua definition \(see Type convertion\). For example, for the following aqua definition:
+The service interface type follows closely the definition in aqua code. It has the form of the object which keys correspond to the names of service members and the values are functions of the type translated from aqua definition (see Type convertion). For example, for the following aqua definition:
 
-```text
+```
 service Calc("calc"):
     add(n: f32)
     subtract(n: f32)
@@ -276,13 +276,13 @@ Basic types conversion is pretty much straightforward:
 
 * `string` is converted to `string` in typescript
 * `bool` is converted to `boolean` in typescript
-* All number types \(`u8`, `u16`, `u32`, `u64`, `s8`, `s16`, `s32`, `s64`, `f32`, `f64`\) are converted to `number` in typescript
+* All number types (`u8`, `u16`, `u32`, `u64`, `s8`, `s16`, `s32`, `s64`, `f32`, `f64`) are converted to `number` in typescript
 
 Arrow types translate to functions in typescript which have their arguments translated to typescript types. In addition to arguments defined in aqua, typescript counterparts have an additional argument for call params. For the majority of use cases this parameter is not needed and can be omitted.
 
 The type conversion works the same way for `service` and `func` definitions. For example a `func` with a callback might look like this:
 
-```text
+```
 func callMeBack(callback: string, i32 -> ()):
     callback("hello, world", 42)
 ```
@@ -293,7 +293,7 @@ The type for `callback` argument will be:
 callback: (arg0: string, arg1: number, callParams: CallParams<'arg0' | 'arg1'>) => void,
 ```
 
-For the service definitions arguments are named \(see calc example above\)
+For the service definitions arguments are named (see calc example above)
 
 ### Call params and tetraplets
 
@@ -309,7 +309,6 @@ Tetraplets have the form of:
 }
 ```
 
-To learn more about tetraplets and application security see [Security](https://github.com/fluencelabs/gitbook-docs/tree/77344eb147c2ce17fe1c0f37013082fc85c1ffa3/js-sdk/knowledge_security.md)
+To learn more about tetraplets and application security see [Security](https://github.com/fluencelabs/gitbook-docs/tree/77344eb147c2ce17fe1c0f37013082fc85c1ffa3/js-sdk/knowledge\_security.md)
 
-To see full specification of `CallParms` type see [Api reference](https://github.com/fluencelabs/gitbook-docs/tree/77344eb147c2ce17fe1c0f37013082fc85c1ffa3/js-sdk/js-sdk/6_reference/modules.md)
-
+To see full specification of `CallParms` type see [API reference](https://github.com/fluencelabs/gitbook-docs/tree/77344eb147c2ce17fe1c0f37013082fc85c1ffa3/js-sdk/js-sdk/6\_reference/modules.md)

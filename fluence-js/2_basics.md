@@ -8,7 +8,7 @@ In this section we will show you how Fluence JS can be used to create a hello wo
 
 Let's start with the aqua code first:
 
-```text
+```
 service HelloWorld("hello-world"):
     hello(str: string)
 
@@ -65,7 +65,7 @@ npm install --save-dev @fluencelabs/chokidar-cli
 
 And last, but no least we will need TypeScript
 
-```text
+```
 npm install --save-dev typescript
 npx tsc --init
 ```
@@ -76,7 +76,7 @@ Let's put aqua described earlier into `aqua/hello-world.aqua` file. You probably
 
 The overall project structure looks like this:
 
-```text
+```
  ┣ aqua
  ┃ ┗ hello-world.aqua
  ┣ src
@@ -108,7 +108,7 @@ We recommend to store this logic inside a script in `packages.json` file:
 }
 ```
 
-`compile-aqua` \(1\) runs the compilation once, producing `src/_aqua/hello-world.ts` in our case `watch-aqua` \(2\) starts watching for any changes in .aqua files recompiling them on the fly
+`compile-aqua` (1) runs the compilation once, producing `src/_aqua/hello-world.ts` in our case `watch-aqua` (2) starts watching for any changes in .aqua files recompiling them on the fly
 
 ## Using the compiled code in typescript application
 
@@ -147,17 +147,17 @@ async function main() {
 main();
 ```
 
-\(1\) Import list of possible relay nodes \(network environment\)
+(1) Import list of possible relay nodes (network environment)
 
-\(2\) Aqua compiler provides functions which can be directly imported like any normal typescript function.
+(2) Aqua compiler provides functions which can be directly imported like any normal typescript function.
 
-\(3\) A Fluence peer has to be started before running any application in Fluence Network. For the vast majority of use cases you should use `Fluence` facade to start and stop the peer. The `start` method accepts a parameters object which. The most common parameter is the address of the relay node the peer should connect to. In this example we are using the first node of the `krasnodar` network. If you do not specify the `connectTo` options will only be able to execute air on the local machine only. Please keep in mind that the init function is asynchronous
+(3) A Fluence peer has to be started before running any application in Fluence Network. For the vast majority of use cases you should use `Fluence` facade to start and stop the peer. The `start` method accepts a parameters object which. The most common parameter is the address of the relay node the peer should connect to. In this example we are using the first node of the `krasnodar` network. If you do not specify the `connectTo` options will only be able to execute air on the local machine only. Please keep in mind that the init function is asynchronous
 
-For every exported `service XXX` definition in aqua code, the compiler provides a `registerXXX` counterpart. These functions provide a type-safe way of registering callback handlers for the services. The callbacks are executed when the appropriate service is called in aqua on the current peer. The handlers take form of the object where keys are the name of functions and the values are async functions used as the corresponding callbacks. For example in \(3\) we are registering handler for `HelloWorld` service which outputs it's parameter to the console
+For every exported `service XXX` definition in aqua code, the compiler provides a `registerXXX` counterpart. These functions provide a type-safe way of registering callback handlers for the services. The callbacks are executed when the appropriate service is called in aqua on the current peer. The handlers take form of the object where keys are the name of functions and the values are async functions used as the corresponding callbacks. For example in (3) we are registering handler for `HelloWorld` service which outputs it's parameter to the console
 
-For every exported `func XXX` definition in aqua code, the compiler provides an async function which can be directly called from typescript. In \(4, 5\) we are calling exported aqua function with no arguments. Note that every function is asynchronous.
+For every exported `func XXX` definition in aqua code, the compiler provides an async function which can be directly called from typescript. In (4, 5) we are calling exported aqua function with no arguments. Note that every function is asynchronous.
 
-\(6\) You should call `stop` when the peer is no longer needed. As a rule of thumb all the peers should be uninitialized before destroying the application.
+(6) You should call `stop` when the peer is no longer needed. As a rule of thumb all the peers should be uninitialized before destroying the application.
 
 Let's try running the example:
 
@@ -169,5 +169,4 @@ If everything has been done correctly yuo should see `Hello, world!` in the cons
 
 The next section will cover in-depth and advanced usage of Fluence JS
 
-The code from this section is available in on [github](https://github.com/fluencelabs/examples/tree/main/js-sdk-examples/hello-world)
-
+The code from this section is available in on [github](https://github.com/fluencelabs/examples/tree/main/fluence-js-examples/hello-world)
