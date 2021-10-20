@@ -6,10 +6,13 @@ Fluence JS versioning scheme is the following: `0.BREAKING.ENHANCING`
 * `BREAKING` part is incremented for each breaking API change
 * `ENHANCING` part is incremented for every fix and update which is compatible on API level
 
-## [0.13.0](https://github.com/fluencelabs/fluence-js/releases/tag/v0.13.0) – September 24, 2021
+## [0.14.1](https://github.com/fluencelabs/fluence-js/releases/tag/v0.14.1) – October 20, 2021
 
-* `PeerStatus` is now exported from index file \([\#80](https://github.com/fluencelabs/fluence-js/pull/80)\)
-* `KeyPair`: method `fromBytes` is replaced with fromEd25519SK \([\#81](https://github.com/fluencelabs/fluence-js/pull/81)\)
+Compiler support: fix issue with incorrect check for missing fields in service registration \([\#90](https://github.com/fluencelabs/fluence-js/pull/90)\)
+
+## [0.14.0](https://github.com/fluencelabs/fluence-js/releases/tag/v0.14.0) – October 20, 2021
+
+Compiler support: added support for asynchronous code in service definitions and callback parameters of functions. \([\#83](https://github.com/fluencelabs/fluence-js/pull/83)\)
 
 ## [0.12.1](https://github.com/fluencelabs/fluence-js/releases/tag/v0.12.1) – September 14, 2021
 
