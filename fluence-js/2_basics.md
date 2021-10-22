@@ -9,25 +9,34 @@ In this section we will show you how Fluence JS can be used to create a hello wo
 Let's start with the aqua code first:
 
 ```
-service HelloWorld("hello-world"):
-    hello(str: string)
+import Peer from "@fluencelabs/aqua-lib/builtin.aqua" -- (1)
 
-func sayHello():
+service HelloWorld("hello-world"):                    -- (2)
+    hello(str: string)
+    getFortune() -> string
+
+func sayHello():                                      -- (3)
     HelloWorld.hello("Hello, world!")
 
-func getRelayTime() -> u64:
-    on HOST_PEER:
+func tellFortune() -> string:                         -- (4)
+    res <- HelloWorld.getFortune()
+    <- res
+
+func getRelayTime() -> u64:                           -- (5)
+    on HOST_PEER_ID:
         ts <- Peer.timestamp_ms()
     <- ts
 ```
 
+We need to import definitions to call standard Peer operations (1)
+
 This file has three definitions.
 
-The first one is a service named `HelloWorld`. A Service interfaces functions executable on a peer. We will register a handler for this interface in our typescript application.
+(2) is a service named `HelloWorld`. A Service interfaces functions executable on a peer. We will register a handler for this interface in our typescript application.
 
-The second definition is the function `sayHello`. The only thing the function is doing is calling the `hello` method of `HelloWorld` service located on the current peer. We will show you how to call this function from the typescript application.
+(3) and (4) are functions `sayHello` and `tellFortune` correspondingly. These functions very simple. The only thing the first one does is calling the `hello` method of `HelloWorld` service located on the current peer. Similarly `tellFortune` calls the `getFortune` method from the same service and returns the value to the caller. We will show you how to call these function from the typescript application.
 
-Finally we have a functions which demonstrate how to work with the network. It asks the current time from the relay peer and return back the our peer.
+Finally we have a function (5) which demonstrate how to work with the network. It asks the current time from the relay peer and return back the our peer.
 
 ## Installing dependencies
 
@@ -123,25 +132,34 @@ import {
   registerHelloWorld,
   sayHello,
   getRelayTime,
+  tellFortune,
 } from "./_aqua/hello-world"; // (2)
 
 async function main() {
   await Fluence.start({ connectTo: krasnodar[0] }); // (3)
 
-  // (3)
+  // (4)
   registerHelloWorld({
-    hello: async (str) => {
+    hello: (str) => {
       console.log(str);
+    },
+    getFortune: async () => {
+      await new Promise((resolve) => {
+        setTimeout(resolve, 1000);
+      });
+      return "Wealth awaits you very soon.";
     },
   });
 
   await sayHello(); // (4)
 
-  const relayTime = await getRelayTime(); // (5)
+  console.log(await tellFortune()); // (6)
+
+  const relayTime = await getRelayTime();
 
   console.log("The relay time is: ", new Date(relayTime).toLocaleString());
 
-  await Fluence.stop(); // (6)
+  await Fluence.stop(); // (7)
 }
 
 main();
@@ -151,13 +169,13 @@ main();
 
 (2) Aqua compiler provides functions which can be directly imported like any normal typescript function.
 
-(3) A Fluence peer has to be started before running any application in Fluence Network. For the vast majority of use cases you should use `Fluence` facade to start and stop the peer. The `start` method accepts a parameters object which. The most common parameter is the address of the relay node the peer should connect to. In this example we are using the first node of the `krasnodar` network. If you do not specify the `connectTo` options will only be able to execute air on the local machine only. Please keep in mind that the init function is asynchronous
+(3) A Fluence peer has to be started before running any application in Fluence Network. For the vast majority of use cases you should use `Fluence` facade to start and stop the peer. The `start` method accepts a parameters object which. The most common parameter is the address of the relay node the peer should connect to. In this example we are using the first node of the `krasnodar` network. If you do not specify the `connectTo` options will only be able to execute air on the local machine only. Please keep in mind that the init function is asynchronous.
 
-For every exported `service XXX` definition in aqua code, the compiler provides a `registerXXX` counterpart. These functions provide a type-safe way of registering callback handlers for the services. The callbacks are executed when the appropriate service is called in aqua on the current peer. The handlers take form of the object where keys are the name of functions and the values are async functions used as the corresponding callbacks. For example in (3) we are registering handler for `HelloWorld` service which outputs it's parameter to the console
+For every exported `service XXX` definition in aqua code, the compiler provides a `registerXXX` counterpart. These functions provide a type-safe way of registering callback handlers for the services. The callbacks are executed when the appropriate service is called in aqua on the current peer. The handlers take form of the object where keys are the name of functions and the values are async functions used as the corresponding callbacks. For example in (4) we are registering handlers for `HelloWorld` service functions which outputs it's parameter to the console. Please note that the handlers can be implemented in both: synchronous and asynchronous way. The handler can be made asynchronous like any other function in javascript: either return a Promise or mark it with async keyword to take advantage of async-await pattern.
 
-For every exported `func XXX` definition in aqua code, the compiler provides an async function which can be directly called from typescript. In (4, 5) we are calling exported aqua function with no arguments. Note that every function is asynchronous.
+For every exported `func XXX` definition in aqua code, the compiler provides an async function which can be directly called from typescript. In (5, 6) we are calling exported aqua function with no arguments. Note that every function is asynchronous.
 
-(6) You should call `stop` when the peer is no longer needed. As a rule of thumb all the peers should be uninitialized before destroying the application.
+(7) You should call `stop` when the peer is no longer needed. As a rule of thumb all the peers should be uninitialized before destroying the application.
 
 Let's try running the example:
 
