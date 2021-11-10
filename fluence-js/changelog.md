@@ -6,6 +6,16 @@ Fluence JS versioning scheme is the following: `0.BREAKING.ENHANCING`
 - `BREAKING` part is incremented for each breaking API change
 - `ENHANCING` part is incremented for every fix and update which is compatible on API level
 
+## [0.14.3](https://github.com/fluencelabs/fluence-js/releases/tag/v0.14.3) – November 10, 2021
+
+FluencePeer:
+
+Extend error handling. Now aqua function calls fail early with the user-friendly error message \([\#91](https://github.com/fluencelabs/fluence-js/pull/98)\)
+
+Compiler support:
+
+Define and export FnConfig interface \([\#91](https://github.com/fluencelabs/fluence-js/pull/97)\) fix issue with incorrect ttl value in config \([\#1001](https://github.com/fluencelabs/fluence-js/pull/100)\)
+
 ## [0.14.2](https://github.com/fluencelabs/fluence-js/releases/tag/v0.14.2) – October 21, 2021
 
 FluencePeer: add option to specify default TTL for all new particles \([\#91](https://github.com/fluencelabs/fluence-js/pull/91)\)
