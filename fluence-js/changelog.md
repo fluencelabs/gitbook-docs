@@ -14,7 +14,7 @@ Extend error handling. Now aqua function calls fail early with the user-friendly
 
 Compiler support:
 
-Define and export FnConfig interface \([\#91](https://github.com/fluencelabs/fluence-js/pull/97)\) fix issue with incorrect ttl value in config \([\#1001](https://github.com/fluencelabs/fluence-js/pull/100)\)
+Define and export FnConfig interface \([\#91](https://github.com/fluencelabs/fluence-js/pull/97)\) Fix issue with incorrect ttl value in config \([\#1001](https://github.com/fluencelabs/fluence-js/pull/100)\)
 
 ## [0.14.2](https://github.com/fluencelabs/fluence-js/releases/tag/v0.14.2) – October 21, 2021
 
