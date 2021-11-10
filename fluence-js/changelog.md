@@ -8,13 +8,15 @@ Fluence JS versioning scheme is the following: `0.BREAKING.ENHANCING`
 
 ## [0.14.3](https://github.com/fluencelabs/fluence-js/releases/tag/v0.14.3) – November 10, 2021
 
-FluencePeer:
+**FluencePeer:**
 
-Extend error handling. Now aqua function calls fail early with the user-friendly error message \([\#91](https://github.com/fluencelabs/fluence-js/pull/98)\)
+* Extend error handling. Now aqua function calls fail early with the user-friendly error message \([\#91](https://github.com/fluencelabs/fluence-js/pull/98)\)
 
-Compiler support:
+**Compiler support:**
 
-Define and export FnConfig interface \([\#91](https://github.com/fluencelabs/fluence-js/pull/97)\) Fix issue with incorrect TTL value in function calls config \([\#1001](https://github.com/fluencelabs/fluence-js/pull/100)\)
+* Define and export FnConfig interface \([\#91](https://github.com/fluencelabs/fluence-js/pull/97)\)
+
+* Fix issue with incorrect TTL value in function calls config \([\#1001](https://github.com/fluencelabs/fluence-js/pull/100)\)
 
 ## [0.14.2](https://github.com/fluencelabs/fluence-js/releases/tag/v0.14.2) – October 21, 2021
 
