@@ -69,7 +69,7 @@ npm install --save-dev @fluencelabs/aqua-lib
 Also we might want to have aqua source files automatically recompiled on every save. We will take advantage of chokidar for that:
 
 ```bash
-npm install --save-dev @fluencelabs/chokidar-cli
+npm install --save-dev chokidar-cli
 ```
 
 And last, but no least we will need TypeScript
