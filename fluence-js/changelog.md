@@ -6,17 +6,40 @@ Fluence JS versioning scheme is the following: `0.BREAKING.ENHANCING`
 - `BREAKING` part is incremented for each breaking API change
 - `ENHANCING` part is incremented for every fix and update which is compatible on API level
 
+## [0.15.1](https://github.com/fluencelabs/fluence-js/releases/tag/v0.15.0) – November 28, 2021
+
+**FluencePeer:**
+
+- Fix timeout builtin error message \([\#103](https://github.com/fluencelabs/fluence-js/pull/103)\)
+
+**Compiler support:**
+
+Issue fixes for `registerService` function
+
+- Throwing error if registerService was called on a non-initialized peer.
+- Fix issue with incorrect context being passed to class-based implementations of user services
+- Fix typo in JSDoc
+
+\([\#104](https://github.com/fluencelabs/fluence-js/pull/104)\)
+
+## [0.15.0](https://github.com/fluencelabs/fluence-js/releases/tag/v0.15.0) – November 17, 2021
+
+**FluencePeer:**
+
+- Implement peer.timeout built-in function \([\#101](https://github.com/fluencelabs/fluence-js/pull/101)\)
+- Update AVM: add support for the restriction operator \([\#102](https://github.com/fluencelabs/fluence-js/pull/102)\)
+
 ## [0.14.3](https://github.com/fluencelabs/fluence-js/releases/tag/v0.14.3) – November 10, 2021
 
 **FluencePeer:**
 
-* Extend error handling. Now aqua function calls fail early with the user-friendly error message \([\#91](https://github.com/fluencelabs/fluence-js/pull/98)\)
+- Extend error handling. Now aqua function calls fail early with the user-friendly error message \([\#91](https://github.com/fluencelabs/fluence-js/pull/98)\)
 
 **Compiler support:**
 
-* Define and export FnConfig interface \([\#91](https://github.com/fluencelabs/fluence-js/pull/97)\)
+- Define and export FnConfig interface \([\#97](https://github.com/fluencelabs/fluence-js/pull/97)\)
 
-* Fix issue with incorrect TTL value in function calls config \([\#1001](https://github.com/fluencelabs/fluence-js/pull/100)\)
+- Fix issue with incorrect TTL value in function calls config \([\#100](https://github.com/fluencelabs/fluence-js/pull/100)\)
 
 ## [0.14.2](https://github.com/fluencelabs/fluence-js/releases/tag/v0.14.2) – October 21, 2021
 
