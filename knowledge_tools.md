@@ -2,9 +2,15 @@
 
 ## Fluence Proto Distributor: FLDIST
 
-[`fldist`](https://github.com/fluencelabs/proto-distributor) is a command line interface \(CLI\) to Fluence peers allowing for the lifecycle management of services and offers the fastest and most effective way to service deployment.
+{% hint style="info" %}
+Please note that we are in the process of deprecating `fldist` in favor of [Aqua CLI](https://github.com/fluencelabs/aqua/tree/main/cli). At the time of this writing, `fldist` remains fully functional **except** for the `run_air` command, which needs to be replace with `aqua run`.&#x20;
 
-```text
+We are currently in the process of updating the documentation to reflect these changes. If you run into an errant `fldist` reference, please let us now!
+{% endhint %}
+
+[`fldist`](https://github.com/fluencelabs/proto-distributor) is a command line interface (CLI) to Fluence peers allowing for the lifecycle management of services and offers the fastest and most effective way to service deployment.
+
+```
 mbp16~(:|✔) % fldist --help
 Usage: fldist <cmd> [options]
 
@@ -45,5 +51,4 @@ The [Fluence JS](https://github.com/fluencelabs/fluence-js) supports developers 
 
 ## Marine Tools
 
-Marine offers multiple tools including the Marine CLI, REPL and SDK. Please see the [Marine section](knowledge_aquamarine/marine/) for more detail.
-
+Marine offers multiple tools including the Marine CLI, REPL and SDK. Please see the [Marine section](knowledge\_aquamarine/marine/) for more detail.

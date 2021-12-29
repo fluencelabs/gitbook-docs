@@ -4,7 +4,7 @@ In order to develop within the Fluence solution, [Node](https://nodejs.org/en/),
 
 ### NodeJs
 
-Download the \[installer\]\([https://nodejs.org/en/download/](https://nodejs.org/en/download/)\) for your platform and follow the instructions.
+Download the \[installer]\([https://nodejs.org/en/download/](https://nodejs.org/en/download/)) for your platform and follow the instructions.
 
 ### Rust
 
@@ -14,7 +14,7 @@ Install Rust:
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-Once Rust is installed, we need to expand the toolchain and include [nightly build](https://rust-lang.github.io/rustup/concepts/channels.html) and the [Wasm](https://doc.rust-lang.org/stable/nightly-rustc/rustc_target/spec/wasm32_wasi/index.html) compile target.
+Once Rust is installed, we need to expand the toolchain and include [nightly build](https://rust-lang.github.io/rustup/concepts/channels.html) and the [Wasm](https://doc.rust-lang.org/stable/nightly-rustc/rustc\_target/spec/wasm32\_wasi/index.html) compile target.
 
 ```bash
 rustup install nightly
@@ -28,13 +28,13 @@ rustup self update
 rustup update
 ```
 
-There are a number of good Rust installation and IDE integration tutorials available. [DuckDuckGo](https://duckduckgo.com/) is your friend but if that's too much effort, have a look at [koderhq](https://www.koderhq.com/tutorial/rust/environment-setup/). Please note, however, that currently only VSCode is supported with Aqua syntax support.
+There are a number of good Rust installation and IDE integration tutorials available. [DuckDuckGo](https://duckduckgo.com) is your friend but if that's too much effort, have a look at [koderhq](https://www.koderhq.com/tutorial/rust/environment-setup/). Please note, however, that currently only VSCode is supported with Aqua syntax support.
 
 ### Aqua Tools
 
 The Aqua compiler and standard library and be installed via npm:
 
-```text
+```
 npm -g install @fluencelabs/aqua
 npm -g install @fluencelabs/aqua-lib
 ```
@@ -43,11 +43,11 @@ npm -g install @fluencelabs/aqua-lib
 
 If you are a VSCode user, note that am Aqua syntax-highlighting extension is available. In VSCode, click on the Extensions button, search for `aqua`and install the extension.
 
-![](https://gblobscdn.gitbook.com/assets%2F-MbmEhQUL-bljop_DzuP%2F-MdMDybZMQJ5kUjN4zhr%2F-MdME2UUjaxKs6pzcDLH%2FScreen%20Shot%202021-06-29%20at%201.06.39%20PM.png?alt=media&token=812fcb5c-cf28-4240-b072-a51093d0aaa4)
+![](https://gblobscdn.gitbook.com/assets%2F-MbmEhQUL-bljop\_DzuP%2F-MdMDybZMQJ5kUjN4zhr%2F-MdME2UUjaxKs6pzcDLH%2FScreen%20Shot%202021-06-29%20at%201.06.39%20PM.png?alt=media\&token=812fcb5c-cf28-4240-b072-a51093d0aaa4)
 
 Moreover, the aqua-playground provides a ready to go Typescript template and Aqua example. In a directory of you choice:
 
-```text
+```
 git clone git@github.com:fluencelabs/aqua-playground.git
 ```
 
@@ -68,13 +68,17 @@ In addition, Fluence provides the `fldist` tool for the lifecycle management of 
 npm -g install @fluencelabs/fldist
 ```
 
-### Fluence SDK
+{% hint style="info" %}
+Please note that we are in the process of deprecating Fldist in favor of [Aqua CLI](https://github.com/fluencelabs/aqua/tree/main/cli). At the time of this writing, `fldist` is fully functional **except** for `run_air` which needs to be replaced with `aqua run`.&#x20;
 
-For frontend development, the Fluence [JS-SDK](https://github.com/fluencelabs/fluence-js) is currently the favored, and only, tool.
+We are currently in the process of updating the documentation to reflect these changes. If you run into an errant `fldist` reference, please let us now!
+{% endhint %}
+
+### Fluence JS
+
+For frontend development, the Fluence [JS](https://github.com/fluencelabs/fluence-js) is currently the favored, and only, tool.
 
 ```bash
 npm install @fluencelabs/fluence
 ```
-
-
 

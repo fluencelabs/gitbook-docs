@@ -1,6 +1,6 @@
 # Marine Rust SDK
 
-The [marine-rs-sdk](https://github.com/fluencelabs/marine-rs-sdk) empowers developers to write services suitable for peer hosting in peer-to-peer networks using the Marine Virtual Machine by enabling the wasm32-wasi compile target for Marine. 
+The [marine-rs-sdk](https://github.com/fluencelabs/marine-rs-sdk) empowers developers to create services suitable for hosting on peers of the peer-to-peer network. Such services are constructed from one or more Wasm modules, which each are the result of Rust code compiled to the wasm32-wasi compile target, executable by the Marine runtime.
 
 ### API
 
@@ -51,7 +51,7 @@ Function Export Requirements
 
 * wrap a target function with the `[marine]` macro
 * function arguments must by of `ftype`
-* the function return type also must be of `ftype` 
+* the function return type also must be of `ftype`&#x20;
 {% endhint %}
 
 #### Function Import
@@ -109,7 +109,7 @@ extern "C" {
 
 #### Structures
 
-Finally, the `[marine]` macro can wrap a `struct` making possible to use it as a function argument or return type. Note that 
+Finally, the `[marine]` macro can wrap a `struct` making possible to use it as a function argument or return type. Note that&#x20;
 
 * only macro-wrapped structures can be used as function arguments and return types
 * all fields of the wrapped structure must be public and of the `ftype`.
@@ -218,7 +218,7 @@ fn some_function() -> Data {
 
 #### Call Parameters
 
-There is a special API function `fluence::get_call_parameters()` that returns an instance of the [`CallParameters`](https://github.com/fluencelabs/marine-rs-sdk/blob/master/src/call_parameters.rs#L35) structure defined as follows:
+There is a special API function `fluence::get_call_parameters()` that returns an instance of the [`CallParameters`](https://github.com/fluencelabs/marine-rs-sdk/blob/master/src/call\_parameters.rs#L35) structure defined as follows:
 
 ```rust
 pub struct CallParameters {
@@ -294,7 +294,7 @@ extern "C" {
 }
 ```
 
-The above code creates a "curl adapter", i.e., a Wasm module that allows other Wasm modules to use the the `curl_request` function, which calls the imported _curl_  binary in this case, to make http calls. Please note that we are wrapping the `extern` block with the `[marine]`macro and introduce a Marine-native data structure [`MountedBinaryResult`](https://github.com/fluencelabs/marine/blob/master/examples/url-downloader/curl_adapter/src/main.rs) as the linked-function return value.
+The above code creates a "curl adapter", i.e., a Wasm module that allows other Wasm modules to use the the `curl_request` function, which calls the imported _curl_  binary in this case, to make http calls. Please note that we are wrapping the `extern` block with the `[marine]`macro and introduce a Marine-native data structure [`MountedBinaryResult`](https://github.com/fluencelabs/marine/blob/master/examples/url-downloader/curl\_adapter/src/main.rs) as the linked-function return value.
 
 Please not that if you want to use `curl_request` with testing, see below, the curl call needs to be marked unsafe, e.g.:
 
@@ -338,7 +338,7 @@ To use the `[marine-test]` macro please add `marine-rs-sdk-test` crate to the `[
 marine-rs-sdk-test = "0.2.0"
 ```
 
- Let's have a look at an implementation example:
+&#x20;Let's have a look at an implementation example:
 
 ```rust
 use marine_rs_sdk::marine;
@@ -371,8 +371,8 @@ mod tests {
 }
 ```
 
-1. We wrap a basic _greeting _function with the `[marine]` macro which results in the greeting.wasm module
-2. We wrap our tests as usual with `[cfg(test)]` and import the marine _test crate. _Do **not** import _super_ or the _local crate_. 
+1. We wrap a basic _greeting_ function with the `[marine]` macro which results in the greeting.wasm module
+2. We wrap our tests as usual with `[cfg(test)]` and import the marine _test crate._ Do **not** import _super_ or the _local crate_.&#x20;
 3. Instead, we apply the `[marine_test]` macro to each of the test functions by providing the path to the config file, e.g., Config.toml, and the directory containing the Wasm module we obtained after compiling our project with `marine build`. Moreover, we add the type of the test as an argument in the function signature. It is imperative that project build precedes the test runner otherwise the required Wasm file will be missing.
 4. The target of our tests is the `pub fn greeting` function. Since we are calling the function from the Wasm module we must prefix the function name with the module namespace -- `greeting` in this example case as specified in the function argument.
 
@@ -502,13 +502,13 @@ mod tests_on_mod {
 
 1. We wrap the `test` function with the `marine_test` macro by providing named service configurations with module locations. Based on its arguments the macro defines a `marine_test_env` module with an interface to the services.
 2. We create new services. Each `ServiceInterface::new()` runs a new marine runtime with the service.
-3. We prepare data to pass to a service using structure definition from `marine_test_env`. The macro finds all structures used in the service interface functions and defines them in the corresponding submodule of  `marine_test_env` . 
+3. We prepare data to pass to a service using structure definition from `marine_test_env`. The macro finds all structures used in the service interface functions and defines them in the corresponding submodule of  `marine_test_env` .&#x20;
 4. We call a service function through the `ServiceInterface` object.
-5. It is possible to use the result of one service call as an argument for a different service call. The interface types with the same structure have the same rust type in `marine_test_env`. 
+5. It is possible to use the result of one service call as an argument for a different service call. The interface types with the same structure have the same rust type in `marine_test_env`.&#x20;
 
 In the `test_on_mod.rs` tab we can see another option  — applying `marine_test` to a `mod`. The macro just defines the `marine_test_env` at the beginning of the module and then it can be used as usual everywhere inside the module.
 
-The full example is [here](https://github.com/fluencelabs/marine/tree/master/examples/multiservice_marine_test).
+The full example is [here](https://github.com/fluencelabs/marine/tree/master/examples/multiservice\_marine\_test).
 
 The `marine_test` macro also gives access to the interface of internal modules which may be useful for setting up a test environment. This feature is designed to be used in situations when it is simpler to set up a service for a test through internal functions than through the service interface. To illustrate this feature we have rewritten the previous example:
 
@@ -546,7 +546,7 @@ mod tests {
 
 1. We access the internal service interface to construct an interface structure. To do so, we use the following pattern: `marine_test_env::$service_name::modules::$module_name::$structure_name`.
 2. We access the internal service interface and directly call a function from one of the modules of this service. To do so, we use the following pattern: `$service_object.modules.$module_name.$function_name` .
-3. In the previous example, the same interface types had the same rust types. It is limited when using internal modules: the property is true only when structures are defined in internal modules of one service, or when structures are defined in service interfaces of different services. So, we need to construct the proper type to pass data to the internals of another module. 
+3. In the previous example, the same interface types had the same rust types. It is limited when using internal modules: the property is true only when structures are defined in internal modules of one service, or when structures are defined in service interfaces of different services. So, we need to construct the proper type to pass data to the internals of another module.&#x20;
 
 Testing sdk also has the interface for [Cargo build scripts](https://doc.rust-lang.org/cargo/reference/build-scripts.html). Some IDEs can analyze files generated in build scripts, providing code completion and error highlighting for code generated in build scripts. But using it may be a little bit tricky because build scripts are not designed for such things.
 
@@ -644,7 +644,7 @@ marine-rs-sdk-test = "0.4.0" # <- 5
 {% endtab %}
 {% endtabs %}
 
-1. We create a vector of pairs (service_name, service_description) to pass to the generator. The structure is the same with multi-service `marine_test`.
+1. We create a vector of pairs (service\_name, service\_description) to pass to the generator. The structure is the same with multi-service `marine_test`.
 2. We check if we build for a non-wasm target. As we build this marine service only for `wasm32-wasi` and tests are built for native target, we can generate `marine_test_env` only for tests. This is needed because our generator depends on the artifacts from `wasm32-wasi` build. We suggest using a separate crate for using build scripts for testing purposes. It is here for simplicity.
 3. We pass our services, a name of the file to generate, and a path to the build script file to the `marine_test_env` generator. Just always use `file!()` for the last argument. The generated file will be in the directory specified by the `OUT_DIR` variable, which is set by cargo. The build script must not change any files outside of this directory.
 4. We set up condition to re-run the build script. It must be customized, a good choice is to re-run the build script when .wasm files or `Config.toml` are changed.
