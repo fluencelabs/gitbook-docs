@@ -350,3 +350,32 @@ Tetraplets have the form of:
 To learn more about tetraplets and application security see [Security](https://github.com/fluencelabs/gitbook-docs/tree/77344eb147c2ce17fe1c0f37013082fc85c1ffa3/js-sdk/knowledge_security.md)
 
 To see full specification of `CallParams` type see [API reference](https://github.com/fluencelabs/gitbook-docs/tree/77344eb147c2ce17fe1c0f37013082fc85c1ffa3/js-sdk/js-sdk/6_reference/modules.md)
+
+## Running AVM in background
+
+FluencePeer's config allows to specify an implementation for AVM worker. By default the single-thread, ui-blocking implementation is used since it is universal across nodejs and browsers. If aqua scripts in your applications become too complex, AVM might block the ui thread significantly which will ui unresponsive. If this is the case the default AVM worker implementation can be swapped with the background AVM worker.
+
+The implementations differ for nodejs and the browsers:
+
+- `@fluencelabs/avm-worker-web` package should be used in browsers
+- `@fluencelabs/avm-worker-node`package should be used in nodejs
+
+```typescript
+import { Fluence } from "@fluencelabs/fluence";
+import { BackgroundWorker } from "@fluencelabs/avm-worker-web"; // or @fluencelabs/avm-worker-node for nodejs
+
+const main = async () => {
+  // ..
+
+  await Fluence.start({
+    avmWorker = new BackgroundWorker(), // swap the worker implementation
+    // rest of the config
+  });
+
+  // From now on Fluence will process all the particles in the background thus unblocking the UI thread
+
+  // Please note, that all other FLuence usages remains unchanged.
+
+  // ..
+};
+```
