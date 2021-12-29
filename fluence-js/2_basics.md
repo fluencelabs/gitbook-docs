@@ -188,3 +188,7 @@ If everything has been done correctly yuo should see `Hello, world!` in the cons
 The next section will cover in-depth and advanced usage of Fluence JS
 
 The code from this section is available in on [github](https://github.com/fluencelabs/examples/tree/main/fluence-js-examples/hello-world)
+
+## Running Fluence application in different environments
+
+Fluence JS runs instantiates Aqua Virtual Machine (AVM) from wasm file and runs it in the background thread. Different mechanism are used depending on the JS environment. In nodejs worker threads are for background execution and was file is read from the filesystem. In browser-based environments web workers are used and the wasm file is being loaded from server hosting the application. Next two sections cover how to configure a fluence application depending on the environment.

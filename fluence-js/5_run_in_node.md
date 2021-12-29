@@ -1,19 +1,21 @@
 # Running app in nodejs
 
-## Intro
-
 It is easy to use Fluence JS in NodeJS applications. You can take full advantage of the javascript ecosystem and at the save time expose service to the Fluence Network. That makes is an excellent choice for quick prototyping of applications for Fluence Stack.
+
+## Configuring application to run in nodejs
+
+`@fluencelabs/fluence` delivers AquaVM wasm file through the npm package. No additional configuration is needed.
 
 ## Calc app example
 
 Lets implement a very simple app which simulates a desk calculator. The calculator has internal memory and implements the following set of operations:
 
-* Add a number
-* Subtract a number
-* Multiply by a number
-* Divide by a number
-* Get the current memory state
-* Reset the memory state to 0.0
+- Add a number
+- Subtract a number
+- Multiply by a number
+- Divide by a number
+- Get the current memory state
+- Reset the memory state to 0.0
 
 First, let's write the service definition in aqua:
 
@@ -120,4 +122,3 @@ func demoCalculation() -> f32:
         res <- Calc.getResult()
     <- res
 ```
-
