@@ -6,6 +6,39 @@ Fluence JS versioning scheme is the following: `0.BREAKING.ENHANCING`
 - `BREAKING` part is incremented for each breaking API change
 - `ENHANCING` part is incremented for every fix and update which is compatible on API level
 
+## [0.18.0](https://github.com/fluencelabs/fluence-js/releases/tag/v0.18.0) – December 29, 2021
+
+FluencePeer: Update AVM version to 0.20.0 \([\#120](https://github.com/fluencelabs/fluence-js/pull/120)\)
+
+## [0.17.1](https://github.com/fluencelabs/fluence-js/releases/tag/v0.17.1) – December 29, 2021
+
+FluencePeer: Update AvmRunner to 0.1.2 (fix issue with incorrect baseUrl) \([\#119](https://github.com/fluencelabs/fluence-js/pull/119)\)
+
+## [0.17.0](https://github.com/fluencelabs/fluence-js/releases/tag/v0.17.0) – December 28, 2021
+
+JS Peer does not embed AVM interpreter any more. Instead [AVM Runner](https://github.com/fluencelabs/avm-runner-background) is used to run AVM in background giving huge performance boost. This is a **breaking change**: all browser applications now not need to bundle `avm.wasm` file and the runner script. See documentation for more info.
+
+\([\#111](https://github.com/fluencelabs/fluence-js/pull/120)\)
+
+## [0.16.0](https://github.com/fluencelabs/fluence-js/releases/tag/v0.16.0) – December 22, 2021
+
+FluencePeer: Update AVM version to 0.19.3 \([\#115](https://github.com/fluencelabs/fluence-js/pull/115)\)
+
+## [0.15.4](https://github.com/fluencelabs/fluence-js/releases/tag/v0.15.4) – December 13, 2021
+
+FluencePeer: Update AVM version to 0.17.7 \([\#113](https://github.com/fluencelabs/fluence-js/pull/113)\)
+
+## [0.15.3](https://github.com/fluencelabs/fluence-js/releases/tag/v0.15.3) – December 10, 2021
+
+**FluencePeer:**
+
+- Add built-in service to sign data and verify signatures \([\#110](https://github.com/fluencelabs/fluence-js/pull/110)\)
+- Update AVM version to 0.17.6 \([\#112](https://github.com/fluencelabs/fluence-js/pull/112)\)
+
+## [0.15.2](https://github.com/fluencelabs/fluence-js/releases/tag/v0.15.2) – November 30, 2021
+
+Add particleId to error message when an aqua function times out \([\#106](https://github.com/fluencelabs/fluence-js/pull/106)\)
+
 ## [0.15.1](https://github.com/fluencelabs/fluence-js/releases/tag/v0.15.0) – November 28, 2021
 
 **FluencePeer:**
