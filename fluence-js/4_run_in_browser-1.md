@@ -9,7 +9,7 @@ To run application in browser you need to configure the server which hosts the a
 - `avm.wasm` is the execution file of AquaVM. The file is located in `@fluencelabs/avm` package
 - `runnerScript.web.js` is the web worker script responsible for running AVM in background. The file is located in `@fluencelabs/avm-runner-background` package
 
-Fluence JS provides a utility script named `copy-avm-public` which locates described above files and copies them into the specified directory. For example if static files are served from the `public` directory you can run `copy-avm-public public` to copy files needed to run Fluence. It is recommended to put the names into `.gitignore` and run the script on every build to prevent possible inconsistencies with file versions. This can be done using npm's `postinstall` script:
+Fluence JS provides a utility script named `copy-avm-public` which locates described above files and copies them into the specified directory. For example if static files are served from the `public` directory you can run `copy-avm-public public` to copy files needed to run Fluence. It is recommended to put their names into `.gitignore` and run the script on every build to prevent possible inconsistencies with file versions. This can be done using npm's `postinstall` script:
 
 ```
   ...
