@@ -4,7 +4,7 @@ Fluence provides an open Web3 protocol, framework and tooling to develop and hos
 
 The Fluence Web3 stack enables
 
-* programmable network requests&#x20;
+* programmable network requests
 * distributed applications from composition without centralization
 * communication, access and transactional security as first class citizens
 * extensibility through adapter/wrapper services
@@ -16,11 +16,11 @@ An integral component of the Fluence solution is the Aquamarine stack comprised 
 
 Additional resources and support are available:
 
-* [Youtube](https://www.youtube.com/channel/UC3b5eFyKRFlEMwSJ1BTjpbw)
 * [Github](https://github.com/fluencelabs)
 * [Discord](https://fluence.chat)
 * [Telegram](https://t.me/fluence\_project)
 * [Twitter](https://twitter.com/fluence\_project)
+* [Youtube](https://www.youtube.com/channel/UC3b5eFyKRFlEMwSJ1BTjpbw)
 
 Documentation is work in progress and your feedback is extremely valuable and much appreciated. If you have suggestions or unearth errors or inaccuracies, please open an Issue or push a PR.
 
