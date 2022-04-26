@@ -528,7 +528,7 @@ sig.securityGuard = or(
 );
 ```
 
-### Using Marine services in Fluence JS
+## Using Marine services in Fluence JS
 
 Fluence JS can host Marine services with Marine JS. Currently only pure single-module services are supported.
 
