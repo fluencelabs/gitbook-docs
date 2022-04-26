@@ -4,22 +4,37 @@ You can use the Fluence JS with any framework (or even without it). The "fluence
 
 ## Configuring application to run in browser
 
-To run application in browser you need to configure the server which hosts the application to serve two additional files:
+{% hint style="warning" %}
+**Breaking change!**\
+****\
+****Starting from **v0.23.0**  Fluence JS uses different file structure:
 
-* `avm.wasm` is the execution file of AquaVM. The file is located in `@fluencelabs/avm` package
-* `runnerScript.web.js` is the web worker script responsible for running AVM in background. The file is located in `@fluencelabs/avm-runner-background` package
+* **copy-avm-public** script has been replaced with **copy-marine**
+* **runnerScript.web.js** has been replaced with **`marine-js.web.js`**
+* additional dependency added: **`marine-js.wasm`**
 
-Fluence JS provides a utility script named `copy-avm-public` which locates described above files and copies them into the specified directory. For example if static files are served from the `public` directory you can run `copy-avm-public public` to copy files needed to run Fluence. It is recommended to put their names into `.gitignore` and run the script on every build to prevent possible inconsistencies with file versions. This can be done using npm's `postinstall` script:
+
+
+Make sure to migrate when switching to **v0.23.0**
+{% endhint %}
+
+To run application in browser you need to configure the server which hosts the application to serve Marine JS dependencies. Fluence JS provides a utility script named `copy-marine` which copies all the necessary files into specified folder. For example if static files are served from the `public` directory you can run `copy-marine public` to copy files needed to run Fluence. It is recommended to put their names into `.gitignore` and run the script on every build to prevent possible inconsistencies with file versions. This can be done using npm's `postinstall` script:
 
 ```
   ...
   "scripts": {
-    "postinstall": "copy-avm-public public",
+    "postinstall": "copy-marine public",
     "start": "...",
     ..
   },
   ...
 ```
+
+In case you want to distribute the files by hand here is the list of dependencies required to run Fluence:
+
+* `marine-js.wasm` is the Marine JS runtime. The file is located in `@fluencelabs/marine-js` package.
+* `marine-js.web.js` is the web worker script responsible for running Marine JS in background. The file is located in `@fluencelabs/marine-js` package.
+* `avm.wasm` is the AquaVM execution file. The file is located in `@fluencelabs/avm` package.
 
 ## Demo applications
 
