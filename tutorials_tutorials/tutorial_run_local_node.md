@@ -73,7 +73,7 @@ Your peerId: 12D3KooWCXj3BQuV5d4vhgyLFmv7rRYiy9MupFiyEWnqcUAGpS4D
 [
   {
     "config": {
-      "mem_pages_count": 100
+      "max_heap_size": "100 KiB"
     },
     "hash": "558a483b1c141b66765947cf6a674abe5af2bb5b86244dfca41e5f5eb2a86e9e",
     "name": "sqlite3"
