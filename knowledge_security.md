@@ -154,5 +154,6 @@ This makes decomposition a pain: why decouple services if we need them to know s
 **References**
 
 * [Tetraplet implementation in the Aquamarine interpreter](https://github.com/fluencelabs/aquavm/blob/master/crates/air-lib/polyplets/src/tetraplet.rs)
+* [Example of authenticating in Rust Wasm service](https://github.com/fluencelabs/examples/blob/6381411ed9919dc09a38203a71aa708e47050acb/aqua-examples/echo-greeter/secure-greeter/src/auth.rs#L19)
 * [Example of checking tetraplets for authorization in Fluent Pad](https://github.com/fluencelabs/fluent-pad/blob/main/services/history-inmemory/src/service\_api.rs#L91)
 * [Getting tetraplets with Rust SDK](https://github.com/fluencelabs/marine-rs-sdk/blob/7c8f65fb64e64ba7e068b124449e745ef28c742d/sdk/src/call\_parameters.rs#L35)
